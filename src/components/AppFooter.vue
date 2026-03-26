@@ -64,7 +64,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p>© 2026 Sundarbans House. Student-managed website — not an official IIT Madras website.</p>
+        <p>© 2026 Sundarbans House WebOps Team.All Rights Reserved.</p>
         <div class="fbl">
           <a href="#">Privacy</a><span>·</span><a href="#">Terms</a><span>·</span>
           <router-link to="/contact">Contact</router-link>
