@@ -9,7 +9,7 @@
       <div class="footer-grid">
         <div class="fbrand">
           <div class="flogo">
-            <img src="/assets/LOGO.JPEG" alt="Logo" class="flogo-img" />
+            <img src="../assets/LOGO.JPEG" alt="Logo" class="flogo-img" />
             <div>
               <span class="fbrand-name">SUNDARBANS</span>
               <span class="fbrand-sub">IIT Madras BS</span>
@@ -58,7 +58,7 @@
             <button class="nbtn" @click="subscribe">→</button>
           </div>
           <div class="iit-badge">
-            <img src="/assets/IITM-Logo.png" alt="IIT Madras" class="iit-logo" />
+            <img src="../assets/IITM-Logo.png" alt="IIT Madras" class="iit-logo" />
             <span>IIT Madras Affiliated</span>
           </div>
         </div>

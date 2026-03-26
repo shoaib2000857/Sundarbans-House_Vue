@@ -15,7 +15,7 @@
             </svg>
           </div>
           <div class="preloader-logo-center">
-            <img src="/assets/LOGO.JPEG" alt="Sundarbans" class="preloader-logo-img"
+            <img src="./assets/LOGO.JPEG" alt="Sundarbans" class="preloader-logo-img"
               @error="showFallback = true" v-if="!showFallback" />
             <span class="preloader-logo-letter" v-else>S</span>
           </div>
@@ -74,7 +74,7 @@
       <div class="nav-container">
         <div class="nav-left">
           <div class="nav-logo-wrapper">
-            <img src="/assets/LOGO.JPEG" alt="Logo" class="nav-logo" />
+            <img src="./assets/LOGO.JPEG" alt="Logo" class="nav-logo" />
             <div class="logo-glow"></div>
           </div>
           <div class="brand-text">

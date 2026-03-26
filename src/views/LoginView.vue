@@ -2,7 +2,7 @@
   <div style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:2rem;background:var(--bg)">
     <div style="width:100%;max-width:440px">
       <div style="text-align:center;margin-bottom:2rem">
-        <img src="/assets/LOGO.JPEG" alt="Sundarbans" style="width:72px;height:72px;border-radius:50%;border:2px solid var(--accent);margin-bottom:1rem;display:block;margin-left:auto;margin-right:auto" />
+        <img src="../assets/LOGO.JPEG" alt="Sundarbans" style="width:72px;height:72px;border-radius:50%;border:2px solid var(--accent);margin-bottom:1rem;display:block;margin-left:auto;margin-right:auto" />
         <div class="section-tag" style="display:inline-flex;margin-bottom:0.75rem">Members Area</div>
         <h1 style="font-family:Cinzel,serif;font-size:1.8rem;font-weight:700;letter-spacing:0.04em;margin-bottom:0.5rem">Members <span class="tg">Lounge</span></h1>
         <p style="font-size:0.88rem;color:var(--text2)">Sign in to access exclusive resources, dashboards, and member features</p>
