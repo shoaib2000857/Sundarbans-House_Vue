@@ -30,7 +30,7 @@
             </div>
             <div style="display:flex;gap:0.75rem;flex-wrap:wrap;margin-bottom:1.25rem">
               <span style="font-size:0.8rem;color:var(--text2)">📅 This Friday, 6:00 PM – 8:00 PM</span>
-              <span style="font-size:0.8rem;color:var(--text2)">📍 Online (Zoom)</span>
+              <span style="font-size:0.8rem;color:var(--text2)">📍 Virtual (Zoom)</span>
               <span style="font-size:0.8rem;color:var(--text2)">🎟️ Free for all members</span>
             </div>
             <a href="#" class="btn-hero-primary" style="display:inline-flex">Register Now →</a>
@@ -112,12 +112,12 @@ const tabs = ['All', 'Workshops', 'Meetups', 'Competitions', 'Talks']
 const activeTab = ref('All')
 
 const allEvents = [
-  { title: 'Python for Beginners', category: 'Workshop', date: 'Mar 15', time: '6–8 PM', location: 'Online', img: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=500&q=80&auto=format&fit=crop', desc: 'Learn Python from scratch — hands-on exercises and real projects', type: 'Workshops' },
+  { title: 'Python for Beginners', category: 'Workshop', date: 'Mar 15', time: '6–8 PM', location: 'Virtual', img: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=500&q=80&auto=format&fit=crop', desc: 'Learn Python from scratch — hands-on exercises and real projects', type: 'Workshops' },
   { title: 'Inter-House Quiz', category: 'Competition', date: 'Mar 20', time: '5–7 PM', location: 'Virtual', img: 'https://images.unsplash.com/photo-1434626881859-194d67b2b86f?w=500&q=80&auto=format&fit=crop', desc: 'Battle of knowledge — test your skills across multiple domains', type: 'Competitions' },
   { title: 'Delhi Meetup 2026', category: 'Offline Meetup', tagStyle: 'background:rgba(245,158,11,0.1);color:#F59E0B;border-color:rgba(245,158,11,0.3)', date: 'Apr 10', time: '4 PM', location: 'Delhi', img: 'https://images.unsplash.com/photo-1587474260584-136574528ed5?w=500&q=80&auto=format&fit=crop', desc: 'Network with Sundarbans members in Delhi — food, fun and friendships', type: 'Meetups' },
   { title: 'Chennai Meetup 2026', category: 'Offline Meetup', tagStyle: 'background:rgba(245,158,11,0.1);color:#F59E0B;border-color:rgba(245,158,11,0.3)', date: 'Mar 25', time: '3 PM', location: 'Chennai', img: 'https://images.unsplash.com/photo-1529253355930-ddbe423a2ac7?w=500&q=80&auto=format&fit=crop', desc: 'Connect with fellow students in Chennai — sessions, games and more', type: 'Meetups' },
-  { title: 'SundarHack 2026', category: 'Hackathon', date: 'Apr 25–27', time: 'All weekend', location: 'Online', img: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?w=500&q=80&auto=format&fit=crop', desc: '48-hour coding marathon — build, break, and innovate with your team', type: 'Competitions' },
-  { title: 'Career in Research', category: 'Guest Talk', date: 'May 5', time: '7–9 PM', location: 'Online', img: 'https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=500&q=80&auto=format&fit=crop', desc: 'PhD scholars discuss research life, opportunities and how to get started', type: 'Talks' },
+  { title: 'SundarHack 2026', category: 'Hackathon', date: 'Apr 25–27', time: 'All weekend', location: 'Virtual', img: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?w=500&q=80&auto=format&fit=crop', desc: '48-hour coding marathon — build, break, and innovate with your team', type: 'Competitions' },
+  { title: 'Career in Research', category: 'Guest Talk', date: 'May 5', time: '7–9 PM', location: 'Virtual', img: 'https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=500&q=80&auto=format&fit=crop', desc: 'PhD scholars discuss research life, opportunities and how to get started', type: 'Talks' },
 ]
 
 const filteredEvents = computed(() =>

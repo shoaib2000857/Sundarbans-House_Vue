@@ -46,7 +46,7 @@ const platforms = [
   { icon: '💼', name: 'LinkedIn', desc: 'Professional updates, achievements, alumni stories and career opportunities', followers: '2.8K', url: '#' },
   { icon: '🐦', name: 'Twitter / X', desc: 'Real-time updates, announcements and quick engagement with the community', followers: '1.5K', url: '#' },
   { icon: '▶️', name: 'YouTube', desc: 'Recorded lectures, event replays, orientation videos and educational content', followers: '3.1K', url: '#' },
-  { icon: '💬', name: 'Discord', desc: 'Live voice channels, topic-based text channels and a thriving online community', followers: '1.9K', url: '#' },
+  { icon: '💬', name: 'Discord', desc: 'Live voice channels, topic-based text channels and a thriving community', followers: '1.9K', url: '#' },
   { icon: '📱', name: 'Telegram', desc: 'Fast updates, file sharing and dedicated topic-based channels for students', followers: '2.4K', url: '#' },
 ]
 </script>

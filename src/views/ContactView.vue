@@ -100,7 +100,7 @@ function submitForm() {
 const contactInfo = [
   { icon: '📧', title: 'Email', value: 'sundarbanshouse@iitm.ac.in' },
   { icon: '📱', title: 'WhatsApp', value: 'Join our main community group for quick responses' },
-  { icon: '📍', title: 'Based At', value: 'IIT Madras BS Online Degree Programme, Chennai' },
+  { icon: '📍', title: 'Based At', value: 'IIT Madras BS Degree Programme, Chennai' },
   { icon: '🕐', title: 'Response Time', value: 'Usually within 24 hours on weekdays' },
 ]
 </script>

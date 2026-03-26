@@ -9,7 +9,7 @@
       <div class="hero-content" id="heroContent">
         <div class="hero-badge animate-in" style="--delay:0.1s">
           <span class="badge-dot"></span>
-          IIT Madras BS Online Degree Programme
+          IIT Madras BS Degree Programme
         </div>
         <h1 class="hero-title animate-in" style="--delay:0.3s">
           <span class="hero-title-sm">Welcome to</span>
@@ -18,7 +18,7 @@
         </h1>
         <p class="hero-subtitle animate-in" style="--delay:0.6s">
           Empowering minds, building futures. A vibrant student community<br />
-          driving excellence across <em>India's top online degree programme</em>.
+          driving excellence across <em>India's top degree programme</em>.
         </p>
         <div class="hero-actions animate-in" style="--delay:0.8s">
           <router-link to="/community" class="btn-hero-primary">
@@ -80,7 +80,7 @@
           <div class="about-text-col">
             <div class="section-tag">Who We Are</div>
             <h2 class="section-title-xl">About <span class="tg">Sundarbans</span><br />House</h2>
-            <p class="desc">Sundarbans House is a vibrant student community under the IIT Madras BS Online Degree Programme, fostering collaboration, leadership, and peer learning across India.</p>
+            <p class="desc">Sundarbans House is a vibrant student community under the IIT Madras BS Degree Programme, fostering collaboration, leadership, and peer learning across India.</p>
             <p class="desc">We believe in the power of community — that learning together, supporting each other, and growing as one unit makes every individual stronger.</p>
             <div class="about-highlights">
               <div class="hi"><div class="hi-icon">🎯</div><div><strong>Mission-driven</strong><p>Empowering every student to achieve their academic goals</p></div></div>
@@ -181,7 +181,7 @@
             </div>
             <div class="mavs">
               <div class="mav">A</div><div class="mav">B</div><div class="mav">C</div>
-              <div class="mav-more">+12</div><span class="mol">online</span>
+              <div class="mav-more">+12</div><span class="mol">active</span>
             </div>
             <a href="#" class="mjoin-btn"><span>Join Meet</span>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>

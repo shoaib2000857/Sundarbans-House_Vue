@@ -85,7 +85,7 @@ const leadership = [
   { name: 'Tejashvi', role: 'Academic Head', bio: 'Curating study resources and organizing academic sessions for students across all levels.', img: '/teams/tejashvi.jpg' },
   { name: 'Chandan', role: 'Events Head', bio: 'Orchestrating memorable events and competitions that bring the community together.', img: '/teams/chandan.webp' },
   { name: 'Riya', role: 'Community Manager', bio: 'Managing community platforms, engagement and ensuring every member feels at home.', img: '/teams/Riya.jpg' },
-  { name: 'Aakash', role: 'Tech Lead', bio: 'Building the digital infrastructure that powers Sundarbans House online presence.', img: '/teams/aakash.webp' },
+  { name: 'Aakash', role: 'Tech Lead', bio: 'Building the digital infrastructure that powers Sundarbans House presence.', img: '/teams/aakash.webp' },
 ]
 
 const departments = [

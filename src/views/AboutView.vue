@@ -20,7 +20,7 @@
           <div class="about-text-col">
             <div class="section-tag">Our Story</div>
             <h2 class="section-title-xl">Named after the <span class="tg">world's largest mangrove forest</span></h2>
-            <p class="desc">Sundarbans House is one of the vibrant student houses under the IIT Madras BS Online Degree Programme. We are a diverse community of learners, innovators, and leaders spread across India and beyond, united by our passion for knowledge and excellence.</p>
+            <p class="desc">Sundarbans House is one of the vibrant student houses under the IIT Madras BS Degree Programme. We are a diverse community of learners, innovators, and leaders spread across India and beyond, united by our passion for knowledge and excellence.</p>
             <p class="desc">Just as the Sundarbans ecosystem thrives through collaboration of diverse species, our house flourishes through the collective efforts of our members from all walks of life.</p>
             <p class="desc">From Foundation level students to advanced BS degree scholars — we grow together, learn together, and celebrate together.</p>
           </div>
