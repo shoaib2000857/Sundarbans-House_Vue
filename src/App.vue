@@ -88,7 +88,6 @@
         <nav class="nav-links" :class="{ open: menuOpen }">
           <router-link to="/" class="nav-link" @click="menuOpen = false"><span>Home</span></router-link>
           <router-link to="/study" class="nav-link" @click="menuOpen = false"><span>Study Corner</span></router-link>
-          <router-link to="/studyBuddy" class="nav-link" @click="menuOpen = false"><span>Study Buddy</span></router-link>
           <router-link to="/teams" class="nav-link" @click="menuOpen = false"><span>Our Teams</span></router-link>
           <router-link to="/events" class="nav-link" @click="menuOpen = false"><span>Events</span></router-link>
           <router-link to="/gallery" class="nav-link" @click="menuOpen = false"><span>Gallery</span></router-link>
