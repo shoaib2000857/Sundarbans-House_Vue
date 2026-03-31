@@ -1,97 +1,222 @@
 <template>
   <div>
-    <section class="page-hero">
-      <div class="page-hero-bg">
-        <img src="https://images.unsplash.com/photo-1587474260584-136574528ed5?w=1920&q=80&auto=format&fit=crop" alt="Meetups" />
-        <div class="page-hero-overlay"></div>
-      </div>
-      <div class="container page-hero-content">
-        <div class="breadcrumb-nav"><router-link to="/">Home</router-link><span>/</span><span>Meetups</span></div>
-        <h1>City <span class="tg">Meetups</span></h1>
-        <p>Connect with Sundarbans members in your city — across 40+ cities in India</p>
-      </div>
-    </section>
+    <PageHero
+      bg-image="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1920&q=80&auto=format&fit=crop"
+      breadcrumb-title="Meetups"
+      title="City"
+      accent-title="Meetups"
+      subtitle="Find and connect with Sundarbans members in your city"
+    />
 
     <section class="section rs">
       <div class="container">
         <div class="sec-hdr">
-          <div class="section-tag">Find Your Chapter</div>
-          <h2 class="section-title-xl">Meetups Across <span class="tg">India</span></h2>
-          <p class="sec-sub">We have active chapters in cities nationwide. Find your nearest meetup and connect with fellow students.</p>
+          <div class="section-tag">Across India</div>
+          <h2 class="section-title-xl">
+            Choose <span class="tg">your city</span>
+          </h2>
         </div>
         <div class="city-grid">
-          <div class="city-card" v-for="city in cities" :key="city.name">
-            <img class="city-img" :src="city.img" :alt="city.name" />
+          <div class="city-card rc" style="--card-delay: 0.1s">
+            <img
+              src="https://images.unsplash.com/photo-1587474260584-136574528ed5?w=600&q=80&auto=format&fit=crop"
+              alt="Delhi"
+              class="city-img" />
             <div class="city-ov">
-              <div class="cn">{{ city.name }}</div>
-              <div class="cm">{{ city.members }}+ members</div>
-              <a href="#" class="cbtn">View Details →</a>
+              <div class="cn">Delhi</div>
+              <div class="cm">320+ members</div>
+              <a href="#" class="cbtn">View →</a>
+            </div>
+          </div>
+          <div class="city-card rc" style="--card-delay: 0.2s">
+            <img
+              src="https://images.unsplash.com/photo-1529253355930-ddbe423a2ac7?w=600&q=80&auto=format&fit=crop"
+              alt="Mumbai"
+              class="city-img" />
+            <div class="city-ov">
+              <div class="cn">Mumbai</div>
+              <div class="cm">450+ members</div>
+              <a href="#" class="cbtn">View →</a>
+            </div>
+          </div>
+          <div class="city-card rc" style="--card-delay: 0.3s">
+            <img
+              src="https://images.unsplash.com/photo-1596176530529-78163a4f7af2?w=600&q=80&auto=format&fit=crop"
+              alt="Bangalore"
+              class="city-img" />
+            <div class="city-ov">
+              <div class="cn">Bangalore</div>
+              <div class="cm">580+ members</div>
+              <a href="#" class="cbtn">View →</a>
+            </div>
+          </div>
+          <div class="city-card rc" style="--card-delay: 0.4s">
+            <img
+              src="https://images.unsplash.com/photo-1558431382-27e303142255?w=600&q=80&auto=format&fit=crop"
+              alt="Kolkata"
+              class="city-img" />
+            <div class="city-ov">
+              <div class="cn">Kolkata</div>
+              <div class="cm">280+ members</div>
+              <a href="#" class="cbtn">View →</a>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Upcoming Meetups -->
-    <section class="section rs" style="background:var(--bg2)">
+    <section class="section rs" style="background: var(--bg2)">
       <div class="container">
         <div class="sec-hdr">
-          <div class="section-tag">Upcoming</div>
-          <h2 class="section-title-xl">Upcoming <span class="tg">Meetups</span></h2>
+          <div class="section-tag">Hall of Fame</div>
+          <h2 class="section-title-xl">
+            Member <span class="tg">Leaderboard</span>
+          </h2>
+          <p class="sec-sub">
+            Top contributors and most active members of Sundarbans House
+          </p>
         </div>
-        <div class="grid-3">
-          <div class="card-base rc" v-for="(m, i) in upcoming" :key="m.city" :style="`--card-delay:${i*0.1}s`">
-            <div style="height:140px;border-radius:10px;overflow:hidden;margin-bottom:1rem">
-              <img :src="m.img" :alt="m.city" style="width:100%;height:100%;object-fit:cover" />
+        <div class="card-base">
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              margin-bottom: 1.5rem;
+              flex-wrap: wrap;
+              gap: 0.75rem;
+            ">
+            <div class="filter-tabs" style="margin: 0">
+              <div
+                class="ftab"
+                v-for="tab in tabs"
+                :key="tab"
+                :class="{ active: activeTab === tab }"
+                @click="activeTab = tab">
+                {{ tab }}
+              </div>
             </div>
-            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.5rem">
-              <div class="section-tag" style="margin:0">{{ m.city }}</div>
-              <span style="font-size:0.72rem;color:var(--accent)">{{ m.date }}</span>
-            </div>
-            <h3 style="font-family:Cinzel,serif;font-weight:700;font-size:1rem;margin-bottom:0.4rem">{{ m.title }}</h3>
-            <p class="desc" style="font-size:0.82rem;margin-bottom:0.75rem">{{ m.desc }}</p>
-            <div style="display:flex;gap:0.75rem;font-size:0.78rem;color:var(--text2);margin-bottom:1rem">
-              <span>📍 {{ m.venue }}</span><span>👥 {{ m.rsvp }} going</span>
-            </div>
-            <a href="#" class="submit-btn" style="font-size:0.83rem;padding:0.5rem 1.1rem">RSVP Now</a>
+            <span style="font-size: 0.8rem; color: var(--text2)"
+              >Updated daily</span
+            >
           </div>
+          <table class="lboard-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Member</th>
+                <th>City</th>
+                <th>Points</th>
+                <th>Badge</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="lboard-row" v-for="m in members" :key="m.name">
+                <td>
+                  <span class="lboard-rank" :class="m.rankClass">{{
+                    m.rank
+                  }}</span>
+                </td>
+                <td>
+                  <div class="lboard-member">
+                    <img
+                      v-if="m.img"
+                      :src="m.img"
+                      alt=""
+                      class="lboard-avatar" />
+                    <div v-else class="lboard-avatar-placeholder">
+                      {{ m.initial }}
+                    </div>
+                    <div>
+                      <div class="lboard-name">{{ m.name }}</div>
+                      <div class="lboard-city">{{ m.city }}</div>
+                    </div>
+                  </div>
+                </td>
+                <td style="color: var(--text2); font-size: 0.85rem">
+                  {{ m.city }}
+                </td>
+                <td>
+                  <span class="lboard-score">{{ m.points }}</span>
+                </td>
+                <td>
+                  <span class="lboard-badge">{{ m.badge }}</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </section>
 
-    <!-- Host CTA -->
-    <section class="cta-section rs" style="padding:5rem 0;background:linear-gradient(135deg,rgba(212,160,23,0.06),rgba(8,7,5,0.95))">
-      <div class="container">
-        <div class="cta-wrap">
-          <div class="section-tag light">Start a Chapter</div>
-          <h2 class="cta-heading">Host a Meetup in <span class="cta-acc">Your City</span></h2>
-          <p class="cta-sub">Don't see your city listed? Be the first to start a Sundarbans chapter in your area. We'll support you every step of the way.</p>
-          <div class="cta-acts">
-            <router-link to="/contact" class="cta-btn-p">Start a Chapter →</router-link>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <AppFooter />
   </div>
 </template>
 
 <script setup>
-import AppFooter from '../components/AppFooter.vue'
-import { useScrollReveal } from '../composables/useAnimations.js'
-useScrollReveal()
+import { ref } from "vue";
 
-const cities = [
-  { name: 'Delhi', members: 820, img: 'https://images.unsplash.com/photo-1587474260584-136574528ed5?w=600&q=80&auto=format&fit=crop' },
-  { name: 'Mumbai', members: 650, img: 'https://images.unsplash.com/photo-1529253355930-ddbe423a2ac7?w=600&q=80&auto=format&fit=crop' },
-  { name: 'Bangalore', members: 710, img: 'https://images.unsplash.com/photo-1573108724029-4c46571d6490?w=600&q=80&auto=format&fit=crop' },
-  { name: 'Chennai', members: 480, img: 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=600&q=80&auto=format&fit=crop' },
-]
+import { useScrollReveal } from "../composables/useAnimations.js";
+import PageHero from "../components/PageHero.vue";
 
-const upcoming = [
-  { city: 'Delhi', title: 'Delhi Meetup — Spring 2026', date: 'Apr 10', venue: 'CP, New Delhi', rsvp: 84, img: 'https://images.unsplash.com/photo-1587474260584-136574528ed5?w=500&q=80&auto=format&fit=crop', desc: 'Network with Sundarbans members in Delhi — food, fun and great conversations.' },
-  { city: 'Bangalore', title: 'Bangalore Tech Meetup', date: 'Apr 18', venue: 'Koramangala', rsvp: 62, img: 'https://images.unsplash.com/photo-1573108724029-4c46571d6490?w=500&q=80&auto=format&fit=crop', desc: 'Tech-focused meetup with talks, demos and networking for CS/DS students.' },
-  { city: 'Mumbai', title: 'Mumbai Social Mixer', date: 'May 2', venue: 'Bandra, Mumbai', rsvp: 45, img: 'https://images.unsplash.com/photo-1529253355930-ddbe423a2ac7?w=500&q=80&auto=format&fit=crop', desc: 'Casual get-together for Mumbai Sundarbans members — games, food, good vibes.' },
-]
+useScrollReveal();
+
+const tabs = ["All Time", "This Month", "This Week"];
+const activeTab = ref("All Time");
+const members = [
+  {
+    rank: "🥇",
+    rankClass: "rank-1",
+    name: "Arjun Sharma",
+    city: "Delhi",
+    points: "4,280",
+    badge: "🔥 Top Contributor",
+    img: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&q=80&auto=format&fit=crop&crop=face",
+  },
+  {
+    rank: "🥈",
+    rankClass: "rank-2",
+    name: "Priya Patel",
+    city: "Bangalore",
+    points: "3,950",
+    badge: "⭐ Helper",
+    img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80&auto=format&fit=crop&crop=face",
+  },
+  {
+    rank: "🥉",
+    rankClass: "rank-3",
+    name: "Rahul Gupta",
+    city: "Mumbai",
+    points: "3,720",
+    badge: "📚 Academician",
+    img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80&auto=format&fit=crop&crop=face",
+  },
+  {
+    rank: "4",
+    rankClass: "",
+    name: "Sneha Iyer",
+    city: "Chennai",
+    points: "3,410",
+    badge: "🎯 Event Pro",
+    initial: "S",
+  },
+  {
+    rank: "5",
+    rankClass: "",
+    name: "Vivek Menon",
+    city: "Hyderabad",
+    points: "3,180",
+    badge: "💡 Innovator",
+    initial: "V",
+  },
+  {
+    rank: "6",
+    rankClass: "",
+    name: "Anjali Rao",
+    city: "Pune",
+    points: "2,990",
+    badge: "🤝 Community Builder",
+    initial: "A",
+  },
+];
 </script>

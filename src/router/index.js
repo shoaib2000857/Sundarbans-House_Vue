@@ -10,6 +10,7 @@ import Community from '../views/CommunityView.vue'
 import Contact from '../views/ContactView.vue'
 import Social from '../views/SocialView.vue'
 import Login from '../views/LoginView.vue'
+import MembersLounge from '../views/MembersLoungeView.vue'
 
 const routes = [
   { path: '/', component: Home },
@@ -23,6 +24,11 @@ const routes = [
   { path: '/contact', component: Contact },
   { path: '/social', component: Social },
   { path: '/members', component: Login },
+  { 
+    path: '/lounge', 
+    component: MembersLounge,
+    meta: { requiresAuth: true }
+  },
 ]
 
 export const router = createRouter({
@@ -30,5 +36,18 @@ export const router = createRouter({
   routes,
   scrollBehavior() {
     return { top: 0 }
+  }
+})
+
+router.beforeEach((to, from, next) => {
+  if (to.meta.requiresAuth) {
+    const token = localStorage.getItem('sundarbans_auth_token')
+    if (token) {
+      next()
+    } else {
+      next('/members')
+    }
+  } else {
+    next()
   }
 })

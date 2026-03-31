@@ -1,39 +1,81 @@
 <template>
   <div>
-    <section class="page-hero">
-      <div class="page-hero-bg">
-        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1920&q=80&auto=format&fit=crop" alt="Events" />
-        <div class="page-hero-overlay"></div>
-      </div>
-      <div class="container page-hero-content">
-        <div class="breadcrumb-nav"><router-link to="/">Home</router-link><span>/</span><span>Events</span></div>
-        <h1>Events &amp; <span class="tg">Activities</span></h1>
-        <p>Workshops, competitions, meetups and so much more awaits you</p>
-      </div>
-    </section>
+    <PageHero
+      bg-image="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1920&q=80&auto=format&fit=crop"
+      breadcrumb-title="Events"
+      title="Events &"
+      accent-title="Activities"
+      subtitle="Workshops, competitions, meetups and so much more awaits you"
+    />
 
     <!-- Featured Event -->
-    <section class="section rs" style="background:var(--bg2)">
+    <section class="section rs" style="background: var(--bg2)">
       <div class="container">
         <div class="sec-hdr">
           <div class="section-tag">Next Big Event</div>
-          <h2 class="section-title-xl">Upcoming <span class="tg">Highlight</span></h2>
+          <h2 class="section-title-xl">
+            Upcoming <span class="tg">Highlight</span>
+          </h2>
         </div>
-        <div class="card-base rs" style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;border:1px solid rgba(212,160,23,0.3)">
-          <div><img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=700&q=80&auto=format&fit=crop" alt="AI Conference" style="width:100%;border-radius:12px;aspect-ratio:16/9;object-fit:cover" /></div>
+        <div
+          class="card-base rs"
+          style="
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            border: 1px solid rgba(79, 142, 247, 0.3);
+          ">
+          <div>
+            <img
+              src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=700&q=80&auto=format&fit=crop"
+              alt="AI Conference"
+              style="
+                width: 100%;
+                border-radius: 12px;
+                aspect-ratio: 16/9;
+                object-fit: cover;
+              " />
+          </div>
           <div>
             <div class="section-tag">Featured</div>
-            <h3 style="font-family:Cinzel,serif;font-size:1.8rem;font-weight:800;margin:0.75rem 0">Guest Lecture: AI &amp; Machine Learning</h3>
-            <p class="desc">Exclusive talk by IIT Madras faculty — deep dive into the future of AI, research opportunities and career paths in machine learning.</p>
-            <div style="margin:1.5rem 0">
+            <h3
+              style="
+                font-family: Cinzel, serif;
+                font-size: 1.8rem;
+                font-weight: 800;
+                margin: 0.75rem 0;
+              ">
+              Guest Lecture: AI &amp; Machine Learning
+            </h3>
+            <p class="desc">
+              Exclusive talk by IIT Madras faculty — deep dive into the future
+              of AI, research opportunities and career paths in machine
+              learning.
+            </p>
+            <div style="margin: 1.5rem 0">
               <div id="mainEventCountdown" class="countdown-widget"></div>
             </div>
-            <div style="display:flex;gap:0.75rem;flex-wrap:wrap;margin-bottom:1.25rem">
-              <span style="font-size:0.8rem;color:var(--text2)">📅 This Friday, 6:00 PM – 8:00 PM</span>
-              <span style="font-size:0.8rem;color:var(--text2)">📍 Virtual (Zoom)</span>
-              <span style="font-size:0.8rem;color:var(--text2)">🎟️ Free for all members</span>
+            <div
+              style="
+                display: flex;
+                gap: 0.75rem;
+                flex-wrap: wrap;
+                margin-bottom: 1.25rem;
+              ">
+              <span style="font-size: 0.8rem; color: var(--text2)"
+                >📅 This Friday, 6:00 PM – 8:00 PM</span
+              >
+              <span style="font-size: 0.8rem; color: var(--text2)"
+                >📍 Online (Zoom)</span
+              >
+              <span style="font-size: 0.8rem; color: var(--text2)"
+                >🎟️ Free for all members</span
+              >
             </div>
-            <a href="#" class="btn-hero-primary" style="display:inline-flex">Register Now →</a>
+            <a href="#" class="btn-hero-primary" style="display: inline-flex"
+              >Register Now →</a
+            >
           </div>
         </div>
       </div>
@@ -42,109 +84,284 @@
     <!-- Upcoming Events -->
     <section class="section rs">
       <div class="container">
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:2rem;flex-wrap:wrap;gap:1rem">
-          <div><div class="section-tag">What's On</div><h2 class="section-title-xl" style="margin:0">Upcoming <span class="tg">Events</span></h2></div>
+        <div
+          style="
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+          ">
+          <div>
+            <div class="section-tag">What's On</div>
+            <h2 class="section-title-xl" style="margin: 0">
+              Upcoming <span class="tg">Events</span>
+            </h2>
+          </div>
           <div class="filter-tabs">
-            <div class="ftab" v-for="tab in tabs" :key="tab" :class="{ active: activeTab === tab }" @click="activeTab = tab">{{ tab }}</div>
+            <div
+              class="ftab"
+              v-for="tab in tabs"
+              :key="tab"
+              :class="{ active: activeTab === tab }"
+              @click="activeTab = tab">
+              {{ tab }}
+            </div>
           </div>
         </div>
         <div class="grid-3">
-          <div class="card-base rc" v-for="(ev, i) in filteredEvents" :key="ev.title" :style="`--card-delay:${(i+1)*0.1}s`">
-            <div style="height:160px;border-radius:10px;overflow:hidden;margin-bottom:1rem">
-              <img :src="ev.img" :alt="ev.title" style="width:100%;height:100%;object-fit:cover" />
+          <div
+            class="card-base rc"
+            v-for="(ev, i) in filteredEvents"
+            :key="ev.title"
+            :style="`--card-delay:${(i + 1) * 0.1}s`">
+            <div
+              style="
+                height: 160px;
+                border-radius: 10px;
+                overflow: hidden;
+                margin-bottom: 1rem;
+              ">
+              <img
+                :src="ev.img"
+                :alt="ev.title"
+                style="width: 100%; height: 100%; object-fit: cover" />
             </div>
-            <div class="section-tag" :style="ev.tagStyle || ''">{{ ev.category }}</div>
-            <h3 style="font-family:Cinzel,serif;font-weight:700;margin:0.5rem 0 0.4rem">{{ ev.title }}</h3>
-            <p class="desc" style="margin-bottom:0.75rem">{{ ev.desc }}</p>
-            <div style="display:flex;gap:1rem;margin-bottom:1rem;font-size:0.8rem;color:var(--text2)">
-              <span>📅 {{ ev.date }}</span><span>🕐 {{ ev.time }}</span><span>📍 {{ ev.location }}</span>
+            <div class="section-tag" :style="ev.tagStyle || ''">
+              {{ ev.category }}
             </div>
-            <a href="#" class="submit-btn" style="font-size:0.85rem;padding:0.55rem 1.25rem">Register Now</a>
+            <h3
+              style="
+                font-family: Cinzel, serif;
+                font-weight: 700;
+                margin: 0.5rem 0 0.4rem;
+              ">
+              {{ ev.title }}
+            </h3>
+            <p class="desc" style="margin-bottom: 0.75rem">{{ ev.desc }}</p>
+            <div
+              style="
+                display: flex;
+                gap: 1rem;
+                margin-bottom: 1rem;
+                font-size: 0.8rem;
+                color: var(--text2);
+              ">
+              <span>📅 {{ ev.date }}</span
+              ><span>🕐 {{ ev.time }}</span
+              ><span>📍 {{ ev.location }}</span>
+            </div>
+            <a
+              href="#"
+              class="submit-btn"
+              style="font-size: 0.85rem; padding: 0.55rem 1.25rem"
+              >Register Now</a
+            >
           </div>
         </div>
       </div>
     </section>
 
     <!-- Past Events -->
-    <section class="section rs" style="background:var(--bg2)">
+    <section class="section rs" style="background: var(--bg2)">
       <div class="container">
         <div class="sec-hdr">
           <div class="section-tag">Memories</div>
           <h2 class="section-title-xl">Past <span class="tg">Events</span></h2>
         </div>
         <div class="grid-3">
-          <div class="card-base rc" v-for="p in pastEvents" :key="p.title" style="--card-delay:0.1s;opacity:0.8">
-            <div style="font-size:1.25rem;margin-bottom:0.5rem">{{ p.icon }}</div>
-            <h4 style="font-family:Cinzel,serif;font-weight:700;margin-bottom:0.4rem">{{ p.title }}</h4>
-            <p class="desc" style="font-size:0.82rem;margin-bottom:0.5rem">{{ p.desc }}</p>
-            <span style="font-size:0.75rem;color:var(--text3)">{{ p.date }}</span>
+          <div
+            class="card-base rc"
+            v-for="p in pastEvents"
+            :key="p.title"
+            style="--card-delay: 0.1s; opacity: 0.8">
+            <div style="font-size: 1.25rem; margin-bottom: 0.5rem">
+              {{ p.icon }}
+            </div>
+            <h4
+              style="
+                font-family: Cinzel, serif;
+                font-weight: 700;
+                margin-bottom: 0.4rem;
+              ">
+              {{ p.title }}
+            </h4>
+            <p class="desc" style="font-size: 0.82rem; margin-bottom: 0.5rem">
+              {{ p.desc }}
+            </p>
+            <span style="font-size: 0.75rem; color: var(--text3)">{{
+              p.date
+            }}</span>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Host CTA -->
-    <section class="cta-section rs" style="padding:5rem 0;background:linear-gradient(135deg,rgba(212,160,23,0.06),rgba(8,7,5,0.95))">
+    <section
+      class="cta-section rs"
+      style="
+        padding: 5rem 0;
+        background: linear-gradient(
+          135deg,
+          rgba(212, 160, 23, 0.06),
+          rgba(8, 7, 5, 0.95)
+        );
+      ">
       <div class="container">
         <div class="cta-wrap">
           <div class="section-tag light">Got an idea?</div>
-          <h2 class="cta-heading">Host Your Own <span class="cta-acc">Event</span></h2>
-          <p class="cta-sub">Have an idea for a workshop, talk, or meetup? We support student-led initiatives. Submit your proposal and we'll make it happen.</p>
+          <h2 class="cta-heading">
+            Host Your Own <span class="cta-acc">Event</span>
+          </h2>
+          <p class="cta-sub">
+            Have an idea for a workshop, talk, or meetup? We support student-led
+            initiatives. Submit your proposal and we'll make it happen.
+          </p>
           <div class="cta-acts">
-            <router-link to="/contact" class="cta-btn-p">Submit Proposal →</router-link>
-            <router-link to="/contact" class="cta-btn-o">Talk to Team</router-link>
+            <router-link to="/contact" class="cta-btn-p"
+              >Submit Proposal →</router-link
+            >
+            <router-link to="/contact" class="cta-btn-o"
+              >Talk to Team</router-link
+            >
           </div>
         </div>
       </div>
     </section>
 
-    <AppFooter />
+
   </div>
 </template>
 
 <script setup>
-import { ref, computed, onMounted, onUnmounted } from 'vue'
-import AppFooter from '../components/AppFooter.vue'
-import { useScrollReveal } from '../composables/useAnimations.js'
-useScrollReveal()
+import { ref, computed, onMounted, onUnmounted } from "vue";
+import PageHero from "../components/PageHero.vue";
 
-const tabs = ['All', 'Workshops', 'Meetups', 'Competitions', 'Talks']
-const activeTab = ref('All')
+import { useScrollReveal } from "../composables/useAnimations.js";
+useScrollReveal();
+
+const tabs = ["All", "Workshops", "Meetups", "Competitions", "Talks"];
+const activeTab = ref("All");
 
 const allEvents = [
-  { title: 'Python for Beginners', category: 'Workshop', date: 'Mar 15', time: '6–8 PM', location: 'Virtual', img: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=500&q=80&auto=format&fit=crop', desc: 'Learn Python from scratch — hands-on exercises and real projects', type: 'Workshops' },
-  { title: 'Inter-House Quiz', category: 'Competition', date: 'Mar 20', time: '5–7 PM', location: 'Virtual', img: 'https://images.unsplash.com/photo-1434626881859-194d67b2b86f?w=500&q=80&auto=format&fit=crop', desc: 'Battle of knowledge — test your skills across multiple domains', type: 'Competitions' },
-  { title: 'Delhi Meetup 2026', category: 'Offline Meetup', tagStyle: 'background:rgba(245,158,11,0.1);color:#F59E0B;border-color:rgba(245,158,11,0.3)', date: 'Apr 10', time: '4 PM', location: 'Delhi', img: 'https://images.unsplash.com/photo-1587474260584-136574528ed5?w=500&q=80&auto=format&fit=crop', desc: 'Network with Sundarbans members in Delhi — food, fun and friendships', type: 'Meetups' },
-  { title: 'Chennai Meetup 2026', category: 'Offline Meetup', tagStyle: 'background:rgba(245,158,11,0.1);color:#F59E0B;border-color:rgba(245,158,11,0.3)', date: 'Mar 25', time: '3 PM', location: 'Chennai', img: 'https://images.unsplash.com/photo-1529253355930-ddbe423a2ac7?w=500&q=80&auto=format&fit=crop', desc: 'Connect with fellow students in Chennai — sessions, games and more', type: 'Meetups' },
-  { title: 'SundarHack 2026', category: 'Hackathon', date: 'Apr 25–27', time: 'All weekend', location: 'Virtual', img: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?w=500&q=80&auto=format&fit=crop', desc: '48-hour coding marathon — build, break, and innovate with your team', type: 'Competitions' },
-  { title: 'Career in Research', category: 'Guest Talk', date: 'May 5', time: '7–9 PM', location: 'Virtual', img: 'https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=500&q=80&auto=format&fit=crop', desc: 'PhD scholars discuss research life, opportunities and how to get started', type: 'Talks' },
-]
+  {
+    title: "Python for Beginners",
+    category: "Workshop",
+    date: "Mar 15",
+    time: "6–8 PM",
+    location: "Virtual",
+    img: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=500&q=80&auto=format&fit=crop",
+    desc: "Learn Python from scratch — hands-on exercises and real projects",
+    type: "Workshops",
+  },
+  {
+    title: "Inter-House Quiz",
+    category: "Competition",
+    date: "Mar 20",
+    time: "5–7 PM",
+    location: "Virtual",
+    img: "https://images.unsplash.com/photo-1434626881859-194d67b2b86f?w=500&q=80&auto=format&fit=crop",
+    desc: "Battle of knowledge — test your skills across multiple domains",
+    type: "Competitions",
+  },
+  {
+    title: "Delhi Meetup 2026",
+    category: "Offline Meetup",
+    tagStyle:
+      "background:rgba(245,158,11,0.1);color:#F59E0B;border-color:rgba(245,158,11,0.3)",
+    date: "Apr 10",
+    time: "4 PM",
+    location: "Delhi",
+    img: "https://images.unsplash.com/photo-1587474260584-136574528ed5?w=500&q=80&auto=format&fit=crop",
+    desc: "Network with Sundarbans members in Delhi — food, fun and friendships",
+    type: "Meetups",
+  },
+  {
+    title: "Chennai Meetup 2026",
+    category: "Offline Meetup",
+    tagStyle:
+      "background:rgba(245,158,11,0.1);color:#F59E0B;border-color:rgba(245,158,11,0.3)",
+    date: "Mar 25",
+    time: "3 PM",
+    location: "Chennai",
+    img: "https://images.unsplash.com/photo-1529253355930-ddbe423a2ac7?w=500&q=80&auto=format&fit=crop",
+    desc: "Connect with fellow students in Chennai — sessions, games and more",
+    type: "Meetups",
+  },
+  {
+    title: "SundarHack 2026",
+    category: "Hackathon",
+    date: "Apr 25–27",
+    time: "All weekend",
+    location: "Virtual",
+    img: "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=500&q=80&auto=format&fit=crop",
+    desc: "48-hour coding marathon — build, break, and innovate with your team",
+    type: "Competitions",
+  },
+  {
+    title: "Career in Research",
+    category: "Guest Talk",
+    date: "May 5",
+    time: "7–9 PM",
+    location: "Virtual",
+    img: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=500&q=80&auto=format&fit=crop",
+    desc: "PhD scholars discuss research life, opportunities and how to get started",
+    type: "Talks",
+  },
+];
 
 const filteredEvents = computed(() =>
-  activeTab.value === 'All' ? allEvents : allEvents.filter(e => e.type === activeTab.value)
-)
+  activeTab.value === "All"
+    ? allEvents
+    : allEvents.filter((e) => e.type === activeTab.value),
+);
 
 const pastEvents = [
-  { icon: '🏆', title: 'Web Dev Bootcamp', desc: '3-day intensive frontend workshop with 200+ participants', date: 'January 2026' },
-  { icon: '🎯', title: 'Sundarbans Olympiad', desc: 'Annual competition across Science, Math and Programming', date: 'December 2025' },
-  { icon: '🌟', title: 'Orientation 2025', desc: 'Welcoming 800+ new members to Sundarbans House', date: 'September 2025' },
-]
+  {
+    icon: "🏆",
+    title: "Web Dev Bootcamp",
+    desc: "3-day intensive frontend workshop with 200+ participants",
+    date: "January 2026",
+  },
+  {
+    icon: "🎯",
+    title: "Sundarbans Olympiad",
+    desc: "Annual competition across Science, Math and Programming",
+    date: "December 2025",
+  },
+  {
+    icon: "🌟",
+    title: "Orientation 2025",
+    desc: "Welcoming 800+ new members to Sundarbans House",
+    date: "September 2025",
+  },
+];
 
 // Countdown
-let cdTimer = null
+let cdTimer = null;
 function updateCd() {
-  const el = document.getElementById('mainEventCountdown')
-  if (!el) return
-  const now = new Date()
-  const fri = new Date()
-  fri.setDate(now.getDate() + ((5 - now.getDay() + 7) % 7) || 7)
-  fri.setHours(18, 0, 0, 0)
-  const diff = fri - now
-  if (diff <= 0) { el.innerHTML = '<span class="cd-over">Event Started!</span>'; return }
-  const d = Math.floor(diff / 86400000), h = Math.floor((diff % 86400000) / 3600000)
-  const m = Math.floor((diff % 3600000) / 60000), s = Math.floor((diff % 60000) / 1000)
-  el.innerHTML = `<div class="cd-unit"><span class="cd-num">${String(d).padStart(2,'0')}</span><span class="cd-label">days</span></div><div class="cd-sep">:</div><div class="cd-unit"><span class="cd-num">${String(h).padStart(2,'0')}</span><span class="cd-label">hrs</span></div><div class="cd-sep">:</div><div class="cd-unit"><span class="cd-num">${String(m).padStart(2,'0')}</span><span class="cd-label">min</span></div><div class="cd-sep">:</div><div class="cd-unit"><span class="cd-num">${String(s).padStart(2,'0')}</span><span class="cd-label">sec</span></div>`
+  const el = document.getElementById("mainEventCountdown");
+  if (!el) return;
+  const now = new Date();
+  const fri = new Date();
+  fri.setDate(now.getDate() + ((5 - now.getDay() + 7) % 7) || 7);
+  fri.setHours(18, 0, 0, 0);
+  const diff = fri - now;
+  if (diff <= 0) {
+    el.innerHTML = '<span class="cd-over">Event Started!</span>';
+    return;
+  }
+  const d = Math.floor(diff / 86400000),
+    h = Math.floor((diff % 86400000) / 3600000);
+  const m = Math.floor((diff % 3600000) / 60000),
+    s = Math.floor((diff % 60000) / 1000);
+  el.innerHTML = `<div class="cd-unit"><span class="cd-num">${String(d).padStart(2, "0")}</span><span class="cd-label">days</span></div><div class="cd-sep">:</div><div class="cd-unit"><span class="cd-num">${String(h).padStart(2, "0")}</span><span class="cd-label">hrs</span></div><div class="cd-sep">:</div><div class="cd-unit"><span class="cd-num">${String(m).padStart(2, "0")}</span><span class="cd-label">min</span></div><div class="cd-sep">:</div><div class="cd-unit"><span class="cd-num">${String(s).padStart(2, "0")}</span><span class="cd-label">sec</span></div>`;
 }
-onMounted(() => { updateCd(); cdTimer = setInterval(updateCd, 1000) })
-onUnmounted(() => clearInterval(cdTimer))
+onMounted(() => {
+  updateCd();
+  cdTimer = setInterval(updateCd, 1000);
+});
+onUnmounted(() => clearInterval(cdTimer));
 </script>
