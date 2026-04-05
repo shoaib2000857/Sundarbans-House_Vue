@@ -11,31 +11,11 @@
     <div class="grain"></div>
 
     <!-- NAVBAR -->
-    <header class="navbar" :class="{ scrolled: navScrolled }" id="navbar">
-      <div class="nav-inner">
-        <router-link to="/" class="nav-brand">
-          <div class="nav-brand-icon">🌿</div>
-          <span class="nav-brand-name">Sundarbans</span>
-        </router-link>
-
-        <nav class="nav-links">
-          <a href="#events" class="nav-link">Events</a>
-          <a href="#lounge" class="nav-link">Reading Lounge</a>
-          <a href="#leaderboard" class="nav-link">Leaderboard</a>
-          <!-- Replace dashboard with something else or leave a dummy link -->
-          <a href="#" class="nav-link">Dashboard</a>
-        </nav>
-
-        <div class="nav-right">
-          <div class="member-chip">
-            <div class="member-avatar">{{ memberInitial }}</div>
-            <span class="member-id">{{ memberEmail }}</span>
-          </div>
-          <button class="logout-btn" style="border-color: rgba(100,200,100,0.3); color: #80e080; margin-right: 8px;" @click="leaveLounge">Leave Lounge</button>
-          <button class="logout-btn" @click="logout">Logout</button>
-        </div>
-      </div>
-    </header>
+    <MembersNavbar
+      :member-email="memberEmail"
+      @leave-lounge="leaveLounge"
+      @logout="logout"
+    />
 
     <!-- HERO -->
     <section class="hero">
@@ -174,21 +154,18 @@
 import { ref, computed, onMounted, onUnmounted } from "vue";
 import { useRouter } from "vue-router";
 import membersData from "../../sundarbans/members.json";
+import MembersNavbar from "../components/MembersNavbar.vue";
 
 const router = useRouter();
 
+// memberInitial is now handled inside MembersNavbar; keep memberEmail for passing as prop
+
 // --- STATE ---
 const pageLoading = ref(true);
-const navScrolled = ref(false);
 const memberEmail = ref("");
 const memberRoll = ref("");
 const countdownText = ref("—");
 let countdownInterval = null;
-
-// Derived values
-const memberInitial = computed(() => {
-  return memberRoll.value ? memberRoll.value.charAt(0).toUpperCase() : "?";
-});
 
 const memberCountText = computed(() => {
   const count = membersData?.members?.length || 0;
@@ -233,9 +210,6 @@ function updateCountdown() {
   countdownText.value = `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
 }
 
-function handleScroll() {
-  navScrolled.value = window.scrollY > 60;
-}
 
 function leaveLounge() {
   document.querySelector('.members-lounge-page').style.opacity = '0';
@@ -282,7 +256,6 @@ onMounted(() => {
 
   updateCountdown();
   countdownInterval = setInterval(updateCountdown, 1000);
-  window.addEventListener("scroll", handleScroll);
 
   setTimeout(() => {
     pageLoading.value = false;
@@ -299,7 +272,6 @@ onMounted(() => {
 
 onUnmounted(() => {
   if (countdownInterval) clearInterval(countdownInterval);
-  window.removeEventListener("scroll", handleScroll);
 });
 </script>
 
@@ -375,84 +347,7 @@ onUnmounted(() => {
   0%,100%{transform:translate(0,0)} 10%{transform:translate(-2%,-3%)} 20%{transform:translate(-5%,2%)} 30%{transform:translate(3%,-4%)} 40%{transform:translate(-4%,5%)} 50%{transform:translate(-1%,-2%)} 60%{transform:translate(4%,3%)} 70%{transform:translate(3%,1%)} 80%{transform:translate(-3%,4%)} 90%{transform:translate(2%,-3%)}
 }
 
-/* ── NAVBAR ── */
-.navbar {
-  position: sticky; top: 0; z-index: 100;
-  background: rgba(6,8,8,0.9);
-  backdrop-filter: blur(24px);
-  border-bottom: 1px solid var(--border-soft);
-  padding: 0 60px;
-  height: 72px;
-  display: flex; align-items: center;
-  transition: border-color 0.3s;
-}
-.navbar.scrolled { border-color: rgba(201,168,76,0.2); }
-.nav-inner {
-  width: 100%; max-width: 1300px;
-  margin: 0 auto;
-  display: flex; align-items: center; justify-content: space-between;
-}
-.nav-brand {
-  display: flex; align-items: center; gap: 12px;
-  text-decoration: none;
-}
-.nav-brand-icon {
-  width: 36px; height: 36px;
-  border: 1px solid var(--border);
-  border-radius: 7px;
-  display: grid; place-items: center;
-  font-size: 16px;
-  background: var(--gold-dim);
-}
-.nav-brand-name {
-  font-weight: 600; font-size: 13px;
-  letter-spacing: 0.25em; text-transform: uppercase;
-  color: var(--gold);
-}
-.nav-links {
-  display: flex; align-items: center; gap: 4px;
-}
-.nav-link {
-  padding: 8px 16px;
-  font-size: 13px; font-weight: 400;
-  color: var(--muted);
-  text-decoration: none;
-  border-radius: 6px;
-  transition: color 0.2s, background 0.2s;
-  letter-spacing: 0.03em;
-}
-.nav-link:hover { color: var(--cream); background: var(--subtle); }
-.nav-link.active { color: var(--gold); }
-.nav-right { display: flex; align-items: center; gap: 16px; }
-.member-chip {
-  display: flex; align-items: center; gap: 10px;
-  background: var(--gold-dim);
-  border: 1px solid var(--border);
-  border-radius: 100px;
-  padding: 8px 16px 8px 10px;
-}
-.member-avatar {
-  width: 28px; height: 28px;
-  border-radius: 50%;
-  background: var(--gold);
-  display: grid; place-items: center;
-  font-size: 13px; font-weight: 600;
-  color: var(--black);
-}
-.member-id { font-size: 12px; color: var(--muted); font-weight: 400; max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.logout-btn {
-  padding: 9px 20px;
-  background: transparent;
-  border: 1px solid rgba(255,255,255,0.12);
-  border-radius: 6px;
-  color: var(--muted);
-  font-family: 'Outfit', sans-serif;
-  font-size: 12px; font-weight: 500;
-  letter-spacing: 0.1em; text-transform: uppercase;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-.logout-btn:hover { border-color: rgba(255,100,100,0.4); color: #e08080; }
+/* Navbar styles live in MembersNavbar.vue */
 
 /* ── HERO ── */
 .hero {

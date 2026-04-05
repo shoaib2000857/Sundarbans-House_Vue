@@ -293,7 +293,7 @@ import AppFooter from "./components/AppFooter.vue";
 
 const route = useRoute();
 
-const isLoungeRoute = computed(() => route.path === '/lounge');
+const isLoungeRoute = computed(() => route.path === '/lounge' || route.path === '/dashboard');
 
 // --- PRELOADER ---
 const loading = ref(true);

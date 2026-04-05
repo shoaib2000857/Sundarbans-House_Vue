@@ -11,6 +11,7 @@ import Contact from '../views/ContactView.vue'
 import Social from '../views/SocialView.vue'
 import Login from '../views/LoginView.vue'
 import MembersLounge from '../views/MembersLoungeView.vue'
+import DashboardView from '../views/DashboardView.vue'
 
 const routes = [
   { path: '/', component: Home },
@@ -27,6 +28,11 @@ const routes = [
   { 
     path: '/lounge', 
     component: MembersLounge,
+    meta: { requiresAuth: true }
+  },
+  { 
+    path: '/dashboard', 
+    component: DashboardView,
     meta: { requiresAuth: true }
   },
 ]
