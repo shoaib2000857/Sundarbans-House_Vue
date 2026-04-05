@@ -141,12 +141,7 @@
     </section>
 
     <!-- FOOTER -->
-    <footer class="footer">
-      <div class="footer-inner">
-        <div class="footer-brand">Sundarbans House</div>
-        <div class="footer-copy">© 2026 IIT Madras BS Programme · All rights reserved</div>
-      </div>
-    </footer>
+    
   </div>
 </template>
 
