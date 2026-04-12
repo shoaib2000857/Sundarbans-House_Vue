@@ -8,7 +8,6 @@ import Gallery from '../views/GalleryView.vue'
 import Meetups from '../views/MeetupsView.vue'
 import Community from '../views/CommunityView.vue'
 import Contact from '../views/ContactView.vue'
-import Social from '../views/SocialView.vue'
 import Login from '../views/LoginView.vue'
 import MembersLounge from '../views/MembersLoungeView.vue'
 import DashboardView from '../views/DashboardView.vue'
@@ -23,7 +22,6 @@ const routes = [
   { path: '/meetups', component: Meetups },
   { path: '/community', component: Community },
   { path: '/contact', component: Contact },
-  { path: '/social', component: Social },
   { path: '/members', component: Login },
   { 
     path: '/lounge', 
