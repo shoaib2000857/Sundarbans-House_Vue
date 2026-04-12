@@ -59,7 +59,7 @@
               followers
             </div>
             
-              :href="platform.url"
+              <a>:href="platform.url"
               target="_blank"
               class="submit-btn"
               style="font-size: 0.85rem; padding: 0.55rem 1.25rem"
