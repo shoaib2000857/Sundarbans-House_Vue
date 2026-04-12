@@ -418,7 +418,7 @@
                 <!-- Avatar + Name row -->
                 <div style="display: flex; align-items: center; gap: 0.85rem">
                   <img
-                    :src="member.image"
+                    :src="member.image ? member.image : ''"
                     :alt="member.name"
                     style="width: 52px; height: 52px; border-radius: 50%; border: 2px solid rgba(212,160,23,0.3); flex-shrink: 0; object-fit: cover; background: #2a2006;"
                     @error="(e) => e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(member.name)}&background=2a2006&color=d4a017&size=80&bold=true&font-size=0.4`"
@@ -653,7 +653,7 @@ const leadership = [
       {
         role: "Web Admin",
         name: "Samar Ahmad",
-        image: "../../teams/Samar.jpeg",
+        image: new URL('../../teams/Samar.jpeg', import.meta.url).href,
         email: "23f3001032@ds.study.iitm.ac.in",
         linkedin: "https://www.linkedin.com/in/samarahmad10",
         instagram: "@thesamarsoldier",
@@ -661,14 +661,14 @@ const leadership = [
       {
         role: "Secretary",
         name: "Mannu Yadav",
-        image: "about/mannu.jpg",
+        image: new URL('../../teams/Mannu.jpeg', import.meta.url).href,
         email: "23f3001972@ds.study.iitm.ac.in",
         linkedin: "https://www.linkedin.com/in/mannuyadav",
       },
       {
         role: "Deputy Secretary",
         name: "Aditya Vaidhya",
-        image: "about/aditya.jpg",
+        image: new URL('../../teams/Aditya.jpeg', import.meta.url).href,
         email: "23f2000809@ds.study.iitm.ac.in",
         linkedin: "http://linkedin.com/in/aditya-vaidhya",
       },
@@ -680,18 +680,18 @@ const leadership = [
       {
         role: "Web Admin",
         name: "Jivraj",
-        image: "about/jivraj.jpg",
+        image: new URL('../../teams/Jivraj.jpeg', import.meta.url).href,
       },
       {
         role: "Secretary",
         name: "Shreyansh Mall",
-        image: "about/shreyansh.jpg",
+        image: new URL('../../teams/Shreyansh.jpeg', import.meta.url).href,
         email: "23f1002638@ds.study.iitm.ac.in",
       },
       {
         role: "Deputy Secretary",
         name: "Divya Chinmay",
-        image: "about/divya.jpg",
+        image: new URL('../../teams/Divya.jpeg', import.meta.url).href,
         email: "23f1002974@ds.study.iitm.ac.in",
       },
     ],
@@ -702,20 +702,20 @@ const leadership = [
       {
         role: "Web Admin",
         name: "Ravi Kumawat",
-        image: "about/ravi_kumawat.jpg",
+        image: new URL('../../teams/RaviKumawat.jpeg', import.meta.url).href,
         email: "21f1004119@ds.study.iitm.ac.in",
         instagram: "@ravikumawat7716",
       },
       {
         role: "Secretary",
         name: "Abhishek Ojha",
-        image: "about/abhishek.jpg",
+        image: new URL('../../teams/Abhishek.jpeg', import.meta.url).href,
         email: "22f1001774@ds.study.iitm.ac.in",
       },
       {
         role: "Deputy Secretary",
         name: "Ravi Kant",
-        image: "about/ravi_kant.jpg",
+        image: new URL('../../teams/RaviKant.jpeg', import.meta.url).href,
         email: "21f3002792@ds.study.iitm.ac.in",
       },
     ],
@@ -726,13 +726,13 @@ const leadership = [
       {
         role: "Secretary",
         name: "Kunal Chaturvedi",
-        image: "about/kunal.jpg",
+        image: new URL('../../teams/Kunal.jpeg', import.meta.url).href,
         email: "21f1003533@ds.study.iitm.ac.in",
       },
       {
         role: "Deputy Secretary",
         name: "Abhishek Ojha",
-        image: "about/abhishek.jpg",
+        image: new URL('../../teams/Abhishek.jpeg', import.meta.url).href,
       },
     ],
   },
@@ -742,17 +742,17 @@ const leadership = [
       {
         role: "Web Admin",
         name: "Abhigyan Das",
-        image: "about/abhigyan.jpg",
+        image: new URL('../../teams/Abhigyan.jpeg', import.meta.url).href,
       },
       {
         role: "Secretary",
         name: "Anshuman",
-        image: "about/anshuman.jpg",
+        image: new URL('../../teams/Anshuman.jpeg', import.meta.url).href,
       },
       {
         role: "Deputy Secretary",
         name: "Utkarsh Gaurav",
-        image: "about/utkarsh.jpg",
+        image: new URL('../../teams/Utkarsh.jpeg', import.meta.url).href,
       },
     ],
   },
