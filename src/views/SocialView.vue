@@ -7,7 +7,6 @@
       accent-title="Sundarbans"
       subtitle="Stay connected with us across all our social media platforms"
     />
-
     <section class="section rs">
       <div class="container">
         <div class="sec-hdr">
@@ -59,7 +58,7 @@
               ">
               followers
             </div>
-            <a
+            
               :href="platform.url"
               target="_blank"
               class="submit-btn"
@@ -70,59 +69,34 @@
         </div>
       </div>
     </section>
-
-
   </div>
 </template>
-
 <script setup>
-
 import { useScrollReveal } from "../composables/useAnimations.js";
 import PageHero from "../components/PageHero.vue";
 useScrollReveal();
-
 const platforms = [
   {
     icon: "💼",
     name: "LinkedIn",
     desc: "Professional updates, achievements and career opportunities",
     followers: "2.4K",
-    url: "#",
+    url: "https://www.linkedin.com/company/sundarbans-iitm/posts/?feedView=all",
   },
   {
     icon: "📸",
     name: "Instagram",
     desc: "Event photos, reels, stories and community highlights",
     followers: "3.8K",
-    url: "#",
+    url: "https://www.instagram.com/sundarbansiitm/",
   },
-  {
-    icon: "🐦",
-    name: "X / Twitter",
-    desc: "Announcements, quick updates and live event coverage",
-    followers: "1.2K",
-    url: "#",
-  },
-  {
-    icon: "💬",
-    name: "WhatsApp",
-    desc: "Official announcement channel with only important updates",
-    followers: "5.1K",
-    url: "#",
-  },
-  {
-    icon: "🎮",
-    name: "Discord",
-    desc: "Live discussions, channels for every subject and study voice rooms",
-    followers: "4.2K",
-    url: "#",
-  },
+
   {
     icon: "▶️",
     name: "YouTube",
     desc: "Recorded sessions, event recaps and educational video content",
     followers: "890+",
-    url: "#",
+    url: "https://www.youtube.com/channel/UC8pGrF1iAbj7MXNSf7AlqFg",
   },
 ];
 </script>
