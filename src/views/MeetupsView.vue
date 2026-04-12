@@ -17,48 +17,19 @@
           </h2>
         </div>
         <div class="city-grid">
-          <div class="city-card rc" style="--card-delay: 0.1s">
+          <div
+            class="city-card rc"
+            v-for="(city, index) in cities"
+            :key="city.name"
+            :style="`--card-delay: ${(index + 1) * 0.1}s`">
             <img
-              src="https://images.unsplash.com/photo-1587474260584-136574528ed5?w=600&q=80&auto=format&fit=crop"
-              alt="Delhi"
+              :src="city.img"
+              :alt="city.name"
               class="city-img" />
             <div class="city-ov">
-              <div class="cn">Delhi</div>
-              <div class="cm">320+ members</div>
-              <a href="#" class="cbtn">View →</a>
-            </div>
-          </div>
-          <div class="city-card rc" style="--card-delay: 0.2s">
-            <img
-              src="https://images.unsplash.com/photo-1529253355930-ddbe423a2ac7?w=600&q=80&auto=format&fit=crop"
-              alt="Mumbai"
-              class="city-img" />
-            <div class="city-ov">
-              <div class="cn">Mumbai</div>
-              <div class="cm">450+ members</div>
-              <a href="#" class="cbtn">View →</a>
-            </div>
-          </div>
-          <div class="city-card rc" style="--card-delay: 0.3s">
-            <img
-              src="https://images.unsplash.com/photo-1596176530529-78163a4f7af2?w=600&q=80&auto=format&fit=crop"
-              alt="Bangalore"
-              class="city-img" />
-            <div class="city-ov">
-              <div class="cn">Bangalore</div>
-              <div class="cm">580+ members</div>
-              <a href="#" class="cbtn">View →</a>
-            </div>
-          </div>
-          <div class="city-card rc" style="--card-delay: 0.4s">
-            <img
-              src="https://images.unsplash.com/photo-1558431382-27e303142255?w=600&q=80&auto=format&fit=crop"
-              alt="Kolkata"
-              class="city-img" />
-            <div class="city-ov">
-              <div class="cn">Kolkata</div>
-              <div class="cm">280+ members</div>
-              <a href="#" class="cbtn">View →</a>
+              <div class="cn">{{ city.name }}</div>
+              <div class="cm">{{ city.members }}</div>
+              <a :href="city.link" class="cbtn">View →</a>
             </div>
           </div>
         </div>
@@ -148,21 +119,76 @@
         </div>
       </div>
     </section>
-
-
   </div>
 </template>
 
 <script setup>
 import { ref } from "vue";
-
 import { useScrollReveal } from "../composables/useAnimations.js";
 import PageHero from "../components/PageHero.vue";
 
 useScrollReveal();
 
+const cities = [
+  {
+    name: "Mumbai",
+    members: "450+ members",
+    img: "https://images.unsplash.com/photo-1529253355930-ddbe423a2ac7?w=600&q=80&auto=format&fit=crop",
+    link: "meetups/region/mumbai.html",
+  },
+  {
+    name: "Patna",
+    members: "180+ members",
+    img: "https://images.unsplash.com/photo-1567157577867-05ccb1388e66?w=600&q=80&auto=format&fit=crop",
+    link: "meetups/region/patna.html",
+  },
+  {
+    name: "Delhi",
+    members: "320+ members",
+    img: "https://images.unsplash.com/photo-1587474260584-136574528ed5?w=600&q=80&auto=format&fit=crop",
+    link: "meetups/region/delhi.html",
+  },
+  {
+    name: "Kolkata",
+    members: "280+ members",
+    img: "https://images.unsplash.com/photo-1558431382-27e303142255?w=600&q=80&auto=format&fit=crop",
+    link: "meetups/region/kolkata.html",
+  },
+  {
+    name: "Hyderabad",
+    members: "310+ members",
+    img: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&q=80&auto=format&fit=crop",
+    link: "meetups/region/hyderabad.html",
+  },
+  {
+    name: "Bangalore",
+    members: "580+ members",
+    img: "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?w=600&q=80&auto=format&fit=crop",
+    link: "meetups/region/bangalore.html",
+  },
+  {
+    name: "Chennai",
+    members: "260+ members",
+    img: "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=600&q=80&auto=format&fit=crop",
+    link: "meetups/region/chennai.html",
+  },
+  {
+    name: "Chandigarh",
+    members: "150+ members",
+    img: "https://images.unsplash.com/photo-1609234656432-603dae0e9f3e?w=600&q=80&auto=format&fit=crop",
+    link: "meetups/region/chandigarh.html",
+  },
+  {
+    name: "Lucknow",
+    members: "200+ members",
+    img: "https://images.unsplash.com/photo-1567408212163-2bbf1c0c35f0?w=600&q=80&auto=format&fit=crop",
+    link: "meetups/region/lucknow.html",
+  },
+];
+
 const tabs = ["All Time", "This Month", "This Week"];
 const activeTab = ref("All Time");
+
 const members = [
   {
     rank: "🥇",
