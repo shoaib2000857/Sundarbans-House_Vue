@@ -370,6 +370,7 @@
             </div>
           </div>
         </div>
+        
         <div class="tm-card rc" style="--card-delay:0.1s">
           <div class="tm-photo-wrap">
             <img src="../../teams/dishi.jpg" alt="Dishi Gupta"
@@ -381,7 +382,7 @@
             </div>
           </div>
           <div class="tm-info">
-            <div class="tm-level">2nd Year · Electronic Systems</div>
+            <div class="tm-level">Diploma · Data Science</div>
             <div class="tm-socials">
               <a href="mailto:member@example.com" class="tm-soc" title="Email"><svg width="13" height="13"
                   viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -401,6 +402,7 @@
             </div>
           </div>
         </div>
+        
         <div class="tm-card rc" style="--card-delay:0.1s">
           <div class="tm-photo-wrap">
             <img src="../../teams/Aditri.jpeg" alt="Aditri Bordoloi"
@@ -412,7 +414,7 @@
             </div>
           </div>
           <div class="tm-info">
-            <div class="tm-level">2nd Year · Electronic Systems</div>
+            <div class="tm-level">Foundation · Data Science</div>
             <div class="tm-socials">
               <a href="mailto:member@example.com" class="tm-soc" title="Email"><svg width="13" height="13"
                   viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -432,6 +434,7 @@
             </div>
           </div>
         </div>
+        
         <div class="tm-card rc" style="--card-delay:0.1s">
           <div class="tm-photo-wrap">
             <img src="../../teams/aakash.webp" alt="Aakash Rawal"
@@ -443,7 +446,7 @@
             </div>
           </div>
           <div class="tm-info">
-            <div class="tm-level">2nd Year · Mathematics</div>
+            <div class="tm-level">Diploma · Data Science</div>
             <div class="tm-socials">
               <a href="mailto:member@example.com" class="tm-soc" title="Email"><svg width="13" height="13"
                   viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -463,9 +466,10 @@
             </div>
           </div>
         </div>
+        
         <div class="tm-card rc" style="--card-delay:0.1s">
           <div class="tm-photo-wrap">
-            <img src="../../teams/R SAI SAHANAA.jpeg" alt="R Sai Sahaana"
+            <img src="../../teams/R SAI SAHANAA.jpeg" alt="R Sai Sahanaa"
               @error="$event.target.style.display='none';$event.target.nextElementSibling.style.display='flex'">
             <div class="tm-no-photo" style="display:none">RS</div>
             <div class="tm-overlay">
@@ -474,7 +478,7 @@
             </div>
           </div>
           <div class="tm-info">
-            <div class="tm-level">Diploma · Data Science</div>
+            <div class="tm-level">Foundation · Data Science</div>
             <div class="tm-socials">
               <a href="mailto:member@example.com" class="tm-soc" title="Email"><svg width="13" height="13"
                   viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -494,6 +498,7 @@
             </div>
           </div>
         </div>
+        
         <div class="tm-card rc" style="--card-delay:0.1s">
           <div class="tm-photo-wrap">
             <img src="../../teams/nivash.jpeg" alt="Nivash Kumar"
@@ -501,7 +506,7 @@
             <div class="tm-no-photo" style="display:none">NK</div>
             <div class="tm-overlay">
               <div class="tm-name">Nivash Kumar</div>
-              <div class="tm-role">Regional Coordinator</div>
+              <div class="tm-role">Patna</div>
             </div>
           </div>
           <div class="tm-info">
@@ -525,6 +530,7 @@
             </div>
           </div>
         </div>
+        
         <div class="tm-card rc" style="--card-delay:0.1s">
           <div class="tm-photo-wrap">
             <img src="../../teams/chandan.webp" alt="Chandan Saw"
@@ -532,7 +538,7 @@
             <div class="tm-no-photo" style="display:none">CS</div>
             <div class="tm-overlay">
               <div class="tm-name">Chandan Saw</div>
-              <div class="tm-role">Regional Coordinator</div>
+              <div class="tm-role">Kolkatta</div>
             </div>
           </div>
           <div class="tm-info">
@@ -556,6 +562,7 @@
             </div>
           </div>
         </div>
+        
         <div class="tm-card rc" style="--card-delay:0.1s">
           <div class="tm-photo-wrap">
             <img src="../../teams/kartik.webp" alt="Kartik Singh"
@@ -563,7 +570,7 @@
             <div class="tm-no-photo" style="display:none">KS</div>
             <div class="tm-overlay">
               <div class="tm-name">Kartik Singh</div>
-              <div class="tm-role">Regional Coordinator</div>
+              <div class="tm-role">Lucknow</div>
             </div>
           </div>
           <div class="tm-info">
@@ -587,6 +594,7 @@
             </div>
           </div>
         </div>
+        
         <div class="tm-card rc" style="--card-delay:0.1s">
           <div class="tm-photo-wrap">
             <img src="../../teams/divy.jpeg" alt="Divya Prakash"
@@ -594,7 +602,7 @@
             <div class="tm-no-photo" style="display:none">DP</div>
             <div class="tm-overlay">
               <div class="tm-name">Divya Prakash</div>
-              <div class="tm-role">Regional Coordinator</div>
+              <div class="tm-role">Delhi</div>
             </div>
           </div>
           <div class="tm-info">
@@ -618,6 +626,7 @@
             </div>
           </div>
         </div>
+        
         <div class="tm-card rc" style="--card-delay:0.1s">
           <div class="tm-photo-wrap">
             <img src="../../teams/laksh.webp" alt="Laksh Wadhawan"
@@ -625,7 +634,7 @@
             <div class="tm-no-photo" style="display:none">LW</div>
             <div class="tm-overlay">
               <div class="tm-name">Laksh Wadhawan</div>
-              <div class="tm-role">Regional Coordinator</div>
+              <div class="tm-role">Delhi</div>
             </div>
           </div>
           <div class="tm-info">
@@ -657,7 +666,7 @@
   <section class="section rs" style="background:var(--bg2)">
     <div class="container">
       <div class="sec-hdr">
-        <div class="section-tag">Team Leads</div>
+        <div class="section-tag">Community Leads</div>
         <h2 class="section-title-xl">Community <span class="tg">Heads</span></h2>
         <p class="sec-sub">Department leads powering every initiative inside Sundarbans House</p>
       </div>
@@ -669,7 +678,7 @@
           <div class="tm-photo-wrap">
             <img src="../../teams/Samar.jpeg" alt="Himanshu Sharma "
               @error="$event.target.style.display='none';$event.target.nextElementSibling.style.display='flex'">
-            <div class="tm-no-photo" style="display:none">SA</div>
+            <div class="tm-no-photo" style="display:none">HS</div>
             <div class="tm-overlay">
               <div class="tm-name">Himanshu Sharma </div>
               <div class="tm-role">E-Sports</div>
@@ -698,7 +707,7 @@
         </div>
 
         <!-- ══ AVNEESH SINGH ══ -->
-        <div class="tm-card rc" style="--card-delay:0.2s">
+        <div class="tm-card rc" style="--card-delay:0.1s">
           <div class="tm-photo-wrap">
             <img src="../../teams/mannu.jpg" alt="AVNEESH SINGH"
               @error="$event.target.style.display='none';$event.target.nextElementSibling.style.display='flex'">
@@ -731,7 +740,7 @@
         </div>
 
         <!-- ══ Abhisekh Chowdhury  ══ -->
-        <div class="tm-card rc" style="--card-delay:0.3s">
+        <div class="tm-card rc" style="--card-delay:0.1s">
           <div class="tm-photo-wrap">
             <img src="../../teams/aditya.jpeg" alt="Abhisekh Chowdhury "
               @error="$event.target.style.display='none';$event.target.nextElementSibling.style.display='flex'">
