@@ -10,6 +10,9 @@ import Contact from '../views/ContactView.vue'
 import Login from '../views/LoginView.vue'
 import MembersLounge from '../views/MembersLoungeView.vue'
 import DashboardView from '../views/DashboardView.vue'
+import TechnicalView from '../views/TechnicalView.vue'
+import CulturalView from '../views/CulturalView.vue'
+import ESportsView from '../views/ESportsView.vue'
 
 const routes = [
   { path: '/', component: Home },
@@ -21,6 +24,9 @@ const routes = [
   { path: '/community', component: Community },
   { path: '/contact', component: Contact },
   { path: '/members', component: Login },
+  { path: '/community/technical', component: TechnicalView },
+  { path: '/community/cultural',  component: CulturalView  },
+  { path: '/community/esports',   component: ESportsView   },
   { 
     path: '/lounge', 
     component: MembersLounge,
