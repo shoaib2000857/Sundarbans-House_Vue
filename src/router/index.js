@@ -4,7 +4,6 @@ import About from '../views/AboutView.vue'
 import Events from '../views/EventsView.vue'
 import Study from '../views/StudyView.vue'
 import Teams from '../views/TeamsView.vue'
-import Gallery from '../views/GalleryView.vue'
 import Meetups from '../views/MeetupsView.vue'
 import Community from '../views/CommunityView.vue'
 import Contact from '../views/ContactView.vue'
@@ -18,7 +17,6 @@ const routes = [
   { path: '/events', component: Events },
   { path: '/study', component: Study },
   { path: '/teams', component: Teams },
-  { path: '/gallery', component: Gallery },
   { path: '/meetups', component: Meetups },
   { path: '/community', component: Community },
   { path: '/contact', component: Contact },
