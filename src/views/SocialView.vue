@@ -71,6 +71,7 @@
     </section>
   </div>
 </template>
+
 <script setup>
 import { useScrollReveal } from "../composables/useAnimations.js";
 import PageHero from "../components/PageHero.vue";
@@ -90,7 +91,6 @@ const platforms = [
     followers: "3.8K",
     url: "https://www.instagram.com/sundarbansiitm/",
   },
-
   {
     icon: "▶️",
     name: "YouTube",
