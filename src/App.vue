@@ -172,9 +172,7 @@
           <router-link to="/contact" class="nav-link" @click="menuOpen = false"
             ><span>Contact</span></router-link
           >
-          <router-link to="/social" class="nav-link" @click="menuOpen = false"
-            ><span>Social</span></router-link
-          >
+          
           <router-link
             to="/members"
             class="nav-cta-btn"
