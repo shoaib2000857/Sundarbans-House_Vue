@@ -171,9 +171,9 @@ function submitForm() {
 }
 
 const contactInfo = [
-  { icon: "📧", title: "Email", value: "sundarbans@iitm.bs" },
-  { icon: "💬", title: "Discord", value: "Join our community server" },
-  { icon: "📱", title: "WhatsApp", value: "Official announcement group" },
+  { icon: "📧", title: "Email", value: "sundarbans-webad@ds.study.iitm.ac.in" },
   { icon: "📸", title: "Instagram", value: "@sundarbanshouse.official" },
+  { icon: "💼", title: "LinkedIn", value: "linkedin.com/company/sundarbans-iitm" },
+  { icon: "▶️", title: "Youtube", value: "https://www.youtube.com/channel/UC8pGrF1iAbj7MXNSf7AlqFg" },
 ];
 </script>
