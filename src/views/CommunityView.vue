@@ -8,6 +8,7 @@
       subtitle="Three dynamic pillars driving excellence and innovation in Sundarbans House"
     />
 
+    <!-- Tech Community -->
     <section class="section rs">
       <div class="container">
         <div class="about-grid">
@@ -52,9 +53,17 @@
                 </div>
               </div>
             </div>
-            <a href="#" class="submit-btn" style="display: inline-flex"
-              >Join Tech Community</a
-            >
+            <div class="community-actions">
+              <a href="#" class="submit-btn" style="display: inline-flex">
+                Join Community
+              </a>
+              <RouterLink
+                to="/community/technical"
+                class="explore-btn"
+                style="--accent: #4f8ef7">
+                Explore →
+              </RouterLink>
+            </div>
           </div>
           <div>
             <img
@@ -71,6 +80,7 @@
       </div>
     </section>
 
+    <!-- Cultural Community -->
     <section class="section rs" style="background: var(--bg2)">
       <div class="container">
         <div class="about-grid" style="direction: rtl">
@@ -123,12 +133,20 @@
                 </div>
               </div>
             </div>
-            <a
-              href="#"
-              class="submit-btn"
-              style="display: inline-flex; background: #f59e0b; color: #0a0f1e"
-              >Join Cultural Community</a
-            >
+            <div class="community-actions">
+              <a
+                href="#"
+                class="submit-btn"
+                style="display: inline-flex; background: #f59e0b; color: #0a0f1e">
+                Join Community
+              </a>
+              <RouterLink
+                to="/community/cultural"
+                class="explore-btn"
+                style="--accent: #f59e0b">
+                Explore →
+              </RouterLink>
+            </div>
           </div>
           <div style="direction: ltr">
             <img
@@ -145,6 +163,7 @@
       </div>
     </section>
 
+    <!-- E-Sports Community -->
     <section class="section rs">
       <div class="container">
         <div class="about-grid">
@@ -152,62 +171,70 @@
             <div
               class="section-tag"
               style="
-                background: rgba(16, 185, 129, 0.1);
-                color: #10b981;
-                border-color: rgba(16, 185, 129, 0.3);
+                background: rgba(168, 85, 247, 0.1);
+                color: #a855f7;
+                border-color: rgba(168, 85, 247, 0.3);
               ">
-              Academic Community
+              E-Sports Community
             </div>
             <h2 class="section-title-xl">
               <span
                 style="
-                  background: linear-gradient(135deg, #10b981, #059669);
+                  background: linear-gradient(135deg, #a855f7, #ec4899);
                   -webkit-background-clip: text;
                   background-clip: text;
                   -webkit-text-fill-color: transparent;
                 "
-                >Learn. Mentor. Excel.</span
+                >Play. Compete. Win.</span
               >
             </h2>
             <p class="desc">
-              A dedicated academic network where toppers mentor beginners, doubt
-              sessions happen daily, and everyone pushes each other to achieve
-              more in their studies.
+              From casual gaming to competitive tournaments, our E-Sports
+              community is where Sundarbans players grind, grow, and dominate.
+              Every game has a team. Find yours.
             </p>
             <div class="about-highlights">
               <div class="hi">
-                <div class="hi-icon">📚</div>
+                <div class="hi-icon">🎮</div>
                 <div>
-                  <strong>Peer Mentorship</strong>
-                  <p>Senior students guide juniors through tough subjects</p>
+                  <strong>Competitive Gaming</strong>
+                  <p>Tournaments, scrimmages, ranked ladders</p>
                 </div>
               </div>
               <div class="hi">
-                <div class="hi-icon">💡</div>
+                <div class="hi-icon">🏟️</div>
                 <div>
-                  <strong>Doubt Sessions</strong>
-                  <p>Regular Q&A sessions for every subject</p>
+                  <strong>Team Formation</strong>
+                  <p>Find teammates, build rosters, compete together</p>
                 </div>
               </div>
               <div class="hi">
-                <div class="hi-icon">🏆</div>
+                <div class="hi-icon">🎯</div>
                 <div>
-                  <strong>Study Groups</strong>
-                  <p>Collaborative learning before exams</p>
+                  <strong>Skill Development</strong>
+                  <p>Coaching, VOD reviews, strategy sessions</p>
                 </div>
               </div>
             </div>
-            <a
-              href="#"
-              class="submit-btn"
-              style="display: inline-flex; background: #10b981"
-              >Join Academic Community</a
-            >
+            <div class="community-actions">
+              <a
+                href="#"
+                class="submit-btn"
+                style="display: inline-flex; background: #a855f7">
+                Join Community
+              </a>
+              <RouterLink
+                to="/community/esports"
+                class="explore-btn"
+                style="--accent: #a855f7">
+                Explore →
+              </RouterLink>
+            </div>
           </div>
           <div>
             <img
-              src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=700&q=80&auto=format&fit=crop"
-              alt="Academic"
+              src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=700&q=80&auto=format&fit=crop"
+              alt="E-Sports"
               style="
                 width: 100%;
                 border-radius: var(--rad2);
@@ -218,15 +245,42 @@
         </div>
       </div>
     </section>
-
-
   </div>
 </template>
 
 <script setup>
-
 import { useScrollReveal } from "../composables/useAnimations.js";
 import PageHero from "../components/PageHero.vue";
+import { RouterLink } from "vue-router";
 
 useScrollReveal();
 </script>
+
+<style scoped>
+.community-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+
+.explore-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.7rem 1.4rem;
+  border-radius: var(--rad1, 8px);
+  border: 1.5px solid var(--accent, #4f8ef7);
+  color: var(--accent, #4f8ef7);
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+
+.explore-btn:hover {
+  background: var(--accent, #4f8ef7);
+  color: #fff;
+}
+</style>
