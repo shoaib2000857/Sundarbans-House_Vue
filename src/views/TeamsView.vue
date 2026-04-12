@@ -41,7 +41,7 @@
         <!-- SAMAR AHMAD -->
         <div class="tm-card rc" style="--card-delay:0.1s">
           <div class="tm-photo-wrap">
-            <img src="../../teams/Samar.jpeg" alt="Samar Ahmad" @error="onImgErr">
+            <img src="/teams/Samar.jpeg" alt="Samar Ahmad" @error="onImgErr">
             <div class="tm-no-photo" style="display:none">SA</div>
             <div class="tm-overlay">
               <div class="tm-name">Samar Ahmad</div>
@@ -61,7 +61,7 @@
         <!-- MANNU YADAV -->
         <div class="tm-card rc" style="--card-delay:0.2s">
           <div class="tm-photo-wrap">
-            <img src="../../teams/mannu.jpg" alt="Mannu Yadav" @error="onImgErr">
+            <img src="/teams/mannu.jpg" alt="Mannu Yadav" @error="onImgErr">
             <div class="tm-no-photo" style="display:none">MY</div>
             <div class="tm-overlay">
               <div class="tm-name">Mannu Yadav</div>
@@ -80,7 +80,7 @@
         <!-- ADITYA V -->
         <div class="tm-card rc" style="--card-delay:0.3s">
           <div class="tm-photo-wrap">
-            <img src="../../teams/aditya.jpeg" alt="Aditya V" @error="onImgErr">
+            <img src="/teams/aditya.jpeg" alt="Aditya V" @error="onImgErr">
             <div class="tm-no-photo" style="display:none">AV</div>
             <div class="tm-overlay">
               <div class="tm-name">Aditya V</div>
@@ -114,7 +114,7 @@
         <!-- SAMAR AHMAD -->
         <div class="tm-card rc" style="--card-delay:0.1s">
           <div class="tm-photo-wrap">
-            <img src="../../teams/Samar.jpeg" alt="Samar Ahmad" @error="onImgErr">
+            <img src="/teams/Samar.jpeg" alt="Samar Ahmad" @error="onImgErr">
             <div class="tm-no-photo" style="display:none">SA</div>
             <div class="tm-overlay">
               <div class="tm-name">Samar Ahmad</div>
@@ -134,7 +134,7 @@
         <!-- RIYA MOUN -->
         <div class="tm-card rc" style="--card-delay:0.2s">
           <div class="tm-photo-wrap">
-            <img src="../../teams/Riya.jpg" alt="Riya Moun" @error="onImgErr">
+            <img src="/teams/Riya.jpg" alt="Riya Moun" @error="onImgErr">
             <div class="tm-no-photo" style="display:none">RM</div>
             <div class="tm-overlay">
               <div class="tm-name">Riya Moun</div>
@@ -154,7 +154,7 @@
         <!-- ANURAJ JIT SAIKIA -->
         <div class="tm-card rc" style="--card-delay:0.3s">
           <div class="tm-photo-wrap">
-            <img src="../../teams/Anuraj.jpg" alt="Anuraj Jit Saikia" @error="onImgErr">
+            <img src="/teams/Anuraj.jpg" alt="Anuraj Jit Saikia" @error="onImgErr">
             <div class="tm-no-photo" style="display:none">AJ</div>
             <div class="tm-overlay">
               <div class="tm-name">Anuraj Jit Saikia</div>
@@ -171,10 +171,10 @@
           </div>
         </div>
 
-        <!-- Sadia T -->
-        <div class="tm-card rc" style="--card-delay:0.3s">
+        <!-- SADIA TABASSUM -->
+        <div class="tm-card rc" style="--card-delay:0.35s">
           <div class="tm-photo-wrap">
-            <img src="../../teams/Sadia.jpg" alt="Sadia Tabassum" @error="onImgErr">
+            <img src="/teams/Sadia.jpg" alt="Sadia Tabassum" @error="onImgErr">
             <div class="tm-no-photo" style="display:none">ST</div>
             <div class="tm-overlay">
               <div class="tm-name">Sadia Tabassum</div>
@@ -194,7 +194,7 @@
         <!-- TEJASHVI YADAV -->
         <div class="tm-card rc" style="--card-delay:0.4s">
           <div class="tm-photo-wrap">
-            <img src="../../teams/tejashvi.jpg" alt="Tejashvi Yadav" @error="onImgErr">
+            <img src="/teams/tejashvi.jpg" alt="Tejashvi Yadav" @error="onImgErr">
             <div class="tm-no-photo" style="display:none">TY</div>
             <div class="tm-overlay">
               <div class="tm-name">Tejashvi Yadav</div>
@@ -214,7 +214,7 @@
         <!-- SHOAIB SADIQ SALEHMOHAMED -->
         <div class="tm-card rc" style="--card-delay:0.5s">
           <div class="tm-photo-wrap">
-            <img src="../../teams/shoaib.jpeg" alt="Shoaib Sadiq Salehmohamed" @error="onImgErr">
+            <img src="/teams/shoaib.jpeg" alt="Shoaib Sadiq Salehmohamed" @error="onImgErr">
             <div class="tm-no-photo" style="display:none">SS</div>
             <div class="tm-overlay">
               <div class="tm-name">Shoaib Sadiq Salehmohamed</div>
@@ -248,7 +248,7 @@
         <!-- RUSHABH KAPSE -->
         <div class="tm-card rc" style="--card-delay:0.1s">
           <div class="tm-photo-wrap">
-            <img src="../../teams/rushabh.jpg" alt="Rushabh Kapse" @error="onImgErr">
+            <img src="/teams/rushabh.jpg" alt="Rushabh Kapse" @error="onImgErr">
             <div class="tm-no-photo" style="display:none">RK</div>
             <div class="tm-overlay">
               <div class="tm-name">Rushabh Kapse</div>
@@ -268,7 +268,7 @@
         <!-- DISHI GUPTA -->
         <div class="tm-card rc" style="--card-delay:0.2s">
           <div class="tm-photo-wrap">
-            <img src="../../teams/dishi.jpg" alt="Dishi Gupta" @error="onImgErr">
+            <img src="/teams/dishi.jpg" alt="Dishi Gupta" @error="onImgErr">
             <div class="tm-no-photo" style="display:none">DG</div>
             <div class="tm-overlay">
               <div class="tm-name">Dishi Gupta</div>
@@ -288,7 +288,7 @@
         <!-- ADITRI BORDOLOI -->
         <div class="tm-card rc" style="--card-delay:0.3s">
           <div class="tm-photo-wrap">
-            <img src="../../teams/aditri.jpg" alt="Aditri Bordoloi" @error="onImgErr">
+            <img src="/teams/aditri.jpg" alt="Aditri Bordoloi" @error="onImgErr">
             <div class="tm-no-photo" style="display:none">AB</div>
             <div class="tm-overlay">
               <div class="tm-name">Aditri Bordoloi</div>
@@ -308,7 +308,7 @@
         <!-- AAKASH RAWAL -->
         <div class="tm-card rc" style="--card-delay:0.4s">
           <div class="tm-photo-wrap">
-            <img src="../../teams/aakash.webp" alt="Aakash Rawal" @error="onImgErr">
+            <img src="/teams/aakash.webp" alt="Aakash Rawal" @error="onImgErr">
             <div class="tm-no-photo" style="display:none">AR</div>
             <div class="tm-overlay">
               <div class="tm-name">Aakash Rawal</div>
@@ -328,7 +328,7 @@
         <!-- R SAI SAHAANA -->
         <div class="tm-card rc" style="--card-delay:0.5s">
           <div class="tm-photo-wrap">
-            <img src="../../teams/R SAI SAHANAA.jpeg" alt="R Sai Sahaana" @error="onImgErr">
+            <img src="/teams/R SAI SAHANAA.jpeg" alt="R Sai Sahaana" @error="onImgErr">
             <div class="tm-no-photo" style="display:none">RS</div>
             <div class="tm-overlay">
               <div class="tm-name">R Sai Sahaana</div>
@@ -348,7 +348,7 @@
         <!-- NIVASH KUMAR -->
         <div class="tm-card rc" style="--card-delay:0.6s">
           <div class="tm-photo-wrap">
-            <img src="../../teams/nivash.jpeg" alt="Nivash Kumar" @error="onImgErr">
+            <img src="/teams/nivash.jpeg" alt="Nivash Kumar" @error="onImgErr">
             <div class="tm-no-photo" style="display:none">NK</div>
             <div class="tm-overlay">
               <div class="tm-name">Nivash Kumar</div>
@@ -368,7 +368,7 @@
         <!-- CHANDAN SAW -->
         <div class="tm-card rc" style="--card-delay:0.7s">
           <div class="tm-photo-wrap">
-            <img src="../../teams/chandan.webp" alt="Chandan Saw" @error="onImgErr">
+            <img src="/teams/chandan.webp" alt="Chandan Saw" @error="onImgErr">
             <div class="tm-no-photo" style="display:none">CS</div>
             <div class="tm-overlay">
               <div class="tm-name">Chandan Saw</div>
@@ -388,7 +388,7 @@
         <!-- KARTIK SINGH -->
         <div class="tm-card rc" style="--card-delay:0.8s">
           <div class="tm-photo-wrap">
-            <img src="../../teams/kartik.webp" alt="Kartik Singh" @error="onImgErr">
+            <img src="/teams/kartik.webp" alt="Kartik Singh" @error="onImgErr">
             <div class="tm-no-photo" style="display:none">KS</div>
             <div class="tm-overlay">
               <div class="tm-name">Kartik Singh</div>
@@ -408,7 +408,7 @@
         <!-- DIVYA PRAKASH -->
         <div class="tm-card rc" style="--card-delay:0.9s">
           <div class="tm-photo-wrap">
-            <img src="../../teams/divy.jpeg" alt="Divya Prakash" @error="onImgErr">
+            <img src="/teams/divy.jpeg" alt="Divya Prakash" @error="onImgErr">
             <div class="tm-no-photo" style="display:none">DP</div>
             <div class="tm-overlay">
               <div class="tm-name">Divya Prakash</div>
@@ -428,7 +428,7 @@
         <!-- LAKSH WADHAWAN -->
         <div class="tm-card rc" style="--card-delay:1.0s">
           <div class="tm-photo-wrap">
-            <img src="../../teams/laksh.webp" alt="Laksh Wadhawan" @error="onImgErr">
+            <img src="/teams/laksh.webp" alt="Laksh Wadhawan" @error="onImgErr">
             <div class="tm-no-photo" style="display:none">LW</div>
             <div class="tm-overlay">
               <div class="tm-name">Laksh Wadhawan</div>
@@ -462,7 +462,7 @@
         <!-- HIMANSHU SHARMA -->
         <div class="tm-card rc" style="--card-delay:0.1s">
           <div class="tm-photo-wrap">
-            <img src="../../teams/himanshu.jpg" alt="Himanshu Sharma" @error="onImgErr">
+            <img src="/teams/himanshu.jpg" alt="Himanshu Sharma" @error="onImgErr">
             <div class="tm-no-photo" style="display:none">HS</div>
             <div class="tm-overlay">
               <div class="tm-name">Himanshu Sharma</div>
@@ -482,7 +482,7 @@
         <!-- AVNEESH SINGH -->
         <div class="tm-card rc" style="--card-delay:0.2s">
           <div class="tm-photo-wrap">
-            <img src="../../teams/avneesh.jpg" alt="Avneesh Singh" @error="onImgErr">
+            <img src="/teams/avneesh.jpg" alt="Avneesh Singh" @error="onImgErr">
             <div class="tm-no-photo" style="display:none">AS</div>
             <div class="tm-overlay">
               <div class="tm-name">Avneesh Singh</div>
@@ -502,7 +502,7 @@
         <!-- ABHISEKH CHOWDHURY -->
         <div class="tm-card rc" style="--card-delay:0.3s">
           <div class="tm-photo-wrap">
-            <img src="../../teams/abhisekh.jpg" alt="Abhisekh Chowdhury" @error="onImgErr">
+            <img src="/teams/abhisekh.jpg" alt="Abhisekh Chowdhury" @error="onImgErr">
             <div class="tm-no-photo" style="display:none">AC</div>
             <div class="tm-overlay">
               <div class="tm-name">Abhisekh Chowdhury</div>
@@ -527,13 +527,20 @@
 </template>
 
 <script setup>
+import { onMounted } from 'vue'
 import { useScrollReveal } from "../composables/useAnimations.js";
 
-useScrollReveal();
+onMounted(() => {
+  try {
+    useScrollReveal()
+  } catch (e) {
+    console.warn('useScrollReveal failed:', e)
+  }
+})
 
 function onImgErr(e) {
-  e.target.style.display = 'none';
-  e.target.nextElementSibling.style.display = 'flex';
+  e.target.style.display = 'none'
+  e.target.nextElementSibling.style.display = 'flex'
 }
 </script>
 
