@@ -653,7 +653,7 @@ const leadership = [
       {
         role: "Web Admin",
         name: "Samar Ahmad",
-        image: "about/samar.jpg",
+        image: "../../teams/Samar.jpeg",
         email: "23f3001032@ds.study.iitm.ac.in",
         linkedin: "https://www.linkedin.com/in/samarahmad10",
         instagram: "@thesamarsoldier",
