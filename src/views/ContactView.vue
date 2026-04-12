@@ -199,9 +199,23 @@ async function submitForm() {
 }
 
 const contactInfo = [
-  { icon: "📧", title: "Email", value: "sundarbans-webad@ds.study.iitm.ac.in" },
-  { icon: "📸", title: "Instagram", value: "@sundarbanshouse.official" },
-  { icon: "💼", title: "LinkedIn", value: "linkedin.com/company/sundarbans-iitm" },
-  { icon: "▶️", title: "Youtube", value: "https://www.youtube.com/channel/UC8pGrF1iAbj7MXNSf7AlqFg" },
+  {
+    icon: "📸",
+    title: "Instagram",
+    value: "@sundarbanshouse.official",
+    link: "https://www.instagram.com/sundarbanshouse.official/"
+  },
+  {
+    icon: "💼",
+    title: "LinkedIn",
+    value: "linkedin.com/company/sundarbans-iitm",
+    link: "https://www.linkedin.com/company/sundarbans-iitm/"
+  },
+  {
+    icon: "▶️",
+    title: "Youtube",
+    value: "YouTube Channel",
+    link: "https://www.youtube.com/channel/UC8pGrF1iAbj7MXNSf7AlqFg"
+  }
 ];
 </script>
