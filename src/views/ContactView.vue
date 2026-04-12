@@ -33,24 +33,16 @@
                 gap: 1.5rem;
                 margin-top: 2rem;
               ">
-              
+              <div
                 class="card-base"
                 v-for="info in contactInfo"
                 :key="info.title"
-                :href="info.link"
-                target="_blank"
-                rel="noopener noreferrer"
                 style="
                   display: flex;
                   align-items: flex-start;
                   gap: 1rem;
                   padding: 1.25rem;
-                  text-decoration: none;
-                  cursor: pointer;
-                  transition: transform 0.15s, box-shadow 0.15s;
-                "
-                @mouseover="$event.currentTarget.style.transform='translateY(-2px)'"
-                @mouseleave="$event.currentTarget.style.transform='translateY(0)'">
+                ">
                 <div style="font-size: 1.5rem; min-width: 36px">
                   {{ info.icon }}
                 </div>
@@ -68,7 +60,7 @@
                     {{ info.value }}
                   </p>
                 </div>
-              </a>
+              </div>
             </div>
           </div>
 
