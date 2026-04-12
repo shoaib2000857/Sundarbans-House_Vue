@@ -4,7 +4,7 @@
 <!-- HERO -->
   <section class="page-hero">
     <div class="page-hero-bg">
-      <img src="https://startupsmagazine.co.uk/wp-content/uploads/2025/12/AdobeStock_291895827ed.jpg"
+      <img src="https://media.licdn.com/dms/image/v2/D4D12AQGOJzss-fon-Q/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1709102339863?e=2147483647&v=beta&t=6kQv2j3jMNyrmUzZEG4uokdgkDC_tpWg7ZALaCcw0BM"
         alt="Teams">
       <div class="page-hero-overlay"></div>
     </div>
