@@ -151,9 +151,6 @@
           <router-link to="/events" class="nav-link" @click="menuOpen = false"
             ><span>Events</span></router-link
           >
-          <router-link to="/gallery" class="nav-link" @click="menuOpen = false"
-            ><span>Gallery</span></router-link
-          >
           <router-link to="/meetups" class="nav-link" @click="menuOpen = false"
             ><span>Meetups</span></router-link
           >
