@@ -4,7 +4,7 @@
 <!-- HERO -->
   <section class="page-hero">
     <div class="page-hero-bg">
-      <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1920&q=80&auto=format&fit=crop"
+      <img src="https://startupsmagazine.co.uk/wp-content/uploads/2025/12/AdobeStock_291895827ed.jpg"
         alt="Teams">
       <div class="page-hero-overlay"></div>
     </div>
