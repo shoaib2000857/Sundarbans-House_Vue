@@ -171,6 +171,26 @@
           </div>
         </div>
 
+        <!-- Sadia T -->
+        <div class="tm-card rc" style="--card-delay:0.3s">
+          <div class="tm-photo-wrap">
+            <img src="../../teams/Sadia.jpg" alt="Sadia Tabassum" @error="onImgErr">
+            <div class="tm-no-photo" style="display:none">ST</div>
+            <div class="tm-overlay">
+              <div class="tm-name">Sadia Tabassum</div>
+              <div class="tm-role">Web Developer</div>
+            </div>
+          </div>
+          <div class="tm-info">
+            <div class="tm-level">Diploma · Data Science</div>
+            <div class="tm-socials">
+              <a href="mailto:member@example.com" class="tm-soc" title="Email"><svg width="13" height="13"><use href="#ico-mail"/></svg></a>
+              <a href="https://linkedin.com/in/" target="_blank" rel="noopener" class="tm-soc li" title="LinkedIn"><svg width="13" height="13"><use href="#ico-li"/></svg></a>
+              <a href="https://instagram.com/" target="_blank" rel="noopener" class="tm-soc ig" title="Instagram"><svg width="13" height="13"><use href="#ico-ig"/></svg></a>
+            </div>
+          </div>
+        </div>
+
         <!-- TEJASHVI YADAV -->
         <div class="tm-card rc" style="--card-delay:0.4s">
           <div class="tm-photo-wrap">
