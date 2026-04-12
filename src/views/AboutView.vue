@@ -418,9 +418,10 @@
                 <!-- Avatar + Name row -->
                 <div style="display: flex; align-items: center; gap: 0.85rem">
                   <img
-                    :src="`https://ui-avatars.com/api/?name=${encodeURIComponent(member.name)}&background=2a2006&color=d4a017&size=80&bold=true&font-size=0.4`"
+                    :src="member.image"
                     :alt="member.name"
-                    style="width: 52px; height: 52px; border-radius: 50%; border: 2px solid rgba(212,160,23,0.3); flex-shrink: 0; object-fit: cover;"
+                    style="width: 52px; height: 52px; border-radius: 50%; border: 2px solid rgba(212,160,23,0.3); flex-shrink: 0; object-fit: cover; background: #2a2006;"
+                    @error="(e) => e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(member.name)}&background=2a2006&color=d4a017&size=80&bold=true&font-size=0.4`"
                   />
                   <div
                     style="font-family: Cinzel, serif; font-weight: 700; font-size: 1rem; color: var(--text); line-height: 1.3;">
@@ -652,6 +653,7 @@ const leadership = [
       {
         role: "Web Admin",
         name: "Samar Ahmad",
+        image: "about/samar.jpg",
         email: "23f3001032@ds.study.iitm.ac.in",
         linkedin: "https://www.linkedin.com/in/samarahmad10",
         instagram: "@thesamarsoldier",
@@ -659,12 +661,14 @@ const leadership = [
       {
         role: "Secretary",
         name: "Mannu Yadav",
+        image: "about/mannu.jpg",
         email: "23f3001972@ds.study.iitm.ac.in",
         linkedin: "https://www.linkedin.com/in/mannuyadav",
       },
       {
         role: "Deputy Secretary",
         name: "Aditya Vaidhya",
+        image: "about/aditya.jpg",
         email: "23f2000809@ds.study.iitm.ac.in",
         linkedin: "http://linkedin.com/in/aditya-vaidhya",
       },
@@ -676,15 +680,18 @@ const leadership = [
       {
         role: "Web Admin",
         name: "Jivraj",
+        image: "about/jivraj.jpg",
       },
       {
         role: "Secretary",
         name: "Shreyansh Mall",
+        image: "about/shreyansh.jpg",
         email: "23f1002638@ds.study.iitm.ac.in",
       },
       {
         role: "Deputy Secretary",
         name: "Divya Chinmay",
+        image: "about/divya.jpg",
         email: "23f1002974@ds.study.iitm.ac.in",
       },
     ],
@@ -695,17 +702,20 @@ const leadership = [
       {
         role: "Web Admin",
         name: "Ravi Kumawat",
+        image: "about/ravi_kumawat.jpg",
         email: "21f1004119@ds.study.iitm.ac.in",
         instagram: "@ravikumawat7716",
       },
       {
         role: "Secretary",
         name: "Abhishek Ojha",
+        image: "about/abhishek.jpg",
         email: "22f1001774@ds.study.iitm.ac.in",
       },
       {
         role: "Deputy Secretary",
         name: "Ravi Kant",
+        image: "about/ravi_kant.jpg",
         email: "21f3002792@ds.study.iitm.ac.in",
       },
     ],
@@ -716,11 +726,13 @@ const leadership = [
       {
         role: "Secretary",
         name: "Kunal Chaturvedi",
+        image: "about/kunal.jpg",
         email: "21f1003533@ds.study.iitm.ac.in",
       },
       {
         role: "Deputy Secretary",
         name: "Abhishek Ojha",
+        image: "about/abhishek.jpg",
       },
     ],
   },
@@ -730,14 +742,17 @@ const leadership = [
       {
         role: "Web Admin",
         name: "Abhigyan Das",
+        image: "about/abhigyan.jpg",
       },
       {
         role: "Secretary",
         name: "Anshuman",
+        image: "about/anshuman.jpg",
       },
       {
         role: "Deputy Secretary",
         name: "Utkarsh Gaurav",
+        image: "about/utkarsh.jpg",
       },
     ],
   },
