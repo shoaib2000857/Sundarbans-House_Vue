@@ -233,7 +233,7 @@
         </div>
 
         <!-- ══ SADIA ══ -->
-         <div class="tm-card rc" style="--card-delay:0.1s">
+         <div class="tm-card rc" style="--card-delay:0.3s">
           <div class="tm-photo-wrap">
             <img src="../../teams/Sadia.jpeg" alt="Sadia Tabassum"
               @error="$event.target.style.display='none';$event.target.nextElementSibling.style.display='flex'">
