@@ -8,6 +8,7 @@
       subtitle="Our story, mission, and the vibrant community that makes us unique"
     />
 
+    <!-- Our Story -->
     <section class="section about-section rs">
       <div class="container">
         <div class="about-grid">
@@ -75,6 +76,7 @@
       </div>
     </section>
 
+    <!-- Vision & Mission -->
     <section class="section rs" style="background: var(--bg2)">
       <div class="container">
         <div class="grid-2" style="gap: 3rem; align-items: center">
@@ -118,6 +120,7 @@
       </div>
     </section>
 
+    <!-- Values -->
     <section class="section rs" style="background: var(--bg2)">
       <div class="container">
         <div class="sec-hdr">
@@ -150,6 +153,7 @@
       </div>
     </section>
 
+    <!-- Stats -->
     <section class="section rs">
       <div class="container">
         <div class="sec-hdr">
@@ -187,10 +191,11 @@
       </div>
     </section>
 
+    <!-- What We Do -->
     <section class="section rs" style="background: var(--bg2)">
       <div class="container">
         <div class="sec-hdr">
-          <div class="section-tag">Our Mission</div>
+          <div class="section-tag">What We Do</div>
           <h2 class="section-title-xl">
             Built for <span class="tg">students, by students</span>
           </h2>
@@ -222,12 +227,11 @@
                 font-size: 1.1rem;
                 margin-bottom: 0.75rem;
               ">
-              National Network
+              Community Building
             </h3>
             <p class="desc" style="margin: 0">
-              Connecting students across 40+ cities, organizing regional
-              meetups, and building a pan-India community that supports and
-              celebrates each other.
+              Connecting students through interactions, meetups, and collaborative
+              initiatives, ensuring no one feels disconnected in an online program.
             </p>
           </div>
           <div class="card-base rs">
@@ -239,12 +243,11 @@
                 font-size: 1.1rem;
                 margin-bottom: 0.75rem;
               ">
-              Leadership Development
+              Skill Development
             </h3>
             <p class="desc" style="margin: 0">
-              Offering students the opportunity to lead teams, organize events,
-              and develop skills that go beyond the classroom into real-world
-              leadership.
+              Focusing on holistic growth — from coding and design to communication
+              and management — helping students develop real-world skills.
             </p>
           </div>
           <div class="card-base rs">
@@ -256,17 +259,218 @@
                 font-size: 1.1rem;
                 margin-bottom: 0.75rem;
               ">
-              Inclusive Community
+              Events & Activities
             </h3>
             <p class="desc" style="margin: 0">
-              Embracing diversity, welcoming students from all backgrounds, and
-              creating a safe, supportive environment where everyone can thrive.
+              Organizing workshops, webinars, hackathons, competitions, meetups,
+              networking sessions, and cultural events that build confidence and
+              practical exposure.
             </p>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- Domains -->
+    <section class="section rs">
+      <div class="container">
+        <div class="sec-hdr">
+          <div class="section-tag">Opportunities & Domains</div>
+          <h2 class="section-title-xl">
+            Find your <span class="tg">space to grow</span>
+          </h2>
+        </div>
+        <div class="grid-2">
+          <div
+            class="card-base rc"
+            style="text-align: center"
+            v-for="d in domains"
+            :key="d.title">
+            <div style="font-size: 2.2rem; margin-bottom: 1rem">{{ d.icon }}</div>
+            <h3
+              style="
+                font-family: Cinzel, serif;
+                font-size: 1.1rem;
+                font-weight: 700;
+                margin-bottom: 0.5rem;
+              ">
+              {{ d.title }}
+            </h3>
+            <p class="desc" style="margin: 0">{{ d.desc }}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- What Makes Us Different -->
+    <section class="section rs" style="background: var(--bg2)">
+      <div class="container">
+        <div class="sec-hdr">
+          <div class="section-tag">What Makes Us Different</div>
+          <h2 class="section-title-xl">
+            Why <span class="tg">Sundarbans</span>
+          </h2>
+        </div>
+        <div class="grid-3">
+          <div
+            class="card-base rc"
+            style="--card-delay: 0.1s"
+            v-for="d in differentiators"
+            :key="d.title">
+            <div style="font-size: 2rem; margin-bottom: 1rem">{{ d.icon }}</div>
+            <h3
+              style="
+                font-family: Cinzel, serif;
+                font-size: 1.05rem;
+                font-weight: 700;
+                margin-bottom: 0.5rem;
+              ">
+              {{ d.title }}
+            </h3>
+            <p class="desc" style="margin: 0">{{ d.desc }}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Our Belief Quote -->
+    <section class="section rs">
+      <div class="container">
+        <div
+          class="card-base"
+          style="
+            text-align: center;
+            padding: 4rem 3rem;
+            background: linear-gradient(135deg, rgba(212,160,23,0.08), rgba(8,7,5,0.6));
+            border: 1px solid rgba(212,160,23,0.2);
+          ">
+          <div style="font-size: 3rem; margin-bottom: 1.5rem; opacity: 0.6">❝</div>
+          <p
+            style="
+              font-family: Cinzel, serif;
+              font-size: 1.4rem;
+              font-weight: 600;
+              color: var(--text);
+              line-height: 1.7;
+              max-width: 700px;
+              margin: 0 auto 1rem;
+            ">
+            Sundarbans House is not just a community — it's a family where
+            learning meets belonging.
+          </p>
+          <div style="color: var(--text2); font-size: 0.9rem; letter-spacing: 0.1em">
+            — OUR BELIEF
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Leadership Legacy -->
+    <section class="section rs" style="background: var(--bg2)">
+      <div class="container">
+        <div class="sec-hdr">
+          <div class="section-tag">A Legacy of Leadership</div>
+          <h2 class="section-title-xl">
+            The people who <span class="tg">built this</span>
+          </h2>
+          <p class="desc" style="max-width: 600px; margin: 0 auto 2rem">
+            Over the years, Sundarbans House has been shaped by dedicated leaders
+            whose vision and efforts have built a strong and inspiring community.
+          </p>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 2rem">
+          <div
+            class="card-base"
+            v-for="year in leadership"
+            :key="year.period">
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+                margin-bottom: 1.5rem;
+                padding-bottom: 1rem;
+                border-bottom: 1px solid rgba(212,160,23,0.15);
+              ">
+              <div
+                style="
+                  font-family: Cinzel, serif;
+                  font-size: 1.2rem;
+                  font-weight: 800;
+                  background: linear-gradient(135deg,#d4a017,#f0c040);
+                  -webkit-background-clip: text;
+                  background-clip: text;
+                  -webkit-text-fill-color: transparent;
+                ">
+                {{ year.period }}
+              </div>
+            </div>
+            <div class="grid-3" style="gap: 1rem">
+              <div
+                v-for="member in year.members"
+                :key="member.role"
+                style="padding: 1rem; background: rgba(255,255,255,0.03); border-radius: 0.5rem; border: 1px solid rgba(255,255,255,0.06)">
+                <div
+                  style="
+                    font-size: 0.72rem;
+                    letter-spacing: 0.1em;
+                    color: #d4a017;
+                    text-transform: uppercase;
+                    margin-bottom: 0.4rem;
+                  ">
+                  {{ member.role }}
+                </div>
+                <div
+                  style="
+                    font-family: Cinzel, serif;
+                    font-weight: 700;
+                    font-size: 1rem;
+                    color: var(--text);
+                    margin-bottom: 0.5rem;
+                  ">
+                  {{ member.name }}
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 0.3rem">
+                  <a
+                    v-if="member.email"
+                    :href="`mailto:${member.email}`"
+                    style="font-size: 0.78rem; color: var(--text2); text-decoration: none; word-break: break-all">
+                    ✉ {{ member.email }}
+                  </a>
+                  <a
+                    v-if="member.linkedin"
+                    :href="member.linkedin"
+                    target="_blank"
+                    style="font-size: 0.78rem; color: var(--text2); text-decoration: none">
+                    🔗 LinkedIn
+                  </a>
+                  <a
+                    v-if="member.instagram"
+                    :href="`https://instagram.com/${member.instagram.replace('@','')}`"
+                    target="_blank"
+                    style="font-size: 0.78rem; color: var(--text2); text-decoration: none">
+                    📸 {{ member.instagram }}
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="card-base"
+          style="text-align: center; margin-top: 2rem; padding: 2rem; background: rgba(212,160,23,0.05)">
+          <p class="desc" style="margin: 0; font-style: italic">
+            Each year adds a new chapter to Sundarbans House. With every leader
+            and every member, the community continues to grow stronger, more
+            impactful, and more inspiring.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
     <section
       class="cta-section rs"
       style="
@@ -299,13 +503,10 @@
         </div>
       </div>
     </section>
-
-
   </div>
 </template>
 
 <script setup>
-
 import { useScrollReveal, useCounters } from "../composables/useAnimations.js";
 import PageHero from "../components/PageHero.vue";
 useScrollReveal();
@@ -349,6 +550,160 @@ const stats = [
     count: 3,
     label: "Active Communities",
     gradient: "linear-gradient(135deg,#d4a017,#8b6914)",
+  },
+];
+
+const domains = [
+  {
+    icon: "💻",
+    title: "Tech & Development",
+    desc: "Build real projects, contribute to open source, and sharpen your engineering skills with fellow developers.",
+  },
+  {
+    icon: "🎨",
+    title: "Design & Creativity",
+    desc: "Explore UI/UX, graphic design, and creative storytelling — build a portfolio that stands out.",
+  },
+  {
+    icon: "📈",
+    title: "Finance & Entrepreneurship",
+    desc: "Develop business acumen, explore startups, and learn financial thinking with like-minded peers.",
+  },
+  {
+    icon: "🤝",
+    title: "Community & Welfare",
+    desc: "Drive inclusion, support fellow students, and lead initiatives that strengthen the entire community.",
+  },
+];
+
+const differentiators = [
+  {
+    icon: "🏡",
+    title: "Strong Community Culture",
+    desc: "We believe in 'no student left behind' — a supportive ecosystem where collaboration and guidance are always present.",
+  },
+  {
+    icon: "🛠️",
+    title: "Skill-Driven Growth",
+    desc: "We emphasize practical skills over theory, preparing students for real-world challenges from day one.",
+  },
+  {
+    icon: "🎯",
+    title: "Events That Matter",
+    desc: "Our events are designed to provide real value — helping students learn, network, and grow meaningfully.",
+  },
+  {
+    icon: "🌍",
+    title: "Diversity & Inclusion",
+    desc: "Students from across India come together to form a vibrant and inclusive community that celebrates every background.",
+  },
+  {
+    icon: "👑",
+    title: "Leadership & Growth",
+    desc: "Students lead as organizers, coordinators, and team leads — building essential real-world leadership skills.",
+  },
+  {
+    icon: "🎉",
+    title: "Beyond Academics",
+    desc: "From celebrations to competitions, we ensure students enjoy a fun, engaging, and memorable journey.",
+  },
+];
+
+const leadership = [
+  {
+    period: "2025–26",
+    members: [
+      {
+        role: "Web Admin",
+        name: "Samar Ahmad",
+        email: "23f3001032@ds.study.iitm.ac.in",
+        linkedin: "https://www.linkedin.com/in/samarahmad10",
+        instagram: "@thesamarsoldier",
+      },
+      {
+        role: "Secretary",
+        name: "Mannu Yadav",
+        email: "23f3001972@ds.study.iitm.ac.in",
+        linkedin: "https://www.linkedin.com/in/mannuyadav",
+      },
+      {
+        role: "Deputy Secretary",
+        name: "Aditya Vaidhya",
+        email: "23f2000809@ds.study.iitm.ac.in",
+        linkedin: "http://linkedin.com/in/aditya-vaidhya",
+      },
+    ],
+  },
+  {
+    period: "2024–25",
+    members: [
+      {
+        role: "Web Admin",
+        name: "Jivraj",
+      },
+      {
+        role: "Secretary",
+        name: "Shreyansh Mall",
+        email: "23f1002638@ds.study.iitm.ac.in",
+      },
+      {
+        role: "Deputy Secretary",
+        name: "Divya Chinmay",
+        email: "23f1002974@ds.study.iitm.ac.in",
+      },
+    ],
+  },
+  {
+    period: "2023–24",
+    members: [
+      {
+        role: "Web Admin",
+        name: "Ravi Kumawat",
+        email: "21f1004119@ds.study.iitm.ac.in",
+        instagram: "@ravikumawat7716",
+      },
+      {
+        role: "Secretary",
+        name: "Abhishek Ojha",
+        email: "22f1001774@ds.study.iitm.ac.in",
+      },
+      {
+        role: "Deputy Secretary",
+        name: "Ravi Kant",
+        email: "21f3002792@ds.study.iitm.ac.in",
+      },
+    ],
+  },
+  {
+    period: "2022–23",
+    members: [
+      {
+        role: "Secretary",
+        name: "Kunal Chaturvedi",
+        email: "21f1003533@ds.study.iitm.ac.in",
+      },
+      {
+        role: "Deputy Secretary",
+        name: "Abhishek Ojha",
+      },
+    ],
+  },
+  {
+    period: "2021–22",
+    members: [
+      {
+        role: "Web Admin",
+        name: "Abhigyan Das",
+      },
+      {
+        role: "Secretary",
+        name: "Anshuman",
+      },
+      {
+        role: "Deputy Secretary",
+        name: "Utkarsh Gaurav",
+      },
+    ],
   },
 ];
 </script>
