@@ -661,14 +661,14 @@ const leadership = [
       {
         role: "Secretary",
         name: "Mannu Yadav",
-        image: new URL('../../teams/Mannu.jpeg', import.meta.url).href,
+        image: new URL('../../teams/mannu.jpg', import.meta.url).href,
         email: "23f3001972@ds.study.iitm.ac.in",
         linkedin: "https://www.linkedin.com/in/mannuyadav",
       },
       {
         role: "Deputy Secretary",
         name: "Aditya Vaidhya",
-        image: new URL('../../teams/Aditya.jpeg', import.meta.url).href,
+        image: new URL('../../teams/aditya.jpeg', import.meta.url).href,
         email: "23f2000809@ds.study.iitm.ac.in",
         linkedin: "http://linkedin.com/in/aditya-vaidhya",
       },
