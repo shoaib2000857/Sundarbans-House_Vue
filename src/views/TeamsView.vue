@@ -403,7 +403,7 @@
         </div>
         <div class="tm-card rc" style="--card-delay:0.1s">
           <div class="tm-photo-wrap">
-            <img src="../../teams/dishi.jpg" alt="Aditri Bordoloi"
+            <img src="../../teams/Aditri.jpeg" alt="Aditri Bordoloi"
               @error="$event.target.style.display='none';$event.target.nextElementSibling.style.display='flex'">
             <div class="tm-no-photo" style="display:none">AB</div>
             <div class="tm-overlay">
