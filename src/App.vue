@@ -177,7 +177,7 @@
             to="/members"
             class="nav-cta-btn"
             @click="menuOpen = false">
-            <span>Members Lounge</span>
+            <span>Lounge</span>
             <svg
               width="14"
               height="14"
