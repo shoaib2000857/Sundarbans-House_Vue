@@ -41,7 +41,7 @@
         <!-- SAMAR AHMAD -->
         <div class="tm-card rc" style="--card-delay:0.1s">
           <div class="tm-photo-wrap">
-            <img src="/teams/Samar.jpeg" alt="Samar Ahmad" @error="onImgErr">
+            <img src="../../teams/Samar.jpeg" alt="Samar Ahmad" @error="onImgErr">
             <div class="tm-no-photo" style="display:none">SA</div>
             <div class="tm-overlay">
               <div class="tm-name">Samar Ahmad</div>
