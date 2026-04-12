@@ -235,7 +235,7 @@
          <!-- ══ Sadia ══ -->
           <div class="tm-card rc" style="--card-delay:0.1s">
           <div class="tm-photo-wrap">
-            <img src="../../teams/Samar.jpeg" alt="Sadia"
+            <img src="../../teams/Sadia.jpeg" alt="Sadia"
               @error="$event.target.style.display='none';$event.target.nextElementSibling.style.display='flex'">
             <div class="tm-no-photo" style="display:none">ST</div>
             <div class="tm-overlay">
