@@ -1,53 +1,5 @@
 <template>
   <div class="region-meetups">
-    <div class="noise"></div>
-    <div class="ambient"></div>
-    <canvas ref="particlesCanvas"></canvas>
-    <div ref="cur" class="cur"></div>
-    <div ref="curRing" class="cur-ring"></div>
-
-    <!-- PRELOADER -->
-    <div v-if="showPreloader" class="preloader" :style="{ opacity: preloaderOpacity }">
-      <div class="preloader-orbit-wrap">
-        <div class="preloader-orbit-ring">
-          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-            <defs><path id="orbitPathR" d="M 100,100 m -78,0 a 78,78 0 1,1 156,0 a 78,78 0 1,1 -156,0"/></defs>
-            <text><textPath href="#orbitPathR" startOffset="0%">✦ SUNDARBANS HOUSE · IIT MADRAS BS · EXCELLENCE · </textPath></text>
-          </svg>
-        </div>
-        <div class="preloader-logo-center">
-          <img :src="logoSrc" alt="S" class="preloader-logo-img" @error="logoError=true" v-if="!logoError">
-          <span class="preloader-logo-letter" v-else>S</span>
-        </div>
-      </div>
-      <div class="preloader-bar"><div class="preloader-fill" :style="{ width: fillPct + '%' }"></div></div>
-      <div class="preloader-text">Loading Sundarbans...</div>
-    </div>
-
-    <!-- NAVBAR -->
-    <nav :class="{ scrolled: navScrolled }">
-      <router-link to="/" class="nav-brand">
-        <div class="nav-logo-wrap">
-          <img :src="logoSrc" alt="S" @error="(e) => e.target.style.display='none'">
-        </div>
-        <div>
-          <div class="nav-brand-name">SUNDARBANS</div>
-          <div class="nav-brand-sub">IIT Madras BS</div>
-        </div>
-      </router-link>
-      <div class="nav-links">
-        <router-link to="/">Home</router-link>
-        <router-link to="/study">Study Corner</router-link>
-        <router-link to="/events">Events</router-link>
-        <router-link to="/meetups" class="active">Meetups</router-link>
-        <router-link to="/about">About</router-link>
-        <router-link to="/community">Community</router-link>
-      </div>
-      <router-link to="/sundarbans/login" class="nav-cta">
-        Members Lounge
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </router-link>
-    </nav>
 
     <!-- HERO -->
     <section class="hero">
@@ -230,16 +182,6 @@
       </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer>
-      <div class="footer-brand">
-        <div class="footer-logo">
-          <img :src="logoSrc" alt="S" @error="(e) => e.target.style.display='none'">
-        </div>
-        <span class="footer-name">Sundarbans House</span>
-      </div>
-      <span class="footer-right">{{ config.chapterLabel }} · IIT Madras BS · Est. 2024</span>
-    </footer>
   </div>
 </template>
 
@@ -278,20 +220,12 @@ export default {
       logoSrc,
       houseSrc,
       logoError: false,
-      showPreloader: true,
-      preloaderOpacity: 1,
-      fillPct: 0,
-      navScrolled: false,
       statsAnimated: false,
       animStats: { total: 0, cities: 0, members: 0 },
     }
   },
 
   mounted() {
-    this.initPreloader()
-    this.initCursor()
-    this.initParticles()
-    window.addEventListener('scroll', this.onScroll)
     this.$nextTick(() => {
       this.initReveal()
       this.initStatsObserver()
@@ -299,68 +233,9 @@ export default {
   },
 
   beforeUnmount() {
-    window.removeEventListener('scroll', this.onScroll)
-    document.removeEventListener('mousemove', this.onMouseMove)
-    if (this._rafCursor) cancelAnimationFrame(this._rafCursor)
-    if (this._rafParticles) cancelAnimationFrame(this._rafParticles)
   },
 
-  methods: {
-    initPreloader() {
-      setTimeout(() => { this.fillPct = 100 }, 50)
-      setTimeout(() => {
-        this.preloaderOpacity = 0
-        setTimeout(() => { this.showPreloader = false }, 800)
-      }, 1400)
-    },
-
-    initCursor() {
-      let mx = 0, my = 0, rx = 0, ry = 0
-      this.onMouseMove = (e) => {
-        mx = e.clientX; my = e.clientY
-        if (this.$refs.cur) { this.$refs.cur.style.left = mx + 'px'; this.$refs.cur.style.top = my + 'px' }
-      }
-      document.addEventListener('mousemove', this.onMouseMove)
-      const raf = () => {
-        rx += (mx - rx) * 0.11; ry += (my - ry) * 0.11
-        if (this.$refs.curRing) { this.$refs.curRing.style.left = rx + 'px'; this.$refs.curRing.style.top = ry + 'px' }
-        this._rafCursor = requestAnimationFrame(raf)
-      }
-      raf()
-    },
-
-    initParticles() {
-      this.$nextTick(() => {
-        const cvs = this.$refs.particlesCanvas
-        if (!cvs) return
-        const ctx = cvs.getContext('2d')
-        let W, H
-        const pts = Array.from({ length: 55 }, () => ({
-          x: Math.random() * innerWidth, y: Math.random() * innerHeight,
-          r: Math.random() * 0.8 + 0.15,
-          vx: (Math.random() - 0.5) * 0.12, vy: (Math.random() - 0.5) * 0.12,
-          o: Math.random() * 0.15 + 0.03,
-        }))
-        const rsz = () => { W = cvs.width = innerWidth; H = cvs.height = innerHeight }
-        rsz(); window.addEventListener('resize', rsz)
-        const draw = () => {
-          ctx.clearRect(0, 0, W, H)
-          for (const p of pts) {
-            ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2)
-            ctx.fillStyle = `rgba(212,160,23,${p.o})`; ctx.fill()
-            p.x += p.vx; p.y += p.vy
-            if (p.x < 0) p.x = W; if (p.x > W) p.x = 0
-            if (p.y < 0) p.y = H; if (p.y > H) p.y = 0
-          }
-          this._rafParticles = requestAnimationFrame(draw)
-        }
-        draw()
-      })
-    },
-
-    onScroll() { this.navScrolled = window.scrollY > 30 },
-
-    initReveal() {
+  methods: {    initReveal() {
       const obs = new IntersectionObserver(
         (es) => es.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible') }),
         { threshold: 0.08, rootMargin: '0px 0px -30px 0px' }
@@ -419,47 +294,11 @@ export default {
   background: var(--bg);
   color: var(--white);
   overflow-x: hidden;
-  cursor: none;
   min-height: 100vh;
 }
 
-/* CURSOR */
-.cur { position:fixed;top:0;left:0;width:8px;height:8px;background:var(--gold-l);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .15s,height .15s; }
-.cur-ring { position:fixed;top:0;left:0;width:32px;height:32px;border:1.5px solid rgba(212,160,23,.45);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%); }
-
-.noise { position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.025;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px; }
-.ambient { position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(ellipse 70% 50% at -5% 0%,rgba(212,160,23,.05) 0%,transparent 55%),radial-gradient(ellipse 50% 40% at 105% 100%,rgba(139,105,20,.05) 0%,transparent 55%); }
-canvas { position:fixed;inset:0;pointer-events:none;z-index:0; }
-
-/* PRELOADER */
-.preloader { position:fixed;inset:0;z-index:99999;background:var(--bg);display:flex;align-items:center;justify-content:center;flex-direction:column;transition:opacity .8s ease; }
-.preloader-orbit-wrap { position:relative;width:200px;height:200px;display:flex;align-items:center;justify-content:center; }
-.preloader-orbit-ring { position:absolute;inset:0;animation:orbit-spin 8s linear infinite; }
-.preloader-orbit-ring svg { width:100%;height:100%; }
-.preloader-orbit-ring textPath { fill:var(--gold);font-family:'Cinzel',serif;font-size:11px;letter-spacing:3px; }
-.preloader-logo-center { position:absolute;width:80px;height:80px;display:flex;align-items:center;justify-content:center; }
-.preloader-logo-img { width:80px;height:80px;object-fit:contain;border-radius:50%;animation:pulse-logo 2s ease-in-out infinite;filter:drop-shadow(0 0 16px rgba(212,160,23,.7)); }
-.preloader-logo-letter { font-family:'Cinzel',serif;font-size:3rem;font-weight:900;background:linear-gradient(135deg,var(--gold-l),var(--gold),var(--gold-d));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text; }
-.preloader-bar { width:140px;height:2px;background:rgba(212,160,23,.1);border-radius:99px;margin:1.25rem auto .65rem;overflow:hidden; }
-.preloader-fill { height:100%;background:linear-gradient(90deg,var(--gold-d),var(--gold-l),var(--gold-d));border-radius:99px;transition:width 1.2s cubic-bezier(.4,0,.2,1); }
-.preloader-text { color:var(--white-dim);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase; }
-
-/* NAVBAR */
-nav { position:fixed;top:0;left:0;right:0;z-index:200;padding:0 48px;height:68px;display:flex;align-items:center;justify-content:space-between;transition:background .4s,border-color .4s;border-bottom:1px solid transparent; }
-nav.scrolled { background:rgba(8,7,5,.92);backdrop-filter:blur(20px);border-color:var(--border); }
-.nav-brand { display:flex;align-items:center;gap:10px;text-decoration:none; }
-.nav-logo-wrap { width:38px;height:38px;border-radius:50%;overflow:hidden;border:1.5px solid var(--border);background:var(--surface);display:flex;align-items:center;justify-content:center;flex-shrink:0; }
-.nav-logo-wrap img { width:100%;height:100%;object-fit:cover; }
-.nav-brand-name { font-family:'Cinzel',serif;font-size:14px;font-weight:700;color:var(--white);letter-spacing:.1em; }
-.nav-brand-sub { font-size:9px;font-weight:400;color:var(--white-dim);letter-spacing:.12em;text-transform:uppercase; }
-.nav-links { display:flex;align-items:center;gap:28px; }
-.nav-links a { font-size:13.5px;font-weight:400;color:var(--white-dim);text-decoration:none;transition:color .25s; }
-.nav-links a:hover,.nav-links a.active,.nav-links a.router-link-active { color:var(--gold-l); }
-.nav-cta { background:var(--gold);color:#000;font-size:13px;font-weight:700;padding:9px 20px;border-radius:8px;text-decoration:none;display:flex;align-items:center;gap:6px;transition:background .25s,transform .2s;letter-spacing:.04em; }
-.nav-cta:hover { background:var(--gold-l);transform:translateY(-1px); }
-
 /* HERO */
-.hero { min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:120px 48px 80px;position:relative;z-index:2; }
+.hero { min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:100px 48px 80px;position:relative;z-index:2; }
 .container { max-width:1160px;margin:0 auto; }
 .hero-pill { display:inline-flex;align-items:center;gap:8px;background:rgba(212,160,23,.1);border:1px solid rgba(212,160,23,.3);padding:7px 16px;border-radius:100px;width:fit-content;font-size:12px;font-weight:500;color:var(--gold-l);margin-bottom:28px;opacity:0;animation:fadeUp .7s ease .2s forwards; }
 .hero-pill-dot { width:6px;height:6px;border-radius:50%;background:var(--gold);animation:pulse-dot 1.8s ease-in-out infinite; }
@@ -561,14 +400,6 @@ nav.scrolled { background:rgba(8,7,5,.92);backdrop-filter:blur(20px);border-colo
 .past-ftag { font-size:11px;padding:4px 10px;border-radius:5px;background:var(--white-faint);color:var(--white-dim);border:1px solid var(--border); }
 .past-view-more { font-size:11px;font-weight:500;color:var(--gold);text-decoration:none;transition:opacity .2s; }
 .past-view-more:hover { opacity:.7; }
-
-/* FOOTER */
-footer { border-top:1px solid var(--border);padding:40px 48px;display:flex;align-items:center;justify-content:space-between;position:relative;z-index:2; }
-.footer-brand { display:flex;align-items:center;gap:10px; }
-.footer-logo { width:32px;height:32px;border-radius:50%;background:var(--gold-dim);border:1.5px solid var(--border);overflow:hidden;display:flex;align-items:center;justify-content:center; }
-.footer-logo img { width:100%;height:100%;object-fit:cover; }
-.footer-name { font-family:'Cinzel',serif;font-size:14px;font-weight:700;letter-spacing:.08em; }
-.footer-right { font-size:12px;color:rgba(245,237,208,.2);letter-spacing:.05em; }
 
 /* REVEAL */
 .reveal { opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease; }
