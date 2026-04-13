@@ -31,6 +31,19 @@
             </div>
           </div>
         </div>
+
+        <div style="margin-top: 4rem; text-align: center; padding: 3rem 2rem; background: var(--surface); border: 1px solid var(--border); border-radius: 16px;">
+          <div style="font-size: 2.2rem; margin-bottom: 1rem;">🌍</div>
+          <h3 style="font-family: Cinzel, serif; font-size: 1.6rem; margin-bottom: 1rem; font-weight: 700;">
+            Bring the Community to Your City
+          </h3>
+          <p style="color: var(--text2); margin-bottom: 1.75rem; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.6;">
+            Want a meetup in your city like Siliguri or Guwahati? Suggest a location, pitch an activity, or volunteer as a host. Help us expand the Sundarbans family!
+          </p>
+          <a href="https://forms.gle/iHeYQsAbsUTBHJJC6" target="_blank" rel="noopener noreferrer" class="submit-btn" style="display: inline-block; text-decoration: none;">
+            Suggest Location or Volunteer
+          </a>
+        </div>
       </div>
     </section>
 

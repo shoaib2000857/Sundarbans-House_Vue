@@ -489,77 +489,27 @@
 
         <div
           class="card-base"
-          style="max-width: 820px; margin: 0 auto; padding: 2rem">
+          style="max-width: 820px; margin: 0 auto; padding: 2.5rem 2rem; text-align: center;">
           <h3
             style="
               font-family: Cinzel, serif;
               font-weight: 700;
-              font-size: 1.2rem;
-              margin-bottom: 1.5rem;
+              font-size: 1.4rem;
+              margin-bottom: 1rem;
             ">
-            Submit Your Doubt
+            Have a Doubt?
           </h3>
-          <div style="margin-bottom: 1rem">
-            <label
-              style="
-                display: block;
-                font-size: 0.8rem;
-                letter-spacing: 0.08em;
-                text-transform: uppercase;
-                color: var(--text3);
-                margin-bottom: 0.5rem;
-              "
-              >Subject</label
-            >
-            <select v-model="dbForm.subject" class="db-input">
-              <option value="">Select Subject</option>
-              <option value="Math">Mathematics</option>
-              <option value="Stats">Statistics</option>
-              <option value="Python">Python</option>
-              <option value="DBMS">DBMS</option>
-              <option value="DSA">DSA</option>
-              <option value="ML">Machine Learning</option>
-              <option value="Other">Other</option>
-            </select>
-          </div>
-          <div style="margin-bottom: 1.25rem">
-            <label
-              style="
-                display: block;
-                font-size: 0.8rem;
-                letter-spacing: 0.08em;
-                text-transform: uppercase;
-                color: var(--text3);
-                margin-bottom: 0.5rem;
-              "
-              >Your Doubt
-              <span
-                style="
-                  color: var(--text3);
-                  font-style: italic;
-                  text-transform: none;
-                  letter-spacing: 0;
-                "
-                >(min 10 characters)</span
-              >
-            </label>
-            <textarea
-              v-model="dbForm.question"
-              class="db-input"
-              rows="4"
-              placeholder="Describe your doubt in detail..."></textarea>
-          </div>
-          <button class="submit-btn" @click="submitDoubt">
-            Submit Anonymously
-          </button>
-          <p
-            v-if="dbMessage"
-            style="margin-top: 0.75rem; font-size: 0.85rem"
-            :style="{
-              color: dbMessageType === 'error' ? '#e74c3c' : 'var(--accent)',
-            }">
-            {{ dbMessage }}
+          <p style="color: var(--text2); margin-bottom: 1.5rem; font-size: 0.95rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+            Submit your doubts anonymously using our Google form. Community members or WebOps will review and post answers on the board.
           </p>
+          <a
+            href="https://forms.gle/vZox3LpVrXti74UH7"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="submit-btn"
+            style="display: inline-block; text-decoration: none;">
+            Open Doubts Form
+          </a>
         </div>
       </div>
     </section>
@@ -649,11 +599,13 @@
                 >WebOps review ensures quality
               </li>
             </ul>
-            <router-link
-              to="/contact"
+            <a
+              href="https://forms.gle/c86b55AZ517Q8Ahg6"
+              target="_blank"
+              rel="noopener noreferrer"
               class="submit-btn"
-              style="align-self: flex-start"
-              >Submit a Resource</router-link
+              style="align-self: flex-start; text-decoration: none;"
+              >Submit a Resource</a
             >
           </div>
 
@@ -732,16 +684,19 @@
                 >Helps WebOps prioritize
               </li>
             </ul>
-            <router-link
-              to="/contact"
+            <a
+              href="https://forms.gle/KNm4hyupaG22Huxd6"
+              target="_blank"
+              rel="noopener noreferrer"
               class="submit-btn"
               style="
                 align-self: flex-start;
                 background: transparent;
                 border: 1px solid var(--accent);
                 color: var(--accent);
+                text-decoration: none;
               "
-              >Request a Resource</router-link
+              >Request a Resource</a
             >
           </div>
         </div>
