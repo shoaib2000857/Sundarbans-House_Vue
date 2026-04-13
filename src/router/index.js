@@ -51,7 +51,7 @@ const routes = [
   { path: '/meetups/hyderabad',    component: HyderabadMeetups },
   { path: '/meetups/patna',        component: PatnaMeetups },
   { path: '/meetups/chandigarh',   component: ChandigarhMeetups },
-  { path: '/meetups/pune',         component: PuneMeetups },
+ 
   
   { 
     path: '/lounge', 
