@@ -1,7 +1,7 @@
 <template>
   <div>
     <PageHero
-      bg-image="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1920&q=80&auto=format&fit=crop"
+      bg-image="https://t3.ftcdn.net/jpg/01/64/19/92/360_F_164199298_CRLCgfoGAoEEprge3Deyc8L1dXSHOCMQ.jpg"
       breadcrumb-title="About"
       title="About"
       accent-title="Sundarbans House"
