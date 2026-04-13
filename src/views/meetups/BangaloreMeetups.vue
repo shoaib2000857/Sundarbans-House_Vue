@@ -1,7 +1,4 @@
-<!-- ============================================================
-  BANGALORE
-  Save as: src/views/meetups/BangaloreMeetups.vue
-  ============================================================ -->
+
 <template>
   <RegionMeetups :config="config" />
 </template>
