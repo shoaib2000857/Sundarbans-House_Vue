@@ -62,3 +62,46 @@ router.beforeEach((to, from, next) => {
     next()
   }
 })
+
+
+import { createRouter, createWebHistory } from 'vue-router'
+
+// Main pages — merge with your existing routes
+import Meetups from '@/views/Meetups.vue'
+
+// Region meetup pages
+import DelhiMeetups      from '@/views/meetups/DelhiMeetups.vue'
+import MumbaiMeetups     from '@/views/meetups/MumbaiMeetups.vue'
+import BangaloreMeetups  from '@/views/meetups/BangaloreMeetups.vue'
+import ChennaiMeetups    from '@/views/meetups/ChennaiMeetups.vue'
+import KolkataMeetups    from '@/views/meetups/KolkataMeetups.vue'
+import HyderabadMeetups  from '@/views/meetups/HyderabadMeetups.vue'
+import PatnaMeetups      from '@/views/meetups/PatnaMeetups.vue'
+import ChandigarhMeetups from '@/views/meetups/ChandigarhMeetups.vue'
+import LucknowMeetups    from '@/views/meetups/LucknowMeetups.vue'
+
+const routes = [
+  // ... paste your existing routes above this line
+
+  { path: '/meetups',            component: Meetups },
+  { path: '/meetups/delhi',      component: DelhiMeetups },
+  { path: '/meetups/mumbai',     component: MumbaiMeetups },
+  { path: '/meetups/bangalore',  component: BangaloreMeetups },
+  { path: '/meetups/chennai',    component: ChennaiMeetups },
+  { path: '/meetups/kolkata',    component: KolkataMeetups },
+  { path: '/meetups/hyderabad',  component: HyderabadMeetups },
+  { path: '/meetups/patna',      component: PatnaMeetups },
+  { path: '/meetups/chandigarh', component: ChandigarhMeetups },
+  { path: '/meetups/lucknow',    component: LucknowMeetups },
+]
+
+const router = createRouter({
+  history: createWebHistory(),
+  routes,
+  scrollBehavior(to) {
+    if (to.hash) return { el: to.hash, behavior: 'smooth' }
+    return { top: 0 }
+  },
+})
+
+export default router
