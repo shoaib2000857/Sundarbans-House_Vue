@@ -381,14 +381,17 @@
 <canvas id="bg-canvas"></canvas>
 <div class="grain"></div>
 
+<!-- Redirect if already logged in -->
+<script>
+  if (localStorage.getItem('houseMember')) {
+    window.location.replace('members.html');
+  }
+</script>
+
 <div class="layout">
 
-  
-
-
-    
-
-    
+  <!-- LEFT: FORM -->
+  <div class="left-panel">
 
     <div class="heading-block">
       <div class="heading-label">Member Portal</div>
@@ -416,7 +419,7 @@
     </div>
 
     <p class="footer-text">Sundarbans House · IIT Madras BS Programme · Est. 2021</p>
-  </div>
+  </div><!-- /left-panel -->
 
   <!-- RIGHT: VISUAL -->
   <div class="right-panel">
