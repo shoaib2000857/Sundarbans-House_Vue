@@ -127,23 +127,18 @@ import PageHero from '../components/PageHero.vue'
 useScrollReveal()
 
 const cities = [
-  {
-    name: 'Mumbai',
-    members: '450+ members',
-    img: 'https://images.unsplash.com/photo-1529253355930-ddbe423a2ac7?w=600&q=80&auto=format&fit=crop',
-    link: '/meetups/mumbai',
-  },
-  {
-    name: 'Patna',
-    members: '180+ members',
-    img: 'https://images.unsplash.com/photo-1567157577867-05ccb1388e66?w=600&q=80&auto=format&fit=crop',
-    link: '/meetups/patna',
-  },
+
   {
     name: 'Delhi',
     members: '320+ members',
     img: 'https://images.unsplash.com/photo-1587474260584-136574528ed5?w=600&q=80&auto=format&fit=crop',
     link: '/meetups/delhi',
+  },
+  {
+    name: 'Mumbai',
+    members: '450+ members',
+    img: 'https://images.unsplash.com/photo-1529253355930-ddbe423a2ac7?w=600&q=80&auto=format&fit=crop',
+    link: '/meetups/mumbai',
   },
   {
     name: 'Kolkata',
@@ -152,11 +147,12 @@ const cities = [
     link: '/meetups/kolkata',
   },
   {
-    name: 'Hyderabad',
-    members: '310+ members',
-    img: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&q=80&auto=format&fit=crop',
-    link: '/meetups/hyderabad',
+    name: 'Patna',
+    members: '180+ members',
+    img: 'https://images.unsplash.com/photo-1567157577867-05ccb1388e66?w=600&q=80&auto=format&fit=crop',
+    link: '/meetups/patna',
   },
+  
   {
     name: 'Bangalore',
     members: '580+ members',
@@ -169,18 +165,29 @@ const cities = [
     img: 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=600&q=80&auto=format&fit=crop',
     link: '/meetups/chennai',
   },
+  
+  {
+    name: 'Hyderabad',
+    members: '310+ members',
+    img: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&q=80&auto=format&fit=crop',
+    link: '/meetups/hyderabad',
+  },
+
   {
     name: 'Chandigarh',
     members: '150+ members',
     img: 'https://images.unsplash.com/photo-1609234656432-603dae0e9f3e?w=600&q=80&auto=format&fit=crop',
     link: '/meetups/chandigarh',
   },
+  
   {
     name: 'Lucknow',
     members: '200+ members',
     img: 'https://images.unsplash.com/photo-1567408212163-2bbf1c0c35f0?w=600&q=80&auto=format&fit=crop',
     link: '/meetups/lucknow',
   },
+  
+  
 ]
 
 const tabs = ['All Time', 'This Month', 'This Week']
