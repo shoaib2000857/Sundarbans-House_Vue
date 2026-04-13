@@ -1,7 +1,7 @@
 <template>
   <div>
     <PageHero
-      bg-image="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1920&q=80&auto=format&fit=crop"
+      bg-image="https://img.freepik.com/free-vector/politician-sitting-round-table-boardroom-board-directors-with-ceo-holding-formal-talk-office-room-flat-vector-illustration-business-authority-corporate-leader-planning-strategy-concept_74855-22013.jpg?semt=ais_hybrid&w=740&q=80"
       breadcrumb-title="Meetups"
       title="City"
       accent-title="Meetups"
