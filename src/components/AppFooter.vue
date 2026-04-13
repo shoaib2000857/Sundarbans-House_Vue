@@ -40,12 +40,10 @@
           <router-link to="/teams">Our Teams</router-link>
           <router-link to="/events">Events</router-link>
           <router-link to="/contact">Contact</router-link>
-          <router-link to="/social">Social Media</router-link>
         </div>
         <div class="flinks">
           <h4>Resources</h4>
           <router-link to="/study">Study Corner</router-link>
-          <router-link to="/gallery">Gallery</router-link>
           <router-link to="/meetups">Meetups</router-link>
           <router-link to="/community">Communities</router-link>
           <router-link to="/members">Members Lounge</router-link>
