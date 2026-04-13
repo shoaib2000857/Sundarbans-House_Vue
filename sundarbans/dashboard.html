@@ -1,0 +1,2235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sundarbans — House Widgets</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+/* ============================================================
+   SUNDARBANS HOUSE WIDGETS — styles.css
+   Design System: Dark Forest Luxury
+   Fonts: Cormorant Garamond (display) · Outfit (body)
+   ============================================================ */
+
+/* ── DESIGN TOKENS ── */
+:root {
+  /* Backgrounds */
+  --black:       #060808;
+  --deep:        #0a0f0a;
+  --forest:      #131d13;
+  --panel:       rgba(15, 22, 15, 0.88);
+  --panel-solid: #0f160f;
+
+  /* Borders */
+  --border:      rgba(201, 168, 76, 0.20);
+  --border-soft: rgba(255, 255, 255, 0.07);
+
+  /* Gold palette */
+  --gold:        #c9a84c;
+  --gold-light:  #e8c97a;
+  --gold-dim:    rgba(201, 168, 76, 0.12);
+  --gold-dim2:   rgba(201, 168, 76, 0.06);
+
+  /* Text */
+  --cream:  #f5f0e8;
+  --muted:  rgba(245, 240, 232, 0.50);
+  --subtle: rgba(245, 240, 232, 0.08);
+
+  /* Accent colours */
+  --green:  #4caf50;
+  --red:    #e07070;
+  --blue:   #7ab0e0;
+  --purple: #b07ae0;
+}
+
+/* ── RESET & BASE ── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html  { scroll-behavior: smooth; }
+body  {
+  background: var(--black);
+  color: var(--cream);
+  font-family: 'Outfit', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── PAGE LOADER ── */
+#page-loader {
+  position: fixed; inset: 0; z-index: 9999;
+  background: var(--black);
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: 24px;
+  transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+#page-loader.hide { opacity: 0; visibility: hidden; pointer-events: none; }
+.loader-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 42px; font-weight: 300; color: var(--gold);
+  animation: pulse-glow 1.5s ease-in-out infinite;
+}
+.loader-bar {
+  width: 180px; height: 1px;
+  background: var(--border-soft);
+  position: relative; overflow: hidden;
+}
+.loader-fill {
+  position: absolute; inset-y: 0; left: 0;
+  width: 0; height: 100%;
+  background: var(--gold);
+  animation: load-fill 1.2s cubic-bezier(0.4,0,0.2,1) forwards;
+}
+@keyframes load-fill { to { width: 100%; } }
+@keyframes pulse-glow {
+  0%,100% { text-shadow: 0 0 20px rgba(201,168,76,0.3); }
+  50%      { text-shadow: 0 0 40px rgba(201,168,76,0.7); }
+}
+
+/* ── FILM GRAIN OVERLAY ── */
+.grain {
+  position: fixed;
+  inset: -200%;
+  width: 400%;
+  height: 400%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
+  opacity: 0.035;
+  pointer-events: none;
+  z-index: 1;
+  animation: grain-drift 8s steps(10) infinite;
+}
+@keyframes grain-drift {
+  0%,100% { transform: translate(0,    0   ) }
+  10%     { transform: translate(-2%, -3%  ) }
+  20%     { transform: translate(-5%,  2%  ) }
+  30%     { transform: translate( 3%, -4%  ) }
+  40%     { transform: translate(-4%,  5%  ) }
+  50%     { transform: translate(-1%, -2%  ) }
+  60%     { transform: translate( 4%,  3%  ) }
+  70%     { transform: translate( 3%,  1%  ) }
+  80%     { transform: translate(-3%,  4%  ) }
+  90%     { transform: translate( 2%, -3%  ) }
+}
+
+/* ── CONFETTI CANVAS ── */
+#confetti-canvas {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ── SHARED ANIMATIONS ── */
+@keyframes pop-in   { from { opacity: 0; transform: scale(.7)        } to { opacity: 1; transform: scale(1)       } }
+@keyframes slide-up { from { opacity: 0; transform: translateY(12px) } to { opacity: 1; transform: translateY(0) } }
+@keyframes flame-flicker {
+  0%,100% { transform: rotate(-2deg) scale(1)    }
+  33%     { transform: rotate( 2deg) scale(1.05) }
+  66%     { transform: rotate(-1deg) scale(.97)  }
+}
+
+/* ═══════════════════════════════════════════
+   NAVIGATION
+═══════════════════════════════════════════ */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(6, 8, 8, 0.93);
+  backdrop-filter: blur(24px);
+  border-bottom: 1px solid var(--border-soft);
+  padding: 0 48px;
+  height: 68px;
+  display: flex;
+  align-items: center;
+}
+.nav-inner {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+.nav-brand-icon {
+  width: 34px; height: 34px;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  display: grid;
+  place-items: center;
+  font-size: 16px;
+  background: var(--gold-dim);
+}
+.nav-brand-name {
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.nav-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 14px;
+  color: var(--muted);
+  font-style: italic;
+}
+.back-link {
+  padding: 8px 18px;
+  border: 1px solid var(--border-soft);
+  border-radius: 6px;
+  font-size: 12px;
+  color: var(--muted);
+  text-decoration: none;
+  letter-spacing: .05em;
+  transition: all .2s;
+}
+.back-link:hover { border-color: var(--border); color: var(--gold); }
+
+/* ═══════════════════════════════════════════
+   PAGE HERO
+═══════════════════════════════════════════ */
+.page-hero {
+  padding: 70px 48px 50px;
+  max-width: 1400px;
+  margin: 0 auto;
+  text-align: center;
+}
+.page-hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(38px, 5vw, 66px);
+  font-weight: 300;
+  line-height: 1.08;
+}
+.page-hero h1 em { font-style: italic; color: var(--gold); }
+.page-hero p     { color: var(--muted); margin-top: 12px; font-size: 15px; font-weight: 300; }
+
+/* ═══════════════════════════════════════════
+   WIDGET GRID LAYOUT
+═══════════════════════════════════════════ */
+.widgets-grid {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 48px 120px;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 20px;
+}
+
+/* Column span helpers */
+.w-4  { grid-column: span 4;  }
+.w-5  { grid-column: span 5;  }
+.w-6  { grid-column: span 6;  }
+.w-7  { grid-column: span 7;  }
+.w-8  { grid-column: span 8;  }
+.w-12 { grid-column: span 12; }
+
+/* ═══════════════════════════════════════════
+   BASE WIDGET CARD
+═══════════════════════════════════════════ */
+.widget {
+  background: var(--panel);
+  border: 1px solid var(--border-soft);
+  border-radius: 20px;
+  padding: 36px;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(12px);
+  transition: border-color .3s;
+}
+.widget:hover { border-color: var(--border); }
+
+/* Ambient glow blob inside each card */
+.widget-glow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(80px);
+  opacity: .12;
+}
+
+/* Widget header typography */
+.widget-label {
+  font-size: 9px;
+  letter-spacing: .35em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.widget-label::before {
+  content: '';
+  display: block;
+  width: 24px; height: 1px;
+  background: var(--gold);
+}
+.widget-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  font-weight: 300;
+  margin-bottom: 22px;
+  line-height: 1.15;
+}
+
+/* ═══════════════════════════════════════════
+   SHARED BUTTON SYSTEM
+═══════════════════════════════════════════ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 22px;
+  border-radius: 100px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all .22s;
+  border: none;
+  text-decoration: none;
+}
+.btn-gold    { background: var(--gold); color: var(--black); }
+.btn-gold:hover { background: var(--gold-light); transform: scale(1.03); }
+
+.btn-outline { background: transparent; border: 1px solid var(--border); color: var(--gold); }
+.btn-outline:hover { background: var(--gold); color: var(--black); border-color: var(--gold); }
+
+.btn-ghost   { background: var(--subtle); color: var(--muted); border: 1px solid var(--border-soft); }
+.btn-ghost:hover { background: var(--gold-dim); color: var(--cream); border-color: var(--border); }
+
+.btn-green   { background: rgba(76,175,80,0.2); color: var(--green); border: 1px solid rgba(76,175,80,0.35); }
+.btn-green:hover { background: rgba(76,175,80,0.35); }
+
+.btn:disabled { opacity: .35; cursor: not-allowed; transform: none !important; pointer-events: none; }
+
+/* ═══════════════════════════════════════════
+   1. STUDY STREAK
+═══════════════════════════════════════════ */
+.streak-flame-wrap {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+.streak-flame {
+  line-height: 1;
+  transition: font-size .6s cubic-bezier(.34, 1.56, .64, 1);
+  filter: drop-shadow(0 0 20px rgba(255,140,0,.5));
+  animation: flame-flicker 2.5s ease-in-out infinite;
+}
+.streak-number {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 68px;
+  font-weight: 300;
+  line-height: 1;
+  color: var(--gold-light);
+}
+.streak-label {
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+.streak-days-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+  margin-bottom: 22px;
+}
+.streak-day {
+  aspect-ratio: 1;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all .3s;
+}
+.streak-day.done {
+  background: linear-gradient(135deg, rgba(255,140,0,.25), rgba(201,168,76,.15));
+  border: 1px solid rgba(201,168,76,.4);
+}
+.streak-day.empty {
+  background: var(--subtle);
+  border: 1px solid var(--border-soft);
+  color: var(--muted);
+}
+.streak-day.today-slot {
+  border: 1px solid var(--gold) !important;
+  box-shadow: 0 0 12px rgba(201,168,76,.25);
+}
+.streak-day-name { font-size: 7px; color: var(--muted); margin-bottom: 3px; letter-spacing: .05em; }
+.streak-day-icon { font-size: 14px; }
+.streak-checkin-row { display: flex; align-items: center; gap: 12px; }
+.streak-checked-msg {
+  font-size: 13px;
+  color: var(--green);
+  display: none;
+  align-items: center;
+  gap: 6px;
+  animation: pop-in .4s cubic-bezier(.34,1.56,.64,1);
+}
+.streak-checked-msg.show { display: flex; }
+.streak-best            { font-size: 11px; color: var(--muted); margin-top: 12px; }
+.streak-best span       { color: var(--gold); font-family: 'Cormorant Garamond', serif; font-size: 16px; }
+
+/* ═══════════════════════════════════════════
+   2. MOOD WALL
+═══════════════════════════════════════════ */
+.mood-options {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 22px;
+  flex-wrap: wrap;
+}
+.mood-opt {
+  flex: 1; min-width: 60px;
+  padding: 12px 6px;
+  border-radius: 12px;
+  border: 1px solid var(--border-soft);
+  background: var(--subtle);
+  cursor: pointer;
+  display: flex; flex-direction: column; align-items: center; gap: 5px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 10px; color: var(--muted); letter-spacing: .06em;
+  transition: all .22s;
+}
+.mood-opt .mood-emoji         { font-size: 22px; display: block; }
+.mood-opt:hover:not(:disabled) { border-color: var(--border); background: var(--gold-dim); transform: translateY(-2px); }
+.mood-opt.selected             { border-color: var(--gold) !important; background: var(--gold-dim) !important; color: var(--gold) !important; }
+.mood-opt:disabled             { cursor: not-allowed; opacity: .75; }
+
+.mood-bars    { display: flex; flex-direction: column; gap: 10px; }
+.mood-bar-row { display: flex; align-items: center; gap: 10px; }
+.mood-bar-emoji { width: 22px; font-size: 15px; flex-shrink: 0; text-align: center; }
+.mood-bar-track {
+  flex: 1; height: 8px;
+  border-radius: 100px;
+  background: var(--subtle);
+  overflow: hidden;
+}
+.mood-bar-fill {
+  height: 100%;
+  border-radius: 100px;
+  width: 0%;
+  transition: width 1.1s cubic-bezier(.34, 1.1, .64, 1);
+}
+.mood-bar-count { width: 30px; font-size: 11px; color: var(--muted); text-align: right; flex-shrink: 0; }
+.mood-total { font-size: 11px; color: var(--muted); margin-top: 12px; text-align: center; }
+.mood-voted-msg {
+  font-size: 12px; color: var(--green); margin-top: 10px; text-align: center;
+  display: none;
+  animation: pop-in .4s cubic-bezier(.34,1.56,.64,1);
+}
+.mood-voted-msg.show { display: block; }
+
+/* ═══════════════════════════════════════════
+   3. CONFESSION WALL
+═══════════════════════════════════════════ */
+.confession-input-wrap { position: relative; margin-bottom: 14px; }
+.confession-textarea {
+  width: 100%; background: var(--subtle);
+  border: 1px solid var(--border-soft); border-radius: 12px;
+  padding: 14px 16px; color: var(--cream);
+  font-family: 'Outfit', sans-serif; font-size: 13px;
+  resize: none; min-height: 86px; outline: none;
+  transition: border-color .2s;
+}
+.confession-textarea:focus       { border-color: var(--border); }
+.confession-textarea::placeholder { color: var(--muted); }
+.char-count      { position: absolute; bottom: 10px; right: 12px; font-size: 10px; color: var(--muted); }
+.char-count.warn { color: var(--red); }
+.confession-submit-row { display: flex; align-items: center; gap: 10px; margin-bottom: 18px; }
+.confession-anon { font-size: 11px; color: var(--muted); flex: 1; }
+.confession-list {
+  display: flex; flex-direction: column; gap: 11px;
+  max-height: 310px; overflow-y: auto; padding-right: 3px;
+}
+.confession-list::-webkit-scrollbar       { width: 3px; }
+.confession-list::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+.confession-item {
+  background: var(--subtle); border: 1px solid var(--border-soft);
+  border-radius: 14px; padding: 15px 17px;
+  transition: border-color .2s;
+  animation: slide-up .4s cubic-bezier(.16, 1, .3, 1);
+}
+.confession-item:hover { border-color: var(--border); }
+.confession-text {
+  font-size: 13px; line-height: 1.65;
+  margin-bottom: 11px; word-break: break-word;
+}
+.confession-meta  { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.confession-time  { font-size: 10px; color: var(--muted); margin-right: auto; letter-spacing: .04em; }
+.reaction-btn {
+  padding: 4px 10px; border-radius: 100px;
+  border: 1px solid var(--border-soft); background: var(--subtle);
+  font-size: 12px; cursor: pointer; transition: all .2s;
+  display: inline-flex; align-items: center; gap: 4px;
+  color: var(--muted); font-family: 'Outfit', sans-serif;
+}
+.reaction-btn:hover  { border-color: var(--border); background: var(--gold-dim); color: var(--cream); transform: scale(1.06); }
+.reaction-btn.reacted { border-color: var(--gold); background: var(--gold-dim); color: var(--gold); }
+.conf-empty { text-align: center; padding: 26px; font-size: 13px; color: var(--muted); }
+
+/* ═══════════════════════════════════════════
+   4. HOUSE POINTS
+═══════════════════════════════════════════ */
+.points-total-wrap  { text-align: center; margin-bottom: 30px; }
+.points-total       { font-family: 'Cormorant Garamond', serif; font-size: 84px; font-weight: 300; color: var(--gold-light); line-height: 1; display: block; }
+.points-total-label { font-size: 10px; letter-spacing: .25em; text-transform: uppercase; color: var(--muted); margin-top: 6px; }
+.points-categories  { display: flex; flex-direction: column; gap: 11px; }
+.points-cat {
+  display: flex; align-items: center; gap: 12px;
+  padding: 14px 18px; border-radius: 12px;
+  background: var(--subtle); border: 1px solid var(--border-soft);
+  transition: all .3s;
+}
+.points-cat:hover      { border-color: var(--border); background: var(--gold-dim); }
+.points-cat-icon       { font-size: 20px; flex-shrink: 0; }
+.points-cat-info       { flex: 1; }
+.points-cat-name       { font-size: 13px; font-weight: 500; margin-bottom: 5px; }
+.points-cat-bar        { height: 4px; border-radius: 100px; background: var(--subtle); overflow: hidden; }
+.points-cat-fill       { height: 100%; border-radius: 100px; width: 0; transition: width 1.8s cubic-bezier(.16, 1, .3, 1); }
+.points-cat-val        { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 300; color: var(--gold-light); }
+
+/* ═══════════════════════════════════════════
+   5. POMODORO TIMER
+═══════════════════════════════════════════ */
+.pomo-phase-tabs { display: flex; gap: 8px; margin-bottom: 22px; }
+.pomo-tab {
+  padding: 7px 16px; border-radius: 100px;
+  border: 1px solid var(--border-soft); background: transparent;
+  color: var(--muted); font-family: 'Outfit', sans-serif;
+  font-size: 11px; letter-spacing: .08em; cursor: pointer; transition: all .2s;
+}
+.pomo-tab.active { background: var(--gold-dim); border-color: var(--border); color: var(--gold); }
+
+.pomo-ring-wrap {
+  display: flex; justify-content: center;
+  margin-bottom: 18px; position: relative;
+}
+.pomo-ring-svg    { transform: rotate(-90deg); }
+.pomo-ring-bg     { fill: none; stroke: var(--subtle); stroke-width: 7; }
+.pomo-ring-fill   {
+  fill: none; stroke: var(--gold); stroke-width: 7;
+  stroke-linecap: round;
+  stroke-dasharray: 440;
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 1s linear, stroke .4s;
+}
+.pomo-ring-fill.break     { stroke: var(--green); }
+.pomo-ring-fill.longbreak { stroke: var(--blue);  }
+
+.pomo-timer-text {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center; pointer-events: none;
+}
+.pomo-time-display {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 42px; font-weight: 300; color: var(--cream); line-height: 1;
+}
+.pomo-phase-label { font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); margin-top: 4px; }
+
+.pomo-session-row  { display: flex; align-items: center; gap: 6px; justify-content: center; margin-bottom: 14px; }
+.pomo-session-dot  {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--subtle); border: 1px solid var(--border-soft); transition: all .4s;
+}
+.pomo-session-dot.filled {
+  background: var(--gold); border-color: var(--gold);
+  box-shadow: 0 0 6px rgba(201,168,76,.5);
+}
+.pomo-session-lbl  { font-size: 10px; color: var(--muted); margin-left: 4px; }
+.pomo-controls     { display: flex; justify-content: center; gap: 9px; margin-bottom: 20px; flex-wrap: wrap; }
+.pomo-done-banner  {
+  text-align: center; padding: 11px;
+  background: rgba(76,175,80,.1); border: 1px solid rgba(76,175,80,.3);
+  border-radius: 10px; font-size: 13px; color: var(--green);
+  display: none; margin-bottom: 14px;
+  animation: pop-in .4s cubic-bezier(.34,1.56,.64,1);
+}
+.pomo-done-banner.show { display: block; }
+.pomo-studiers-label   { font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); margin-bottom: 9px; }
+.pomo-studiers         { display: flex; flex-wrap: wrap; gap: 7px; min-height: 32px; }
+.pomo-person {
+  display: flex; align-items: center; gap: 7px;
+  padding: 5px 12px; border-radius: 100px;
+  background: var(--subtle); border: 1px solid var(--border-soft);
+  font-size: 12px;
+  animation: pop-in .35s cubic-bezier(.34,1.56,.64,1);
+}
+.pomo-person.you       { border-color: var(--border); background: var(--gold-dim); color: var(--gold); }
+.pomo-person-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--green); box-shadow: 0 0 6px var(--green); flex-shrink: 0;
+}
+
+/* ═══════════════════════════════════════════
+   6. STUDY BUDDY MATCHER
+═══════════════════════════════════════════ */
+.buddy-fields           { display: flex; flex-direction: column; gap: 12px; margin-bottom: 14px; }
+.buddy-field label      { font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); margin-bottom: 5px; display: block; }
+.buddy-select {
+  width: 100%; background: var(--panel-solid);
+  border: 1px solid var(--border-soft); border-radius: 10px;
+  padding: 11px 36px 11px 14px; color: var(--cream);
+  font-family: 'Outfit', sans-serif; font-size: 13px;
+  outline: none; cursor: pointer; transition: border-color .2s;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23c9a84c' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+}
+.buddy-select:focus { border-color: var(--border); }
+.buddy-select option { background: #0f160f; color: var(--cream); }
+.buddy-select.error  { border-color: var(--red) !important; }
+.buddy-find-btn { width: 100%; border-radius: 10px !important; justify-content: center; margin-bottom: 14px; }
+.buddy-result {
+  background: var(--gold-dim2); border: 1px solid var(--border);
+  border-radius: 14px; padding: 20px 22px; display: none;
+  animation: slide-up .45s cubic-bezier(.16, 1, .3, 1);
+}
+.buddy-result.show          { display: block; }
+.buddy-result-header        { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+.buddy-avatar {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--gold-dim); border: 1px solid var(--border);
+  display: grid; place-items: center;
+  font-family: 'Cormorant Garamond', serif; color: var(--gold); font-weight: 600; font-size: 20px;
+  flex-shrink: 0;
+}
+.buddy-name-lbl   { font-size: 16px; font-weight: 500; }
+.buddy-roll-lbl   { font-size: 11px; color: var(--muted); }
+.buddy-match-pct  { font-size: 22px; font-family: 'Cormorant Garamond', serif; color: var(--green); }
+.buddy-match-sub  { font-size: 10px; color: var(--muted); }
+.buddy-tags       { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
+.buddy-tag        { padding: 4px 12px; border-radius: 100px; background: var(--subtle); border: 1px solid var(--border-soft); font-size: 10px; letter-spacing: .08em; color: var(--muted); }
+.buddy-connect-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.buddy-sent-msg   { font-size: 12px; color: var(--green); display: none; animation: pop-in .3s ease; }
+.buddy-sent-msg.show { display: inline; }
+
+/* ═══════════════════════════════════════════
+   7. DAILY CHALLENGE
+═══════════════════════════════════════════ */
+.challenge-header-row  { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; flex-wrap: wrap; }
+.diff-badge            { padding: 4px 12px; border-radius: 100px; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; font-weight: 600; }
+.diff-medium           { background: rgba(255,180,50,.18); color: #f5b642; border: 1px solid rgba(255,180,50,.3); }
+.diff-easy             { background: rgba(76,175,80,.18);  color: #4caf50; border: 1px solid rgba(76,175,80,.3);  }
+.diff-hard             { background: rgba(224,112,112,.18);color: #e07070; border: 1px solid rgba(224,112,112,.3);}
+.challenge-pts-badge   { padding: 4px 12px; border-radius: 100px; background: var(--gold-dim); border: 1px solid var(--border); font-size: 10px; color: var(--gold); letter-spacing: .08em; }
+.challenge-problem     { background: var(--subtle); border: 1px solid var(--border-soft); border-radius: 12px; padding: 17px 19px; margin-bottom: 14px; }
+.challenge-problem-title { font-size: 15px; font-weight: 500; margin-bottom: 8px; }
+.challenge-problem-desc  { font-size: 12px; color: var(--muted); line-height: 1.8; }
+.code-inline { background: rgba(255,255,255,.07); padding: 1px 5px; border-radius: 4px; font-family: monospace; font-size: 11px; }
+.challenge-code {
+  background: rgba(0,0,0,.35); border-radius: 8px;
+  padding: 10px 14px; font-family: monospace; font-size: 11px; color: #a8d8a8;
+  margin-top: 10px; border: 1px solid rgba(255,255,255,.06);
+  overflow-x: auto; white-space: pre;
+}
+.challenge-hint {
+  font-size: 12px; color: var(--muted);
+  background: rgba(201,168,76,.06); border: 1px dashed rgba(201,168,76,.25);
+  border-radius: 10px; padding: 13px 15px; margin-bottom: 13px;
+  display: none; animation: slide-up .3s ease; line-height: 1.75;
+}
+.challenge-hint.show { display: block; }
+.challenge-solved-wrap {
+  background: rgba(76,175,80,.1); border: 1px solid rgba(76,175,80,.3);
+  border-radius: 10px; padding: 11px 15px; margin-bottom: 14px;
+  font-size: 13px; color: var(--green); display: none;
+  animation: pop-in .4s cubic-bezier(.34,1.56,.64,1);
+}
+.challenge-solved-wrap.show { display: block; }
+.challenge-actions     { display: flex; gap: 8px; margin-bottom: 18px; flex-wrap: wrap; }
+.challenge-solvers-label { font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); margin-bottom: 9px; }
+.challenge-solvers { display: flex; flex-direction: column; gap: 7px; max-height: 200px; overflow-y: auto; }
+.challenge-solver {
+  display: flex; align-items: center; gap: 10px;
+  padding: 9px 12px; border-radius: 10px;
+  background: var(--subtle); border: 1px solid var(--border-soft);
+  font-size: 12px;
+  animation: slide-up .4s cubic-bezier(.16, 1, .3, 1);
+}
+.challenge-solver.me { border-color: var(--border); background: var(--gold-dim); }
+.solver-rank { font-family: 'Cormorant Garamond', serif; font-size: 18px; color: var(--muted); min-width: 18px; }
+.solver-name { flex: 1; font-weight: 500; }
+.solver-time { font-size: 11px; color: var(--muted); }
+.solver-pts  { font-size: 11px; color: var(--gold); }
+
+/* ═══════════════════════════════════════════
+   8. MEME OF THE WEEK
+═══════════════════════════════════════════ */
+.meme-winner-wrap {
+  background: var(--gold-dim2); border: 1px solid var(--border);
+  border-radius: 16px; padding: 20px; margin-bottom: 18px; text-align: center;
+}
+.meme-winner-crown  { font-size: 28px; margin-bottom: 6px; }
+.meme-winner-title  { font-family: 'Cormorant Garamond', serif; font-size: 18px; margin-bottom: 10px; font-weight: 300; }
+.meme-winner-img {
+  width: 100%; border-radius: 10px; aspect-ratio: 16/9;
+  background: linear-gradient(135deg, var(--forest), var(--deep));
+  display: flex; align-items: center; justify-content: center; font-size: 56px;
+  margin: 0 0 10px; overflow: hidden;
+}
+.meme-winner-img img   { width: 100%; height: 100%; object-fit: cover; }
+.meme-winner-byline    { font-size: 11px; color: var(--muted); margin-bottom: 10px; }
+.meme-winner-votes     { display: flex; justify-content: center; gap: 10px; }
+.meme-vote-pill        { padding: 6px 16px; border-radius: 100px; font-size: 12px; border: 1px solid; }
+.fire-pill             { border-color: rgba(255,100,0,.4); background: rgba(255,100,0,.1); }
+.dead-pill             { border-color: rgba(150,150,150,.3); background: rgba(150,150,150,.08); }
+.meme-cands-label      { font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); margin-bottom: 11px; }
+.meme-candidates       { display: flex; flex-direction: column; gap: 9px; margin-bottom: 16px; }
+.meme-candidate {
+  display: flex; align-items: center; gap: 11px;
+  padding: 11px 14px; border-radius: 12px;
+  background: var(--subtle); border: 1px solid var(--border-soft);
+  transition: all .2s;
+}
+.meme-candidate:hover  { border-color: var(--border); background: var(--gold-dim); }
+.meme-cand-emoji       { font-size: 24px; flex-shrink: 0; }
+.meme-cand-info        { flex: 1; min-width: 0; }
+.meme-cand-title       { font-size: 12px; font-weight: 500; margin-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.meme-cand-by          { font-size: 10px; color: var(--muted); }
+.meme-cand-btns        { display: flex; gap: 6px; flex-shrink: 0; }
+.meme-cand-v {
+  padding: 4px 9px; border-radius: 100px; font-size: 11px;
+  cursor: pointer; border: 1px solid var(--border-soft);
+  background: var(--subtle); transition: all .2s;
+  font-family: 'Outfit', sans-serif; color: var(--muted);
+}
+.meme-cand-v:hover      { transform: scale(1.08); }
+.meme-cand-v.fire-voted { border-color: rgba(255,100,0,.6); background: rgba(255,100,0,.18); color: #ff7040; }
+.meme-cand-v.dead-voted { border-color: rgba(180,180,180,.5); background: rgba(180,180,180,.15); color: #b0b0b0; }
+.meme-drop-zone {
+  border: 1px dashed rgba(201,168,76,.32); border-radius: 14px;
+  padding: 22px; text-align: center; cursor: pointer;
+  transition: all .25s; background: var(--gold-dim2);
+}
+.meme-drop-zone:hover, .meme-drop-zone.drag-over { border-color: var(--gold); background: var(--gold-dim); }
+.meme-drop-icon { font-size: 26px; margin-bottom: 6px; }
+.meme-drop-text { font-size: 12px; color: var(--muted); }
+.meme-drop-text strong { color: var(--gold); }
+.meme-preview {
+  width: 100%; border-radius: 10px; aspect-ratio: 16/9;
+  overflow: hidden; margin-bottom: 10px; display: none;
+  border: 1px solid var(--border);
+}
+.meme-preview img   { width: 100%; height: 100%; object-fit: cover; }
+.meme-submit-msg {
+  text-align: center; font-size: 12px; color: var(--green);
+  display: none; margin-top: 10px;
+  animation: pop-in .4s cubic-bezier(.34,1.56,.64,1);
+}
+
+/* ═══════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════ */
+.footer        { border-top: 1px solid var(--border-soft); padding: 36px 48px; }
+.footer-inner  { max-width: 1400px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+.footer-brand  { font-family: 'Cormorant Garamond', serif; font-size: 18px; color: var(--gold); }
+.footer-copy   { font-size: 11px; color: var(--muted); }
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE BREAKPOINTS
+═══════════════════════════════════════════ */
+@media (max-width: 1100px) {
+  .w-4 { grid-column: span 6; }
+  .w-5 { grid-column: span 6; }
+  .w-7 { grid-column: span 6; }
+  .w-8 { grid-column: span 12; }
+}
+@media (max-width: 768px) {
+  .widgets-grid, .page-hero { padding-left: 20px; padding-right: 20px; }
+  .navbar, .footer           { padding-left: 20px; padding-right: 20px; }
+  .w-4, .w-5, .w-6, .w-7, .w-8, .w-12 { grid-column: span 12; }
+  .widget { padding: 24px 20px; }
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- AUTH CHECK (runs before paint) -->
+  <script>
+    if (!localStorage.getItem('houseMember')) {
+      window.location.replace('login.html');
+    }
+  </script>
+
+  <!-- PAGE LOADER -->
+  <div id="page-loader">
+    <div class="loader-logo">🌿</div>
+    <div class="loader-bar"><div class="loader-fill"></div></div>
+  </div>
+
+  <!-- Film grain texture overlay (purely decorative) -->
+  <div class="grain"></div>
+
+  <!-- Confetti canvas (full-screen, pointer-events: none) -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- ══ NAVIGATION ══ -->
+  <header class="navbar">
+    <div class="nav-inner">
+      <a href="members.html" class="nav-brand">
+        <div class="nav-brand-icon">🌿</div>
+        <span class="nav-brand-name">Sundarbans</span>
+      </a>
+      <span class="nav-title">House Widgets</span>
+      <a href="whatsapp.html" class="back-link" style="margin-left:auto;margin-right:12px;color:#25D366;border:1px solid rgba(37,211,102,0.3);padding:8px 16px;border-radius:6px;font-size:12px;text-decoration:none;letter-spacing:0.05em;transition:all 0.2s;">💬 WhatsApp Groups</a>
+      <a href="members.html" class="back-link" style="margin-right:12px;">← Lounge</a>
+      <button onclick="logout()" style="padding:8px 18px;background:transparent;border:1px solid rgba(255,255,255,0.1);border-radius:6px;color:var(--muted);font-family:'Outfit',sans-serif;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:all 0.2s;" onmouseover="this.style.borderColor='rgba(255,100,100,0.4)';this.style.color='#e08080'" onmouseout="this.style.borderColor='rgba(255,255,255,0.1)';this.style.color='var(--muted)'">Logout</button>
+    </div>
+  </header>
+
+  <!-- ══ PAGE HERO ══ -->
+  <div class="page-hero">
+    <h1>Your <em>House Dashboard</em></h1>
+    <p>Eight interactive features — all working, all persisting across sessions.</p>
+  </div>
+
+  <!-- ══ WIDGETS GRID ══ -->
+  <main class="widgets-grid">
+
+    <!-- ─── 1. STUDY STREAK ─── -->
+    <div class="widget w-5" id="widget-streak">
+      <div class="widget-glow"
+           style="width:300px;height:300px;
+                  background:radial-gradient(circle,rgba(255,140,0,.28),transparent);
+                  top:-120px;left:-100px">
+      </div>
+
+      <div class="widget-label">Daily Habit</div>
+      <div class="widget-title">Study Streak</div>
+
+      <!-- Flame + counter -->
+      <div class="streak-flame-wrap">
+        <div class="streak-flame" id="streakFlame">🔥</div>
+        <div>
+          <div class="streak-number" id="streakNumber">0</div>
+          <div class="streak-label">Day Streak</div>
+        </div>
+      </div>
+
+      <!-- 7-day history grid (built by JS) -->
+      <div class="streak-days-grid" id="streakGrid"></div>
+
+      <!-- Check-in action -->
+      <div class="streak-checkin-row">
+        <button class="btn btn-gold" id="streakBtn" onclick="doCheckin()">
+          Check In Today
+        </button>
+        <span class="streak-checked-msg" id="streakMsg">✓ Checked in!</span>
+      </div>
+
+      <!-- Best streak badge -->
+      <div class="streak-best" id="streakBest"></div>
+    </div>
+
+
+    <!-- ─── 2. MOOD CHECK-IN WALL ─── -->
+    <div class="widget w-7" id="widget-mood">
+      <div class="widget-glow"
+           style="width:260px;height:260px;
+                  background:radial-gradient(circle,rgba(176,122,224,.2),transparent);
+                  top:-80px;right:-60px">
+      </div>
+
+      <div class="widget-label">Anonymous Vote</div>
+      <div class="widget-title">House Mood Wall</div>
+
+      <!-- Vote buttons — data-mood key must match data.json moods.options[].key -->
+      <div class="mood-options" id="moodOptions">
+        <button class="mood-opt" data-mood="happy" onclick="voteMood(this)"><span class="mood-emoji">😄</span>Thriving</button>
+        <button class="mood-opt" data-mood="chill" onclick="voteMood(this)"><span class="mood-emoji">😌</span>Chill</button>
+        <button class="mood-opt" data-mood="grind" onclick="voteMood(this)"><span class="mood-emoji">😤</span>Grind</button>
+        <button class="mood-opt" data-mood="meh"   onclick="voteMood(this)"><span class="mood-emoji">😔</span>Meh</button>
+        <button class="mood-opt" data-mood="chaos" onclick="voteMood(this)"><span class="mood-emoji">🤯</span>Chaos</button>
+      </div>
+
+      <!-- Live bar chart (built by JS) -->
+      <div class="mood-bars"  id="moodBars"></div>
+      <div class="mood-total" id="moodTotal"></div>
+      <div class="mood-voted-msg" id="moodVotedMsg">✓ Voted! Come back tomorrow for a fresh vote.</div>
+    </div>
+
+
+    <!-- ─── 3. CONFESSION WALL ─── -->
+    <div class="widget w-6" id="widget-confession">
+      <div class="widget-glow"
+           style="width:200px;height:200px;
+                  background:radial-gradient(circle,rgba(122,176,224,.14),transparent);
+                  bottom:-60px;right:-40px">
+      </div>
+
+      <div class="widget-label">Anonymous</div>
+      <div class="widget-title">Confession Wall</div>
+
+      <!-- Input area -->
+      <div class="confession-input-wrap">
+        <textarea
+          class="confession-textarea"
+          id="confInput"
+          placeholder="Share something on your mind... nobody will know it's you."
+          maxlength="280"
+          oninput="updateCharCount(this)">
+        </textarea>
+        <span class="char-count" id="charCount">0 / 280</span>
+      </div>
+
+      <div class="confession-submit-row">
+        <span class="confession-anon">🤫 100% anonymous · never linked to your name</span>
+        <button class="btn btn-outline" onclick="postConfession()">Post</button>
+      </div>
+
+      <!-- Post feed (built by JS) -->
+      <div class="confession-list" id="confList"></div>
+    </div>
+
+
+    <!-- ─── 4. HOUSE POINTS LIVE BOARD ─── -->
+    <div class="widget w-6" id="widget-points">
+      <div class="widget-glow"
+           style="width:320px;height:320px;
+                  background:radial-gradient(circle,rgba(201,168,76,.14),transparent);
+                  top:-100px;left:-80px">
+      </div>
+
+      <div class="widget-label">Live Total</div>
+      <div class="widget-title">House Points</div>
+
+      <!-- Animated total counter -->
+      <div class="points-total-wrap">
+        <span class="points-total" id="houseTotal">0</span>
+        <div class="points-total-label">Total Points · Season 2</div>
+      </div>
+
+      <!-- Category breakdown bars (built by JS) -->
+      <div class="points-categories" id="pointsCats"></div>
+    </div>
+
+
+    <!-- ─── 5. POMODORO STUDY ROOM ─── -->
+    <div class="widget w-5" id="widget-pomo">
+      <div class="widget-glow"
+           style="width:200px;height:200px;
+                  background:radial-gradient(circle,rgba(76,175,80,.2),transparent);
+                  bottom:-60px;right:-40px">
+      </div>
+
+      <div class="widget-label">Focus Timer</div>
+      <div class="widget-title">Study Room</div>
+
+      <!-- Phase selector tabs -->
+      <div class="pomo-phase-tabs">
+        <button class="pomo-tab active" data-phase="focus" data-secs="1500" onclick="setPhase(this)">Focus 25</button>
+        <button class="pomo-tab"        data-phase="short" data-secs="300"  onclick="setPhase(this)">Break 5</button>
+        <button class="pomo-tab"        data-phase="long"  data-secs="900"  onclick="setPhase(this)">Long 15</button>
+      </div>
+
+      <!-- SVG ring timer -->
+      <div class="pomo-ring-wrap">
+        <svg class="pomo-ring-svg" width="160" height="160" viewBox="0 0 160 160"
+             aria-label="Timer progress ring" role="img">
+          <circle class="pomo-ring-bg"   cx="80" cy="80" r="70"/>
+          <circle class="pomo-ring-fill" cx="80" cy="80" r="70" id="pomoRing"/>
+        </svg>
+        <div class="pomo-timer-text">
+          <div class="pomo-time-display" id="pomoDisplay">25:00</div>
+          <div class="pomo-phase-label"  id="pomoPhaseLabel">Focus</div>
+        </div>
+      </div>
+
+      <!-- Session progress dots (built by JS) -->
+      <div class="pomo-session-row" id="pomoSessionRow"></div>
+
+      <!-- Controls -->
+      <div class="pomo-controls">
+        <button class="btn btn-gold"  id="pomoStartBtn" onclick="togglePomo()">Start</button>
+        <button class="btn btn-ghost"                   onclick="resetPomo()">Reset</button>
+        <button class="btn btn-ghost" id="pomoJoinBtn"  onclick="toggleRoom()">Join Room</button>
+      </div>
+
+      <!-- Session-complete banner -->
+      <div class="pomo-done-banner" id="pomoBanner">🎉 Session complete! Take a break.</div>
+
+      <!-- Live studiers (built by JS) -->
+      <div class="pomo-studiers-label">
+        Studying Now (<span id="pomoCount">0</span>)
+      </div>
+      <div class="pomo-studiers" id="pomoStudiers"></div>
+    </div>
+
+
+    <!-- ─── 6. STUDY BUDDY MATCHER ─── -->
+    <div class="widget w-7" id="widget-buddy">
+      <div class="widget-label">Find Your Match</div>
+      <div class="widget-title">Study Buddy Matcher</div>
+
+      <!-- Filter dropdowns (options injected from data.json by JS) -->
+      <div class="buddy-fields">
+        <div class="buddy-field">
+          <label for="buddySub">Subject</label>
+          <select class="buddy-select" id="buddySub">
+            <option value="">Select a subject…</option>
+          </select>
+        </div>
+        <div class="buddy-field">
+          <label for="buddyTime">Time Slot</label>
+          <select class="buddy-select" id="buddyTime">
+            <option value="">When do you study?</option>
+          </select>
+        </div>
+        <div class="buddy-field">
+          <label for="buddyStyle">Study Style</label>
+          <select class="buddy-select" id="buddyStyle">
+            <option value="">How do you study?</option>
+          </select>
+        </div>
+      </div>
+
+      <button class="btn btn-gold buddy-find-btn" onclick="findBuddy()">
+        Find My Buddy ✨
+      </button>
+
+      <!-- Match result card (shown by JS) -->
+      <div class="buddy-result" id="buddyResult">
+        <div class="buddy-result-header">
+          <div class="buddy-avatar" id="buddyAvatar"></div>
+          <div style="flex:1">
+            <div class="buddy-name-lbl" id="buddyName"></div>
+            <div class="buddy-roll-lbl" id="buddyRoll"></div>
+          </div>
+          <div style="text-align:right">
+            <div class="buddy-match-pct" id="buddyPct"></div>
+            <div class="buddy-match-sub">match</div>
+          </div>
+        </div>
+        <div class="buddy-tags" id="buddyTags"></div>
+        <div class="buddy-connect-row">
+          <button class="btn btn-outline" id="connectBtn" onclick="connectBuddy()">💬 Connect</button>
+          <button class="btn btn-ghost"                   onclick="findBuddy()">🔀 Shuffle</button>
+          <span class="buddy-sent-msg" id="buddySentMsg">✓ Request sent!</span>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ─── 7. DAILY CHALLENGE BOARD ─── -->
+    <div class="widget w-6" id="widget-challenge">
+      <div class="widget-glow"
+           style="width:250px;height:250px;
+                  background:radial-gradient(circle,rgba(255,180,50,.1),transparent);
+                  top:-60px;right:-60px">
+      </div>
+
+      <div class="widget-label">Daily Challenge</div>
+      <div class="widget-title">Today's Problem</div>
+
+      <!-- Difficulty + points header -->
+      <div class="challenge-header-row">
+        <span class="diff-badge diff-medium">Medium</span>
+        <span class="challenge-pts-badge">🏆 +25 House Points</span>
+      </div>
+
+      <!-- Problem statement -->
+      <div class="challenge-problem">
+        <div class="challenge-problem-title">
+          Longest Substring Without Repeating Characters
+        </div>
+        <div class="challenge-problem-desc">
+          Given a string <span class="code-inline">s</span>,
+          find the length of the longest substring without repeating characters.<br><br>
+          <strong>Examples:</strong><br>
+          <span class="code-inline">"abcabcbb"</span> → <span class="code-inline">3</span> &nbsp;(substring "abc")<br>
+          <span class="code-inline">"bbbbb"</span>    → <span class="code-inline">1</span> &nbsp;(substring "b")<br>
+          <span class="code-inline">"pwwkew"</span>   → <span class="code-inline">3</span> &nbsp;(substring "wke")
+          <div class="challenge-code">def lengthOfLongestSubstring(s: str) -> int:
+    # Your solution here
+    pass</div>
+        </div>
+      </div>
+
+      <!-- Collapsible hint -->
+      <div class="challenge-hint" id="challengeHint">
+        💡 <strong>Hint:</strong> Use a <em>sliding window</em> with a hash set.
+        Advance the right pointer; when you hit a duplicate, shrink from the left
+        until it is removed. Track the maximum window size throughout.
+      </div>
+
+      <!-- Solved confirmation -->
+      <div class="challenge-solved-wrap" id="challengeSolvedWrap">
+        ✅ You solved it! <strong id="challengeSolvedPts"></strong> points added to your tally.
+      </div>
+
+      <!-- Action buttons -->
+      <div class="challenge-actions" id="challengeActions">
+        <button class="btn btn-ghost"   id="hintBtn"  onclick="toggleHint()">💡 Hint</button>
+        <button class="btn btn-outline" id="solveBtn" onclick="markSolved()">✓ I Solved It</button>
+      </div>
+
+      <!-- Live solver leaderboard (built by JS) -->
+      <div class="challenge-solvers-label">
+        Today's Solvers (<span id="solverCount">0</span>)
+      </div>
+      <div class="challenge-solvers" id="challengeSolvers"></div>
+    </div>
+
+
+    <!-- ─── 8. MEME OF THE WEEK ─── -->
+    <div class="widget w-6" id="widget-meme">
+      <div class="widget-label">Community</div>
+      <div class="widget-title">Meme of the Week</div>
+
+      <!-- Current champion -->
+      <div class="meme-winner-wrap">
+        <div class="meme-winner-crown">👑</div>
+        <div class="meme-winner-title">This Week's Champion</div>
+        <div class="meme-winner-img">😭📚</div>
+        <div class="meme-winner-byline">
+          "When the exam is tomorrow and you just found the syllabus" · by <em>anon_23f</em>
+        </div>
+        <div class="meme-winner-votes">
+          <span class="meme-vote-pill fire-pill">🔥 147</span>
+          <span class="meme-vote-pill dead-pill">💀 89</span>
+        </div>
+      </div>
+
+      <!-- Candidate voting list (built by JS) -->
+      <div class="meme-cands-label">Vote This Week's Candidates</div>
+      <div class="meme-candidates" id="memeCandidates"></div>
+
+      <!-- Meme upload preview -->
+      <div class="meme-preview" id="memePreview">
+        <img id="memePreviewImg" src="" alt="Your meme preview"/>
+      </div>
+
+      <!-- Drag-and-drop / click-to-browse upload zone -->
+      <div class="meme-drop-zone" id="memeDropZone"
+           ondragover="event.preventDefault(); this.classList.add('drag-over')"
+           ondragleave="this.classList.remove('drag-over')"
+           ondrop="handleMemeDrop(event)"
+           onclick="document.getElementById('memeFileInput').click()">
+        <div class="meme-drop-icon">🖼️</div>
+        <div class="meme-drop-text">
+          Drag &amp; drop your meme or <strong>click to browse</strong>
+        </div>
+      </div>
+
+      <!-- Hidden file input (triggered by the zone above) -->
+      <input type="file"
+             id="memeFileInput"
+             style="display:none"
+             accept="image/*"
+             onchange="handleMemeFile(this.files[0])">
+
+      <div class="meme-submit-msg" id="memeSubmitMsg">
+        ✓ Your meme is queued for judging this week!
+      </div>
+    </div>
+
+  </main><!-- /widgets-grid -->
+
+
+  <!-- ══ FOOTER ══ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">Sundarbans House</div>
+      <div class="footer-copy">© 2026 IIT Madras BS Programme · All rights reserved</div>
+    </div>
+  </footer>
+
+  <script>
+// ── INLINE DATA (no external fetch needed) ──
+const _INLINE_DATA = {
+  "meta": {
+    "houseName": "Sundarbans",
+    "season": 2,
+    "year": 2026,
+    "programme": "IIT Madras BS Programme"
+  },
+
+  "housePoints": {
+    "total": 918,
+    "categories": [
+      { "name": "Academic",  "icon": "📚", "points": 312, "max": 400, "color": "#e8c97a" },
+      { "name": "Cultural",  "icon": "🎭", "points": 198, "max": 400, "color": "#b07ae0" },
+      { "name": "Sports",    "icon": "🏏", "points": 241, "max": 400, "color": "#4caf50" },
+      { "name": "Community", "icon": "🤝", "points": 167, "max": 400, "color": "#7ab0e0" }
+    ]
+  },
+
+  "moods": {
+    "options": [
+      { "key": "happy", "emoji": "😄", "label": "Thriving", "color": "#4caf50" },
+      { "key": "chill", "emoji": "😌", "label": "Chill",    "color": "#7ab0e0" },
+      { "key": "grind", "emoji": "😤", "label": "Grind",    "color": "#c9a84c" },
+      { "key": "meh",   "emoji": "😔", "label": "Meh",      "color": "#b07ae0" },
+      { "key": "chaos", "emoji": "🤯", "label": "Chaos",    "color": "#e07070" }
+    ],
+    "seedTally": {
+      "happy": 12,
+      "chill": 8,
+      "grind": 19,
+      "meh":   5,
+      "chaos": 7
+    }
+  },
+
+  "confessions": {
+    "seed": [
+      {
+        "id": 1,
+        "text": "I've submitted 4 assignments as drafts thinking they were submitted. Found out during grade review. Might cry.",
+        "offsetMs": 7200000,
+        "reactions": { "heart": 24, "laugh": 12, "wow": 31 }
+      },
+      {
+        "id": 2,
+        "text": "Started a 6-week course 3 days before the quiz and got 90%. I operate purely on chaos energy.",
+        "offsetMs": 18000000,
+        "reactions": { "heart": 18, "laugh": 67, "wow": 9 }
+      },
+      {
+        "id": 3,
+        "text": "I genuinely look forward to Monday technical sessions more than anything else this week. Not cringe, just facts.",
+        "offsetMs": 86400000,
+        "reactions": { "heart": 88, "laugh": 4, "wow": 11 }
+      }
+    ],
+    "reactions": [
+      { "key": "heart", "emoji": "❤️" },
+      { "key": "laugh", "emoji": "😂" },
+      { "key": "wow",   "emoji": "😮" }
+    ]
+  },
+
+  "pomodoro": {
+    "phases": [
+      { "key": "focus", "label": "Focus",       "seconds": 1500, "tabLabel": "Focus 25" },
+      { "key": "short", "label": "Short Break",  "seconds": 300,  "tabLabel": "Break 5"  },
+      { "key": "long",  "label": "Long Break",   "seconds": 900,  "tabLabel": "Long 15"  }
+    ],
+    "seedStudiers": ["Aditi S.", "Rohan V.", "Dev P.", "Mehak S."],
+    "maxSessions": 4
+  },
+
+  "studyBuddies": [
+    { "name": "Aditi Sharma",  "roll": "23f1000052", "tags": ["Night Owl",       "Explains Well",    "Speed Runner"]    },
+    { "name": "Rohan Verma",   "roll": "22f1000119", "tags": ["Silent Mode",     "Topper Energy",    "Note Sharer"]     },
+    { "name": "Mehak Singh",   "roll": "24f1000093", "tags": ["Discussion Queen","Mock Test Fan",    "Patient"]         },
+    { "name": "Dev Patel",     "roll": "23f2000114", "tags": ["Problem Solver",  "Early Riser",      "Flashcard Pro"]   },
+    { "name": "Priya Nair",    "roll": "24f2000050", "tags": ["Chill Vibes",     "Group Study",      "Mentor Mode"]     },
+    { "name": "Arjun Mehra",   "roll": "23f3000021", "tags": ["Competitive",     "CP Grinder",       "Deadline Chaser"] },
+    { "name": "Sneha Iyer",    "roll": "24f1000078", "tags": ["Structured Notes","Pomodoro Fan",     "Consistent"]      },
+    { "name": "Karan Joshi",   "roll": "23f4000031", "tags": ["Visual Learner",  "Diagram Lover",    "Calm Energy"]     }
+  ],
+
+  "buddyOptions": {
+    "subjects": [
+      "Mathematics (MAT1001)",
+      "Statistics (ST1001)",
+      "Python / PDSA",
+      "System Design",
+      "Machine Learning (MLF)",
+      "English (ENG1001)",
+      "Computational Thinking"
+    ],
+    "timeSlots": [
+      "Morning (6-10 AM)",
+      "Afternoon (12-4 PM)",
+      "Evening (4-8 PM)",
+      "Night Owl (9 PM - 1 AM)",
+      "Weekends Only"
+    ],
+    "studyStyles": [
+      "Silent Focus",
+      "Discuss and Explain",
+      "Problem Solving",
+      "Flashcards and Notes",
+      "Mock Tests"
+    ]
+  },
+
+  "dailyChallenge": {
+    "title": "Longest Substring Without Repeating Characters",
+    "difficulty": "Medium",
+    "points": 25,
+    "pointsWithHint": 15,
+    "description": "Given a string s, find the length of the longest substring without repeating characters.",
+    "examples": [
+      { "input": "\"abcabcbb\"", "output": "3", "note": "substring \"abc\"" },
+      { "input": "\"bbbbb\"",    "output": "1", "note": "substring \"b\"" },
+      { "input": "\"pwwkew\"",   "output": "3", "note": "substring \"wke\"" }
+    ],
+    "starterCode": "def lengthOfLongestSubstring(s: str) -> int:\n    # Your solution here\n    pass",
+    "hint": "Use a sliding window with a hash set. Advance the right pointer; when you hit a duplicate, shrink from the left until it is removed. Track the maximum window size.",
+    "seedSolvers": [
+      { "name": "Aditi Sharma", "time": "08:42 AM", "points": 25, "me": false },
+      { "name": "Dev Patel",    "time": "09:15 AM", "points": 25, "me": false },
+      { "name": "Rohan Verma",  "time": "10:03 AM", "points": 20, "me": false }
+    ]
+  },
+
+  "meme": {
+    "winner": {
+      "emoji": "😭📚",
+      "caption": "When the exam is tomorrow and you just found the syllabus",
+      "author": "anon_23f",
+      "fireVotes": 147,
+      "deadVotes": 89
+    },
+    "candidates": [
+      { "id": 1, "emoji": "📖😭", "title": "When you realise Stats has calculus in it", "author": "anon_24f", "fire": 34, "dead": 12 },
+      { "id": 2, "emoji": "🐱💻", "title": "My laptop at 1AM during submission week",   "author": "anon_22f", "fire": 28, "dead": 45 },
+      { "id": 3, "emoji": "🧠✨", "title": "Brain 10 mins before vs during an exam",    "author": "anon_23f", "fire": 61, "dead": 8  }
+    ]
+  }
+};
+
+/* ============================================================
+   SUNDARBANS HOUSE WIDGETS — app.js
+   Loads config from data.json, then initialises all 8 widgets.
+   All state is persisted to localStorage under "sb_*" keys.
+   ============================================================ */
+
+'use strict';
+
+/* ──────────────────────────────────────────────
+   GLOBAL UTILITIES
+────────────────────────────────────────────── */
+
+const TODAY = new Date().toDateString();
+const DAYS  = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+
+/** Persist a value to localStorage as JSON. */
+function save(key, value) {
+  try { localStorage.setItem(key, JSON.stringify(value)); } catch (e) {}
+}
+
+/** Load a value from localStorage, or return a default. */
+function load(key, defaultValue) {
+  try {
+    const raw = localStorage.getItem(key);
+    return raw !== null ? JSON.parse(raw) : defaultValue;
+  } catch (e) { return defaultValue; }
+}
+
+/** Safely escape HTML to prevent XSS when injecting user content. */
+function esc(str) {
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+}
+
+/** Zero-pad a number to 2 digits. */
+function pad2(n) { return String(n).padStart(2, '0'); }
+
+/** Format seconds as MM:SS. */
+function fmtTime(secs) {
+  return pad2(Math.floor(secs / 60)) + ':' + pad2(secs % 60);
+}
+
+/** Human-readable time since a Unix timestamp. */
+function timeAgo(ts) {
+  const diff = Date.now() - ts;
+  const mins = Math.floor(diff / 60000);
+  const hrs  = Math.floor(diff / 3600000);
+  if (diff  < 60000)  return 'just now';
+  if (mins  < 60)     return mins + 'm ago';
+  if (hrs   < 24)     return hrs  + 'h ago';
+  return Math.floor(hrs / 24) + 'd ago';
+}
+
+/* ──────────────────────────────────────────────
+   CONFETTI ENGINE  (Canvas-based particle burst)
+────────────────────────────────────────────── */
+
+const CC  = document.getElementById('confetti-canvas');
+const CTX = CC.getContext('2d');
+let _confAF = null;
+
+function resizeCanvas() {
+  CC.width  = window.innerWidth;
+  CC.height = window.innerHeight;
+}
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
+/**
+ * Fire a confetti burst originating from (ox, oy).
+ * Falls back to centre of screen when coordinates are omitted.
+ */
+function fireConfetti(ox, oy) {
+  const cx = ox != null ? ox : CC.width / 2;
+  const cy = oy != null ? oy : CC.height * 0.45;
+  const PALETTE = ['#c9a84c','#e8c97a','#4caf50','#f5f0e8','#e07070','#7ab0e0','#b07ae0'];
+
+  const particles = Array.from({ length: 110 }, () => ({
+    x:    cx + (Math.random() - 0.5) * 50,
+    y:    cy + (Math.random() - 0.5) * 20,
+    vx:   (Math.random() - 0.5) * 10,
+    vy:   -(Math.random() * 9 + 2),
+    r:    Math.random() * 5 + 2,
+    rot:  Math.random() * 360,
+    rotV: (Math.random() - 0.5) * 8,
+    color: PALETTE[Math.floor(Math.random() * PALETTE.length)],
+    life: 1
+  }));
+
+  cancelAnimationFrame(_confAF);
+
+  (function draw() {
+    CTX.clearRect(0, 0, CC.width, CC.height);
+    let alive = false;
+
+    particles.forEach(function (p) {
+      p.x   += p.vx;
+      p.y   += p.vy;
+      p.vy  += 0.2;
+      p.vx  *= 0.98;
+      p.rot += p.rotV;
+      p.life -= 0.013;
+      if (p.life <= 0) return;
+      alive = true;
+
+      CTX.save();
+      CTX.globalAlpha = p.life;
+      CTX.translate(p.x, p.y);
+      CTX.rotate(p.rot * Math.PI / 180);
+      CTX.fillStyle = p.color;
+      CTX.fillRect(-p.r / 2, -p.r / 2, p.r, p.r * 0.55);
+      CTX.restore();
+    });
+
+    if (alive) _confAF = requestAnimationFrame(draw);
+    else CTX.clearRect(0, 0, CC.width, CC.height);
+  })();
+}
+
+/* ──────────────────────────────────────────────
+   BOOT — fetch data.json then initialise widgets
+────────────────────────────────────────────── */
+
+/* Page loader dismiss */
+window.addEventListener('load', function () {
+  setTimeout(function () {
+    var loader = document.getElementById('page-loader');
+    if (loader) loader.classList.add('hide');
+  }, 1200);
+});
+
+/* Logout */
+window.logout = function () {
+  document.body.style.opacity = '0';
+  document.body.style.transition = 'opacity 0.5s';
+  setTimeout(function () {
+    localStorage.removeItem('houseMember');
+    window.location.href = 'login.html';
+  }, 500);
+};
+
+// Data is inlined — no fetch needed
+(function() {
+  var DATA = _INLINE_DATA;
+  (function(DATA) {
+    initStreak();
+    initMood(DATA.moods);
+    initConfessions(DATA.confessions);
+    initHousePoints(DATA.housePoints);
+    initPomodoro(DATA.pomodoro);
+    initBuddy(DATA.studyBuddies, DATA.buddyOptions);
+    initChallenge(DATA.dailyChallenge);
+    initMeme(DATA.meme);
+  })
+  })(DATA);
+})();
+
+/* ──────────────────────────────────────────────
+   PAGE FADE-IN
+────────────────────────────────────────────── */
+document.body.style.opacity    = '0';
+document.body.style.transition = 'opacity .55s';
+setTimeout(function () { document.body.style.opacity = '1'; }, 80);
+
+
+/* ══════════════════════════════════════════════
+   1. STUDY STREAK
+   localStorage keys:
+     sb_streak  – current streak count (int)
+     sb_best    – all-time best (int)
+     sb_hist    – array of toDateString() values
+     sb_last    – toDateString() of last check-in
+══════════════════════════════════════════════ */
+
+function initStreak() {
+
+  /** Map streak count to a flame font-size tier. */
+  function flameSize(n) {
+    if (n === 0)  return 64;
+    if (n < 3)    return 78;
+    if (n < 7)    return 94;
+    if (n < 14)   return 112;
+    return 130;
+  }
+
+  /** Rebuild the 7-day history grid. */
+  function buildGrid() {
+    var hist = load('sb_hist', []);
+    var grid = document.getElementById('streakGrid');
+    grid.innerHTML = '';
+
+    for (var i = 6; i >= 0; i--) {
+      var d  = new Date();
+      d.setDate(d.getDate() - i);
+      var ds   = d.toDateString();
+      var done = hist.indexOf(ds) > -1;
+      var isT  = ds === TODAY;
+
+      var cell = document.createElement('div');
+      cell.className = 'streak-day' + (done ? ' done' : ' empty') + (isT ? ' today-slot' : '');
+      cell.innerHTML  = '<span class="streak-day-name">' + DAYS[d.getDay()] + '</span>'
+                      + '<span class="streak-day-icon">' + (done ? '🔥' : '·') + '</span>';
+      grid.appendChild(cell);
+    }
+  }
+
+  /** Refresh all streak UI from localStorage. */
+  function refresh() {
+    var streak       = load('sb_streak', 0);
+    var best         = load('sb_best',   0);
+    var last         = load('sb_last',   null);
+    var checkedToday = (last === TODAY);
+
+    document.getElementById('streakNumber').textContent = streak;
+    document.getElementById('streakFlame').style.fontSize = flameSize(streak) + 'px';
+    document.getElementById('streakBest').innerHTML = 'Best streak: <span>' + best + '</span> days';
+
+    var btn = document.getElementById('streakBtn');
+    if (checkedToday) {
+      btn.disabled    = true;
+      btn.textContent = 'Checked In ✓';
+      document.getElementById('streakMsg').classList.add('show');
+    } else {
+      btn.disabled    = false;
+      btn.textContent = 'Check In Today';
+    }
+    buildGrid();
+  }
+
+  /** Handle the Check In button click. */
+  window.doCheckin = function () {
+    var last = load('sb_last', null);
+    if (last === TODAY) return;                       // already done
+
+    var streak = load('sb_streak', 0);
+    var best   = load('sb_best',   0);
+    var hist   = load('sb_hist',   []);
+
+    // Increment if yesterday was checked in, else restart
+    var yest = new Date();
+    yest.setDate(yest.getDate() - 1);
+    streak = (last === yest.toDateString()) ? streak + 1 : 1;
+    best   = Math.max(best, streak);
+
+    if (hist.indexOf(TODAY) === -1) hist.push(TODAY);
+    if (hist.length > 60) hist = hist.slice(-60);    // cap history
+
+    save('sb_streak', streak);
+    save('sb_best',   best);
+    save('sb_hist',   hist);
+    save('sb_last',   TODAY);
+
+    refresh();
+
+    // Fire confetti from button position
+    var r = document.getElementById('streakBtn').getBoundingClientRect();
+    fireConfetti(r.left + r.width / 2, r.top);
+  };
+
+  refresh();
+}
+
+
+/* ══════════════════════════════════════════════
+   2. MOOD CHECK-IN WALL
+   localStorage keys:
+     sb_mood_tally – { happy:n, chill:n, … }
+     sb_mood_mine  – key of today's vote
+     sb_mood_date  – toDateString() of vote date
+══════════════════════════════════════════════ */
+
+function initMood(cfg) {
+  var MOODS = cfg ? cfg.options : [
+    { key:'happy', emoji:'😄', label:'Thriving', color:'#4caf50' },
+    { key:'chill', emoji:'😌', label:'Chill',    color:'#7ab0e0' },
+    { key:'grind', emoji:'😤', label:'Grind',    color:'#c9a84c' },
+    { key:'meh',   emoji:'😔', label:'Meh',      color:'#b07ae0' },
+    { key:'chaos', emoji:'🤯', label:'Chaos',    color:'#e07070' }
+  ];
+  var SEED_TALLY = cfg ? cfg.seedTally : { happy:12, chill:8, grind:19, meh:5, chaos:7 };
+
+  var tally      = load('sb_mood_tally', SEED_TALLY);
+  var myDate     = load('sb_mood_date',  null);
+  var myVote     = load('sb_mood_mine',  null);
+  var votedToday = (myDate === TODAY);
+
+  /** Re-render the animated bar chart. */
+  function renderBars() {
+    var total = Object.values(tally).reduce(function (a, b) { return a + b; }, 0) || 1;
+    var barsEl = document.getElementById('moodBars');
+
+    barsEl.innerHTML = MOODS.map(function (m) {
+      var pct = Math.round((tally[m.key] || 0) / total * 100);
+      return '<div class="mood-bar-row">'
+        + '<span class="mood-bar-emoji">' + m.emoji + '</span>'
+        + '<div class="mood-bar-track">'
+        +   '<div class="mood-bar-fill" style="background:' + m.color + ';width:0" data-pct="' + pct + '"></div>'
+        + '</div>'
+        + '<span class="mood-bar-count">' + (tally[m.key] || 0) + '</span>'
+        + '</div>';
+    }).join('');
+
+    document.getElementById('moodTotal').textContent = total + ' votes today';
+
+    // Animate bar widths on next paint
+    requestAnimationFrame(function () {
+      barsEl.querySelectorAll('.mood-bar-fill').forEach(function (f) {
+        f.style.width = f.dataset.pct + '%';
+      });
+    });
+  }
+
+  /** Disable all buttons and show the confirmation message. */
+  function lockButtons() {
+    document.querySelectorAll('.mood-opt').forEach(function (btn) {
+      btn.disabled = true;
+      if (votedToday && btn.dataset.mood === myVote) {
+        btn.classList.add('selected');
+      }
+    });
+    document.getElementById('moodVotedMsg').classList.add('show');
+  }
+
+  renderBars();
+  if (votedToday) lockButtons();
+
+  /** Handle a mood button click. */
+  window.voteMood = function (btn) {
+    if (votedToday) return;
+    var key = btn.dataset.mood;
+    tally[key] = (tally[key] || 0) + 1;
+    save('sb_mood_tally', tally);
+    save('sb_mood_mine',  key);
+    save('sb_mood_date',  TODAY);
+    myVote = key; votedToday = true;
+    btn.classList.add('selected');
+    lockButtons();
+    renderBars();
+  };
+}
+
+
+/* ══════════════════════════════════════════════
+   3. CONFESSION WALL
+   localStorage keys:
+     sb_confs     – array of confession objects
+     sb_conf_id   – next auto-increment id
+     sb_conf_rx   – { confId: reactionKey }
+══════════════════════════════════════════════ */
+
+function initConfessions(cfg) {
+  // Build seed array with real timestamps relative to now
+  var SEED = cfg ? cfg.seed.map(function (s) {
+    return { id: s.id, text: s.text, ts: Date.now() - s.offsetMs, r: Object.assign({}, s.reactions) };
+  }) : [
+    { id:1, text:"I've submitted 4 assignments as drafts thinking they were submitted. Found out during grade review. Might cry.", ts:Date.now()-7200000,  r:{heart:24,laugh:12,wow:31} },
+    { id:2, text:"Started a 6-week course 3 days before the quiz and got 90%. I operate purely on chaos energy.",                 ts:Date.now()-18000000, r:{heart:18,laugh:67,wow:9}  },
+    { id:3, text:"I genuinely look forward to Monday technical sessions more than anything else this week. Not cringe, just facts.", ts:Date.now()-86400000, r:{heart:88,laugh:4,wow:11} }
+  ];
+
+  var REACTIONS = cfg ? cfg.reactions : [
+    { key:'heart', emoji:'❤️' },
+    { key:'laugh', emoji:'😂' },
+    { key:'wow',   emoji:'😮' }
+  ];
+
+  var confs  = load('sb_confs',    SEED);
+  var nextId = load('sb_conf_id',  4);
+  var myRx   = load('sb_conf_rx',  {});
+
+  /** Render all confession cards, newest first. */
+  function render() {
+    var listEl = document.getElementById('confList');
+    if (!confs.length) {
+      listEl.innerHTML = '<div class="conf-empty">No confessions yet. Be the first! 🤫</div>';
+      return;
+    }
+
+    listEl.innerHTML = [].concat(confs).reverse().map(function (c) {
+      var rxHtml = REACTIONS.map(function (rx) {
+        var active = myRx[c.id] === rx.key ? ' reacted' : '';
+        return '<button class="reaction-btn' + active + '" onclick="rxConf(' + c.id + ',\'' + rx.key + '\')">'
+             + rx.emoji + ' <span>' + (c.r[rx.key] || 0) + '</span></button>';
+      }).join('');
+
+      return '<div class="confession-item">'
+           +   '<div class="confession-text">' + esc(c.text) + '</div>'
+           +   '<div class="confession-meta">'
+           +     '<span class="confession-time">' + timeAgo(c.ts) + '</span>'
+           +     rxHtml
+           +   '</div>'
+           + '</div>';
+    }).join('');
+  }
+
+  /** Update character counter as the user types. */
+  window.updateCharCount = function (el) {
+    var n  = el.value.length;
+    var cc = document.getElementById('charCount');
+    cc.textContent = n + ' / 280';
+    cc.classList.toggle('warn', n > 240);
+  };
+
+  /** Post a new confession. */
+  window.postConfession = function () {
+    var inp  = document.getElementById('confInput');
+    var text = inp.value.trim();
+    if (!text) { inp.focus(); return; }
+
+    var c = { id: nextId++, text: text, ts: Date.now(), r: { heart:0, laugh:0, wow:0 } };
+    confs.push(c);
+    if (confs.length > 80) confs = confs.slice(-80);  // cap at 80
+
+    save('sb_confs',   confs);
+    save('sb_conf_id', nextId);
+
+    inp.value = '';
+    document.getElementById('charCount').textContent = '0 / 280';
+    render();
+    document.getElementById('confList').scrollTop = 0;
+  };
+
+  /** Toggle a reaction on a confession. Clicking the same emoji removes the vote. */
+  window.rxConf = function (id, key) {
+    var c = confs.find(function (x) { return x.id === id; });
+    if (!c) return;
+
+    var prev = myRx[id];
+    if (prev) c.r[prev] = Math.max(0, (c.r[prev] || 1) - 1);  // remove old vote
+
+    if (prev !== key) {
+      c.r[key] = (c.r[key] || 0) + 1;
+      myRx[id] = key;
+    } else {
+      delete myRx[id];                                         // toggle off
+    }
+
+    save('sb_confs',   confs);
+    save('sb_conf_rx', myRx);
+    render();
+  };
+
+  render();
+}
+
+
+/* ══════════════════════════════════════════════
+   4. HOUSE POINTS LIVE BOARD
+   (Animated counter + category bar fills on scroll)
+══════════════════════════════════════════════ */
+
+function initHousePoints(cfg) {
+  var CATS = cfg ? cfg.categories : [
+    { name:'Academic',  icon:'📚', points:312, max:400, color:'#e8c97a' },
+    { name:'Cultural',  icon:'🎭', points:198, max:400, color:'#b07ae0' },
+    { name:'Sports',    icon:'🏏', points:241, max:400, color:'#4caf50' },
+    { name:'Community', icon:'🤝', points:167, max:400, color:'#7ab0e0' }
+  ];
+  var TOTAL = CATS.reduce(function (s, c) { return s + c.points; }, 0);
+
+  // Build category rows
+  var catsEl = document.getElementById('pointsCats');
+  catsEl.innerHTML = CATS.map(function (c) {
+    var pct = Math.round(c.points / c.max * 100);
+    return '<div class="points-cat">'
+         +   '<div class="points-cat-icon">' + c.icon + '</div>'
+         +   '<div class="points-cat-info">'
+         +     '<div class="points-cat-name">' + c.name + '</div>'
+         +     '<div class="points-cat-bar">'
+         +       '<div class="points-cat-fill" style="background:' + c.color + '" data-pct="' + pct + '"></div>'
+         +     '</div>'
+         +   '</div>'
+         +   '<div class="points-cat-val">' + c.points + '</div>'
+         + '</div>';
+  }).join('');
+
+  /** Eased numeric counter from 0 → target over `dur` ms. */
+  function animateCount(el, target, dur) {
+    var start = performance.now();
+    (function tick(now) {
+      var t    = Math.min((now - start) / dur, 1);
+      var ease = 1 - Math.pow(1 - t, 3);            // cubic ease-out
+      el.textContent = Math.round(target * ease);
+      if (t < 1) requestAnimationFrame(tick);
+    })(start);
+  }
+
+  // Trigger animations only when the widget enters the viewport
+  var fired = false;
+  new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting && !fired) {
+        fired = true;
+        animateCount(document.getElementById('houseTotal'), TOTAL, 2000);
+        setTimeout(function () {
+          document.querySelectorAll('.points-cat-fill').forEach(function (f) {
+            f.style.width = f.dataset.pct + '%';
+          });
+        }, 120);
+      }
+    });
+  }, { threshold: 0.3 }).observe(document.getElementById('widget-points'));
+}
+
+
+/* ══════════════════════════════════════════════
+   5. POMODORO STUDY ROOM
+   localStorage keys:
+     sb_pomo_room    – boolean (are you in the room?)
+     sb_pomo_people  – array of display names in the room
+══════════════════════════════════════════════ */
+
+function initPomodoro(cfg) {
+  var PHASES = cfg ? cfg.phases : [
+    { key:'focus', label:'Focus',       seconds:1500, tabLabel:'Focus 25' },
+    { key:'short', label:'Short Break', seconds:300,  tabLabel:'Break 5'  },
+    { key:'long',  label:'Long Break',  seconds:900,  tabLabel:'Long 15'  }
+  ];
+  var SEED_PEOPLE  = cfg ? cfg.seedStudiers  : ['Aditi S.','Rohan V.','Dev P.','Mehak S.'];
+  var MAX_SESSIONS = cfg ? cfg.maxSessions   : 4;
+
+  // SVG ring circumference for r=70: 2π×70 ≈ 440
+  var CIRC = 2 * Math.PI * 70;
+  var ring = document.getElementById('pomoRing');
+  ring.style.strokeDasharray = String(CIRC);
+
+  var phase      = 'focus';
+  var totalSecs  = 1500;
+  var remaining  = 1500;
+  var running    = false;
+  var ticker     = null;
+  var sessions   = 0;
+  var inRoom     = load('sb_pomo_room',   false);
+  var roomPeople = load('sb_pomo_people', SEED_PEOPLE);
+
+  /** Map stroke-dashoffset so the ring empties as time runs down. */
+  function setRing(fraction) {
+    ring.style.strokeDashoffset = String(CIRC * (1 - fraction));
+  }
+
+  /** CSS class for ring colour by phase. */
+  function ringClass() {
+    if (phase === 'focus') return 'pomo-ring-fill';
+    if (phase === 'short') return 'pomo-ring-fill break';
+    return 'pomo-ring-fill longbreak';
+  }
+
+  /** Sync display, ring, and ring colour. */
+  function updateDisplay() {
+    document.getElementById('pomoDisplay').textContent = fmtTime(remaining);
+    setRing(remaining / totalSecs);
+    ring.className = ringClass();
+  }
+
+  /** Re-render the session progress dots. */
+  function renderDots() {
+    var html = '';
+    for (var i = 0; i < MAX_SESSIONS; i++) {
+      html += '<span class="pomo-session-dot' + (i < sessions ? ' filled' : '') + '"></span>';
+    }
+    html += '<span class="pomo-session-lbl">' + sessions + '/' + MAX_SESSIONS + ' sessions</span>';
+    document.getElementById('pomoSessionRow').innerHTML = html;
+  }
+
+  /** Re-render the "studying now" chips. */
+  function renderPeople() {
+    var list = inRoom ? ['You'].concat(roomPeople) : roomPeople;
+    document.getElementById('pomoCount').textContent = list.length;
+    document.getElementById('pomoStudiers').innerHTML = list.map(function (p) {
+      var isYou = p === 'You';
+      return '<div class="pomo-person' + (isYou ? ' you' : '') + '">'
+           + (isYou ? '<div class="pomo-person-dot"></div>' : '')
+           + esc(p) + '</div>';
+    }).join('');
+
+    var jb = document.getElementById('pomoJoinBtn');
+    jb.textContent = inRoom ? 'Leave Room' : 'Join Room';
+    jb.className   = 'btn ' + (inRoom ? 'btn-green' : 'btn-ghost');
+  }
+
+  /** Called when the countdown reaches zero. */
+  function onComplete() {
+    running = false;
+    clearInterval(ticker); ticker = null;
+    document.getElementById('pomoStartBtn').textContent = 'Start';
+
+    if (phase === 'focus') {
+      sessions = Math.min(sessions + 1, MAX_SESSIONS);
+      renderDots();
+    }
+
+    var banner = document.getElementById('pomoBanner');
+    banner.classList.add('show');
+    setTimeout(function () { banner.classList.remove('show'); }, 4500);
+    fireConfetti();
+  }
+
+  /* ── Public handlers (called by onclick in HTML) ── */
+
+  /** Switch to a different phase (focus / short / long). */
+  window.setPhase = function (btn) {
+    clearInterval(ticker); ticker = null; running = false;
+    document.getElementById('pomoStartBtn').textContent = 'Start';
+    document.getElementById('pomoBanner').classList.remove('show');
+    document.querySelectorAll('.pomo-tab').forEach(function (t) { t.classList.remove('active'); });
+    btn.classList.add('active');
+
+    phase      = btn.dataset.phase;
+    totalSecs  = parseInt(btn.dataset.secs, 10);
+    remaining  = totalSecs;
+    document.getElementById('pomoPhaseLabel').textContent =
+      PHASES.find(function (p) { return p.key === phase; }).label;
+
+    updateDisplay();
+  };
+
+  /** Start or pause the timer. */
+  window.togglePomo = function () {
+    running = !running;
+    var btn = document.getElementById('pomoStartBtn');
+    if (running) {
+      btn.textContent = 'Pause';
+      ticker = setInterval(function () {
+        remaining--;
+        updateDisplay();
+        if (remaining <= 0) onComplete();
+      }, 1000);
+    } else {
+      btn.textContent = 'Resume';
+      clearInterval(ticker); ticker = null;
+    }
+  };
+
+  /** Reset the timer to the start of the current phase. */
+  window.resetPomo = function () {
+    clearInterval(ticker); ticker = null; running = false; remaining = totalSecs;
+    document.getElementById('pomoStartBtn').textContent = 'Start';
+    document.getElementById('pomoBanner').classList.remove('show');
+    updateDisplay();
+  };
+
+  /** Join or leave the study room. */
+  window.toggleRoom = function () {
+    inRoom = !inRoom;
+    save('sb_pomo_room', inRoom);
+    renderPeople();
+  };
+
+  updateDisplay();
+  renderDots();
+  renderPeople();
+}
+
+
+/* ══════════════════════════════════════════════
+   6. STUDY BUDDY MATCHER
+══════════════════════════════════════════════ */
+
+function initBuddy(pool, opts) {
+  var POOL = pool || [
+    { name:'Aditi Sharma',  roll:'23f1000052', tags:['Night Owl','Explains Well','Speed Runner']    },
+    { name:'Rohan Verma',   roll:'22f1000119', tags:['Silent Mode','Topper Energy','Note Sharer']   },
+    { name:'Mehak Singh',   roll:'24f1000093', tags:['Discussion Queen','Mock Test Fan','Patient']  },
+    { name:'Dev Patel',     roll:'23f2000114', tags:['Problem Solver','Early Riser','Flashcard Pro']},
+    { name:'Priya Nair',    roll:'24f2000050', tags:['Chill Vibes','Group Study','Mentor Mode']     },
+    { name:'Arjun Mehra',   roll:'23f3000021', tags:['Competitive','CP Grinder','Deadline Chaser']  },
+    { name:'Sneha Iyer',    roll:'24f1000078', tags:['Structured Notes','Pomodoro Fan','Consistent']},
+    { name:'Karan Joshi',   roll:'23f4000031', tags:['Visual Learner','Diagram Lover','Calm Energy']}
+  ];
+
+  var lastIdx = -1;
+
+  /** Populate the three filter dropdowns from data.json. */
+  function buildDropdowns() {
+    if (!opts) return;
+    var map = { buddySub: opts.subjects, buddyTime: opts.timeSlots, buddyStyle: opts.studyStyles };
+    Object.keys(map).forEach(function (id) {
+      var sel = document.getElementById(id);
+      map[id].forEach(function (label) {
+        var opt = document.createElement('option');
+        opt.textContent = label;
+        sel.appendChild(opt);
+      });
+    });
+  }
+
+  /** Find and display a matched buddy. */
+  window.findBuddy = function () {
+    // Validate all three selects
+    var valid = true;
+    ['buddySub','buddyTime','buddyStyle'].forEach(function (id) {
+      var el = document.getElementById(id);
+      if (!el.value) {
+        el.classList.add('error');
+        setTimeout(function () { el.classList.remove('error'); }, 2000);
+        valid = false;
+      } else {
+        el.classList.remove('error');
+      }
+    });
+    if (!valid) return;
+
+    // Pick a different member from last time
+    var idx, attempts = 0;
+    do {
+      idx = Math.floor(Math.random() * POOL.length);
+      attempts++;
+    } while (idx === lastIdx && POOL.length > 1 && attempts < 10);
+    lastIdx = idx;
+
+    var m   = POOL[idx];
+    var pct = 75 + Math.floor(Math.random() * 24);   // 75–98% match score
+
+    document.getElementById('buddyAvatar').textContent = m.name.charAt(0);
+    document.getElementById('buddyName').textContent   = m.name;
+    document.getElementById('buddyRoll').textContent   = m.roll + '@ds.study.iitm.ac.in';
+    document.getElementById('buddyPct').textContent    = pct + '%';
+    document.getElementById('buddyTags').innerHTML     = m.tags.map(function (t) {
+      return '<span class="buddy-tag">' + esc(t) + '</span>';
+    }).join('');
+
+    // Reset connect state for fresh match
+    document.getElementById('buddySentMsg').classList.remove('show');
+    var cb = document.getElementById('connectBtn');
+    cb.disabled    = false;
+    cb.textContent = '💬 Connect';
+
+    document.getElementById('buddyResult').classList.add('show');
+  };
+
+  /** Send a connection request to the matched buddy. */
+  window.connectBuddy = function () {
+    var name = document.getElementById('buddyName').textContent;
+    if (!name) return;
+    document.getElementById('buddySentMsg').classList.add('show');
+    var cb = document.getElementById('connectBtn');
+    cb.disabled    = true;
+    cb.textContent = 'Sent!';
+  };
+
+  // Remove error styling when user changes a select
+  ['buddySub','buddyTime','buddyStyle'].forEach(function (id) {
+    document.getElementById(id).addEventListener('change', function () {
+      this.classList.remove('error');
+    });
+  });
+
+  buildDropdowns();
+}
+
+
+/* ══════════════════════════════════════════════
+   7. DAILY CHALLENGE
+   localStorage keys (reset each day):
+     sb_ch_date    – TODAY string
+     sb_ch_solvers – array of solver objects
+     sb_ch_solved  – boolean
+══════════════════════════════════════════════ */
+
+function initChallenge(cfg) {
+  var SEED_SOLVERS = cfg ? cfg.seedSolvers : [
+    { name:'Aditi Sharma', time:'08:42 AM', points:25, me:false },
+    { name:'Dev Patel',    time:'09:15 AM', points:25, me:false },
+    { name:'Rohan Verma',  time:'10:03 AM', points:20, me:false }
+  ];
+  var PTS_FULL = cfg ? cfg.points         : 25;
+  var PTS_HINT = cfg ? cfg.pointsWithHint : 15;
+
+  // Wipe solver list and solved state at the start of each new day
+  if (load('sb_ch_date', null) !== TODAY) {
+    save('sb_ch_date',    TODAY);
+    save('sb_ch_solvers', SEED_SOLVERS);
+    save('sb_ch_solved',  false);
+  }
+
+  var solvers   = load('sb_ch_solvers', SEED_SOLVERS);
+  var mySolved  = load('sb_ch_solved',  false);
+  var hintShown = false;
+
+  /** Render the ranked solver list. */
+  function renderSolvers() {
+    document.getElementById('solverCount').textContent = solvers.length;
+    document.getElementById('challengeSolvers').innerHTML = solvers.map(function (s, i) {
+      return '<div class="challenge-solver' + (s.me ? ' me' : '') + '">'
+           +   '<span class="solver-rank">' + (i + 1) + '</span>'
+           +   '<span class="solver-name">' + esc(s.name) + (s.me ? ' (You)' : '') + '</span>'
+           +   '<span class="solver-time">' + s.time + '</span>'
+           +   '<span class="solver-pts">+'  + s.points + '</span>'
+           + '</div>';
+    }).join('');
+  }
+
+  /** Disable the solve button and show the confirmation banner. */
+  function lockSolveBtn() {
+    var btn = document.getElementById('solveBtn');
+    btn.disabled    = true;
+    btn.textContent = '✓ Solved!';
+    document.getElementById('challengeSolvedWrap').classList.add('show');
+  }
+
+  /** Show/hide the hint box. */
+  window.toggleHint = function () {
+    hintShown = !hintShown;
+    document.getElementById('challengeHint').classList.toggle('show', hintShown);
+    document.getElementById('hintBtn').textContent = hintShown ? '🙈 Hide Hint' : '💡 Hint';
+  };
+
+  /** Mark the challenge as solved and add the user to the leaderboard. */
+  window.markSolved = function () {
+    if (mySolved) return;
+
+    var now  = new Date();
+    var time = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+    var pts  = hintShown ? PTS_HINT : PTS_FULL;
+
+    solvers.push({ name:'You', time: time, points: pts, me: true });
+    save('sb_ch_solvers', solvers);
+    save('sb_ch_solved',  true);
+    mySolved = true;
+
+    document.getElementById('challengeSolvedPts').textContent = '+' + pts;
+    renderSolvers();
+    lockSolveBtn();
+
+    var r = document.getElementById('solveBtn').getBoundingClientRect();
+    fireConfetti(r.left + r.width / 2, r.top);
+  };
+
+  renderSolvers();
+  if (mySolved) lockSolveBtn();
+}
+
+
+/* ══════════════════════════════════════════════
+   8. MEME OF THE WEEK
+   localStorage keys:
+     sb_meme_votes – { candId: 'fire'|'dead' }
+══════════════════════════════════════════════ */
+
+function initMeme(cfg) {
+  var CANDS = cfg ? cfg.candidates : [
+    { id:1, emoji:'📖😭', title:'When you realise Stats has calculus in it', author:'anon_24f', fire:34, dead:12 },
+    { id:2, emoji:'🐱💻', title:'My laptop at 1AM during submission week',   author:'anon_22f', fire:28, dead:45 },
+    { id:3, emoji:'🧠✨', title:'Brain 10 mins before vs during an exam',    author:'anon_23f', fire:61, dead:8  }
+  ];
+
+  var votes = load('sb_meme_votes', {});
+
+  /** Re-render the candidate voting list. */
+  function render() {
+    document.getElementById('memeCandidates').innerHTML = CANDS.map(function (c) {
+      var mv = votes[c.id];
+      return '<div class="meme-candidate">'
+           +   '<div class="meme-cand-emoji">' + c.emoji + '</div>'
+           +   '<div class="meme-cand-info">'
+           +     '<div class="meme-cand-title">' + esc(c.title) + '</div>'
+           +     '<div class="meme-cand-by">by ' + esc(c.author) + '</div>'
+           +   '</div>'
+           +   '<div class="meme-cand-btns">'
+           +     '<button class="meme-cand-v' + (mv === 'fire' ? ' fire-voted' : '') + '" onclick="memeVote(' + c.id + ',\'fire\')">🔥 ' + c.fire + '</button>'
+           +     '<button class="meme-cand-v' + (mv === 'dead' ? ' dead-voted' : '') + '" onclick="memeVote(' + c.id + ',\'dead\')">💀 ' + c.dead + '</button>'
+           +   '</div>'
+           + '</div>';
+    }).join('');
+  }
+
+  /**
+   * Cast a vote for a candidate.
+   * Clicking the same type again removes the vote (toggle).
+   */
+  window.memeVote = function (id, type) {
+    var c = CANDS.find(function (x) { return x.id === id; });
+    if (!c) return;
+
+    var prev = votes[id];
+    if (prev) c[prev] = Math.max(0, c[prev] - 1);   // undo previous vote
+
+    if (prev !== type) {
+      c[type]++;
+      votes[id] = type;
+    } else {
+      delete votes[id];                               // toggle off
+    }
+
+    save('sb_meme_votes', votes);
+    render();
+  };
+
+  /**
+   * Handle a file (either from drag-drop or file picker).
+   * Reads it as a DataURL and shows a preview image.
+   */
+  function handleFile(file) {
+    if (!file || !file.type.startsWith('image/')) return;
+
+    var reader = new FileReader();
+    reader.onload = function (ev) {
+      var preview = document.getElementById('memePreview');
+      document.getElementById('memePreviewImg').src = ev.target.result;
+      preview.style.display = 'block';
+      document.getElementById('memeSubmitMsg').style.display = 'block';
+
+      // Replace drop zone with a confirmation message
+      var dz = document.getElementById('memeDropZone');
+      dz.innerHTML = '<div class="meme-drop-icon">✅</div>'
+                   + '<div class="meme-drop-text"><strong>Meme received!</strong> Judges are reviewing…</div>';
+      dz.onclick     = null;
+      dz.ondragover  = null;
+      dz.ondrop      = null;
+    };
+    reader.readAsDataURL(file);
+  }
+
+  window.handleMemeDrop = function (e) {
+    e.preventDefault();
+    document.getElementById('memeDropZone').classList.remove('drag-over');
+    handleFile(e.dataTransfer.files[0]);
+  };
+
+  window.handleMemeFile = function (file) { handleFile(file); };
+
+  render();
+}
+
+  </script>
+
+</body>
+</html>
