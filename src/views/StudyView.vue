@@ -1198,7 +1198,7 @@ async function initDoubts() {
 }
 
 onMounted(async () => {
-  loadLevel("foundation");
+  // loadLevel("foundation");
   await initDoubts();
 });
 </script>

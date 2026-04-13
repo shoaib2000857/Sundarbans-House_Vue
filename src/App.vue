@@ -1,5 +1,5 @@
 <template>
-  <div :data-theme="theme">
+  <div>
     <!-- PRELOADER -->
     <div id="preloader" v-if="loading" :style="{ opacity: preloaderOpacity }">
       <div class="preloader-inner">
@@ -217,54 +217,6 @@
               <path d="m21 21-4.35-4.35" />
             </svg>
           </button>
-          <div style="position: relative">
-            <button class="nav-tool-btn" @click.stop="notifOpen = !notifOpen">
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2">
-                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
-                <path d="M13.73 21a2 2 0 0 1-3.46 0" />
-              </svg>
-              <span class="notif-badge" v-if="unreadCount > 0">{{
-                unreadCount
-              }}</span>
-            </button>
-            <div class="notif-panel" :class="{ open: notifOpen }">
-              <div class="notif-header">
-                <h4>Notifications</h4>
-                <button class="notif-markall" @click="markAllRead">
-                  Mark all read
-                </button>
-              </div>
-              <div class="notif-list">
-                <div
-                  v-for="(n, i) in notifications"
-                  :key="i"
-                  class="notif-item"
-                  :class="{ unread: n.unread }"
-                  @click="markRead(i)">
-                  <div class="notif-icon">{{ n.icon }}</div>
-                  <div class="notif-body">
-                    <div class="notif-title">{{ n.title }}</div>
-                    <div class="notif-desc">{{ n.desc }}</div>
-                    <div class="notif-time">{{ n.time }}</div>
-                  </div>
-                  <div class="notif-dot" v-if="n.unread"></div>
-                </div>
-              </div>
-              <div class="notif-footer"><a href="#">View all</a></div>
-            </div>
-          </div>
-          <button
-            class="nav-tool-btn"
-            @click="toggleTheme"
-            title="Toggle theme">
-            <span>{{ theme === "dark" ? "☀️" : "🌙" }}</span>
-          </button>
         </div>
       </div>
     </header>
@@ -306,12 +258,6 @@ onMounted(() => {
   }, 1200);
 });
 
-// --- THEME ---
-const theme = ref(localStorage.getItem("sb-theme") || "dark");
-function toggleTheme() {
-  theme.value = theme.value === "dark" ? "light" : "dark";
-  localStorage.setItem("sb-theme", theme.value);
-}
 
 // --- CURSOR ---
 const dotX = ref(0),
@@ -456,73 +402,15 @@ function openSearch() {
   nextTick(() => searchInputEl.value?.focus());
 }
 
-// --- NOTIFICATIONS ---
-const notifications = ref([
-  {
-    icon: "🎓",
-    title: "New Study Material",
-    desc: "Maths Chapter 5 uploaded",
-    time: "2h ago",
-    unread: true,
-  },
-  {
-    icon: "🏆",
-    title: "Community Milestone",
-    desc: "5000+ members reached!",
-    time: "5h ago",
-    unread: true,
-  },
-  {
-    icon: "📅",
-    title: "Event Reminder",
-    desc: "Tech Talk starts in 2 hours",
-    time: "1d ago",
-    unread: true,
-  },
-  {
-    icon: "🌟",
-    title: "Achievement Unlocked",
-    desc: "Sundarbans ranked #1 this week",
-    time: "2d ago",
-    unread: false,
-  },
-  {
-    icon: "📢",
-    title: "Announcement",
-    desc: "Delhi Meetup registrations open",
-    time: "3d ago",
-    unread: false,
-  },
-]);
-const notifOpen = ref(false);
-const unreadCount = computed(
-  () => notifications.value.filter((n) => n.unread).length,
-);
-function markRead(i) {
-  notifications.value[i].unread = false;
-}
-function markAllRead() {
-  notifications.value.forEach((n) => (n.unread = false));
-}
 
 // Keyboard shortcuts
 function onKeyDown(e) {
   if (e.key === "Escape") {
     searchOpen.value = false;
-    notifOpen.value = false;
   }
   if ((e.ctrlKey || e.metaKey) && e.key === "k") {
     e.preventDefault();
     openSearch();
-  }
-}
-function onClickOutside(e) {
-  if (
-    notifOpen.value &&
-    !e.target.closest(".notif-panel") &&
-    !e.target.closest("[data-notif]")
-  ) {
-    notifOpen.value = false;
   }
 }
 
@@ -537,7 +425,6 @@ watch(
 onMounted(() => {
   document.addEventListener("mousemove", onMouseMove);
   document.addEventListener("keydown", onKeyDown);
-  document.addEventListener("click", onClickOutside);
   window.addEventListener("scroll", onScroll);
   animRing();
 });
@@ -545,7 +432,6 @@ onMounted(() => {
 onUnmounted(() => {
   document.removeEventListener("mousemove", onMouseMove);
   document.removeEventListener("keydown", onKeyDown);
-  document.removeEventListener("click", onClickOutside);
   window.removeEventListener("scroll", onScroll);
   cancelAnimationFrame(animFrame);
 });

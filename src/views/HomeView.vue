@@ -604,8 +604,8 @@ function initHeroScrollAnimation(canvas) {
       const iw = img.width || cw,
         ih = img.height || ch;
       const ratio = Math.max(cw / iw, ch / ih);
-      const zw = iw * ratio + 20,
-        zh = ih * ratio + 20;
+      const zw = iw * ratio * 1.15,
+        zh = ih * ratio * 1.15;
       const cx = (cw - zw) / 2,
         cy = (ch - zh) / 2;
       ctx.clearRect(0, 0, cw, ch);
