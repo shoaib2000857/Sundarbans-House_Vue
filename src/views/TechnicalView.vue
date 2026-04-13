@@ -278,8 +278,8 @@ const team = [
   display: flex;
   gap: 1.2rem;
   align-items: flex-start;
-  background: var(--bg2, #f8fafc);
-  border: 1px solid var(--border, #e2e8f0);
+  background: #111;
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--rad2, 12px);
   padding: 1.4rem;
   transition: transform 0.2s, box-shadow 0.2s;
@@ -323,12 +323,12 @@ const team = [
   font-size: 1.05rem;
   font-weight: 700;
   margin: 0 0 0.4rem;
-  color: var(--text1, #0f172a);
+  color: #fff;
 }
 
 .event-desc {
   font-size: 0.88rem;
-  color: var(--text2, #64748b);
+  color: rgba(255, 255, 255, 0.6);
   margin: 0 0 0.6rem;
   line-height: 1.55;
 }
@@ -337,7 +337,7 @@ const team = [
   display: flex;
   gap: 1rem;
   font-size: 0.82rem;
-  color: var(--text2, #64748b);
+  color: rgba(255, 255, 255, 0.6);
   flex-wrap: wrap;
 }
 
@@ -349,8 +349,8 @@ const team = [
 }
 
 .past-event-card {
-  background: var(--bg1, #fff);
-  border: 1px solid var(--border, #e2e8f0);
+  background: #111;
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--rad2, 12px);
   overflow: hidden;
   transition: transform 0.2s, box-shadow 0.2s;
@@ -393,19 +393,19 @@ const team = [
   font-size: 1rem;
   font-weight: 700;
   margin: 0.4rem 0 0.4rem;
-  color: var(--text1, #0f172a);
+  color: #fff;
 }
 
 .past-event-desc {
   font-size: 0.86rem;
-  color: var(--text2, #64748b);
+  color: rgba(255, 255, 255, 0.6);
   line-height: 1.55;
   margin: 0 0 0.6rem;
 }
 
 .past-event-stat {
   font-size: 0.82rem;
-  color: var(--text2, #64748b);
+  color: rgba(255, 255, 255, 0.6);
 }
 
 /* Team — photo card style */
