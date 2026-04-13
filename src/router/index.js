@@ -54,9 +54,7 @@ const routes = [
   { path: '/meetups/chandigarh', component: ChandigarhMeetups },
   { path: '/meetups/lucknow',    component: LucknowMeetups    },
 
-  // Auth-protected
-  { path: '/lounge',    component: MembersLounge, meta: { requiresAuth: true } },
-  { path: '/dashboard', component: DashboardView, meta: { requiresAuth: true } },
+
 ]
 
 export const router = createRouter({
