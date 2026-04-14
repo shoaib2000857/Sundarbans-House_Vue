@@ -86,7 +86,7 @@
               <img :src="member.photo" :alt="member.name" class="team-photo" />
               <div class="team-overlay">
                 <h4 class="team-name">{{ member.name }}</h4>
-                <span class="team-role">📍 {{ member.role }}</span>
+                <span class="team-role-badge">{{ member.role }}</span>
               </div>
             </div>
             <div class="team-footer">
@@ -189,8 +189,8 @@ const pastEvents = [
 ];
 
 const team = [
-    {
-    name: " Liza Rathi ",
+  {
+    name: "Liza Rathi",
     role: "Co-head",
     track: "Design & Illustration",
     Level: "Foundation Data Science",
@@ -219,7 +219,6 @@ const team = [
     linkedin: "https://www.linkedin.com/in/kaviya-kaviarasi-b44178328?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
     instagram: "#",
   },
-
 ];
 </script>
 
@@ -458,10 +457,9 @@ const team = [
   line-height: 1.2;
 }
 
-.team-city {
+.team-role-badge {
   display: inline-flex;
   align-items: center;
-  gap: 0.3rem;
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.08em;
