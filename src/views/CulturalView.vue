@@ -123,6 +123,12 @@ import imgDance from "../assets/Community Events/Cultural/Dance Workshop.jpeg";
 import img3AmThoughts from "../assets/Community Events/Cultural/3 AM thoughts.jpeg";
 import imgOpenMic from "../assets/Community Events/Cultural/Open Mic.jpeg";
 
+// Team Photos
+import imgLiza from "../assets/teams/Liza.jpg";
+import imgMegha from "../assets/teams/Megha.jpg";
+import imgKaviya from "../assets/teams/R.Kaviya Kaviarasi.jpg";
+
+
 useScrollReveal();
 
 const upcomingEvents = [
@@ -215,7 +221,7 @@ const team = [
     role: "Co-head",
     track: "Design & Illustration",
     Level: "Foundation Data Science",
-    photo: "../../teams/Liza.jpg",
+    photo: imgLiza,
     email: "mailto:24f3001980@ds.study.iitm.ac.in",
     linkedin: "https://www.linkedin.com/in/liza-rathi-63374034b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
     instagram: "https://www.instagram.com/rathi_liza?igsh=MWZvcDN3ZDF3bzcyaw==",
@@ -225,7 +231,7 @@ const team = [
     role: "Event Coordinator",
     track: "Performing Arts",
     Level: "Foundation Data Science",
-    photo: "../../teams/Megha.jpg",
+    photo: imgMegha,
     email: "mailto:25f2000267@ds.study.iitm.ac.in",
     linkedin: "https://www.linkedin.com/in/megha-sharma-9489a3357/",
     instagram: "#",
@@ -235,7 +241,7 @@ const team = [
     role: "Event Coordinator",
     track: "Music & Sound",
     Level: "Foundation Data Science",
-    photo: "../../teams/R.Kaviya Kaviarasi.jpg",
+    photo: imgKaviya,
     email: "mailto:24f3003690@ds.study.iitm.ac.in",
     linkedin: "https://www.linkedin.com/in/kaviya-kaviarasi-b44178328?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
     instagram: "#",

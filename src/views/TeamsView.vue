@@ -29,7 +29,7 @@
           <!-- ══ SAMAR AHMAD ══ -->
         <div class="tm-card rc" style="--card-delay:0.1s">
           <div class="tm-photo-wrap">
-            <img src="../../teams/Samar.jpeg" alt="Samar Ahmad"
+            <img src="@/assets/teams/Samar.jpeg" alt="Samar Ahmad"
               @error="$event.target.style.display='none';$event.target.nextElementSibling.style.display='flex'">
             <div class="tm-no-photo" style="display:none">SA</div>
             <div class="tm-overlay">
@@ -62,7 +62,7 @@
         <!-- ══ MANNU YADAV ══ -->
         <div class="tm-card rc" style="--card-delay:0.1s">
           <div class="tm-photo-wrap">
-            <img src="../../teams/mannu.jpg" alt="Mannu Yadav"
+            <img src="@/assets/teams/mannu.jpg" alt="Mannu Yadav"
               @error="$event.target.style.display='none';$event.target.nextElementSibling.style.display='flex'">
             <div class="tm-no-photo" style="display:none">MY</div>
             <div class="tm-overlay">
@@ -90,7 +90,7 @@
         <!-- ══ ADITYA V ══ -->
         <div class="tm-card rc" style="--card-delay:0.1s">
           <div class="tm-photo-wrap">
-            <img src="../../teams/aditya.jpeg" alt="Aditya V"
+            <img src="@/assets/teams/aditya.jpeg" alt="Aditya V"
               @error="$event.target.style.display='none';$event.target.nextElementSibling.style.display='flex'">
             <div class="tm-no-photo" style="display:none">AV</div>
             <div class="tm-overlay">
@@ -136,7 +136,7 @@
         <!-- ══ SAMAR AHMAD ══ -->
         <div class="tm-card rc" style="--card-delay:0.1s">
           <div class="tm-photo-wrap">
-            <img src="../../teams/Samar.jpeg" alt="Samar Ahmad"
+            <img src="@/assets/teams/Samar.jpeg" alt="Samar Ahmad"
               @error="$event.target.style.display='none';$event.target.nextElementSibling.style.display='flex'">
             <div class="tm-no-photo" style="display:none">SA</div>
             <div class="tm-overlay">
@@ -169,7 +169,7 @@
          <!-- ══ ANURAJ ══ -->
           <div class="tm-card rc" style="--card-delay:0.3s">
           <div class="tm-photo-wrap">
-            <img src="../../teams/Anuraj.jpg" alt="ANURAJ"
+            <img src="@/assets/teams/Anuraj.jpg" alt="ANURAJ"
               @error="$event.target.style.display='none';$event.target.nextElementSibling.style.display='flex'">
             <div class="tm-no-photo" style="display:none">AK</div>
             <div class="tm-overlay">
@@ -202,7 +202,7 @@
         <!-- ══ RIYA MOUN ══ -->
         <div class="tm-card rc" style="--card-delay:0.1s">
           <div class="tm-photo-wrap">
-            <img src="../../teams/Riya.jpg" alt="Riya Moun"
+            <img src="@/assets/teams/Riya.jpg" alt="Riya Moun"
               @error="$event.target.style.display='none';$event.target.nextElementSibling.style.display='flex'">
             <div class="tm-no-photo" style="display:none">AN</div>
             <div class="tm-overlay">
@@ -236,7 +236,7 @@
          <!-- ══ Sadia ══ -->
           <div class="tm-card rc" style="--card-delay:0.1s">
           <div class="tm-photo-wrap">
-            <img src="../../teams/Sadia.jpeg" alt="Sadia"
+            <img src="@/assets/teams/Sadia.jpeg" alt="Sadia"
               @error="$event.target.style.display='none';$event.target.nextElementSibling.style.display='flex'">
             <div class="tm-no-photo" style="display:none">ST</div>
             <div class="tm-overlay">
@@ -265,7 +265,7 @@
         <!-- ══ TEJASHVI ══ -->
         <div class="tm-card rc" style="--card-delay:0.3s">
           <div class="tm-photo-wrap">
-            <img src="../../teams/tejashvi.jpg" alt="Tejashvi"
+            <img src="@/assets/teams/tejashvi.jpg" alt="Tejashvi"
               @error="$event.target.style.display='none';$event.target.nextElementSibling.style.display='flex'">
             <div class="tm-no-photo" style="display:none">SH</div>
             <div class="tm-overlay">
@@ -298,7 +298,7 @@
         <!-- ══ SHOHAIB ══ -->
         <div class="tm-card rc" style="--card-delay:0.3s">
           <div class="tm-photo-wrap">
-            <img src="../../teams/shoaib.jpeg" alt="Shoaib" @error="$event.target.style.display='none';$event.target.nextElementSibling.style.display='flex'">
+            <img src="@/assets/teams/shoaib.jpeg" alt="Shoaib" @error="$event.target.style.display='none';$event.target.nextElementSibling.style.display='flex'">
             <div class="tm-no-photo" style="display:none">SH</div>
             <div class="tm-overlay">
               <div class="tm-name">Shoaib Sadiq Salehmohamed</div>
@@ -342,7 +342,7 @@
       <div class="tm-lower-grid">
         <div class="tm-card rc" style="--card-delay:0.1s">
           <div class="tm-photo-wrap">
-            <img src="../../teams/rushabh.jpg" alt="Rushabh Kapse"
+            <img src="@/assets/teams/rushabh.jpg" alt="Rushabh Kapse"
               @error="$event.target.style.display='none';$event.target.nextElementSibling.style.display='flex'">
             <div class="tm-no-photo" style="display:none">RK</div>
             <div class="tm-overlay">
@@ -374,7 +374,7 @@
         
         <div class="tm-card rc" style="--card-delay:0.1s">
           <div class="tm-photo-wrap">
-            <img src="../../teams/dishi.jpg" alt="Dishi Gupta"
+            <img src="@/assets/teams/dishi.jpg" alt="Dishi Gupta"
               @error="$event.target.style.display='none';$event.target.nextElementSibling.style.display='flex'">
             <div class="tm-no-photo" style="display:none">DG</div>
             <div class="tm-overlay">
@@ -406,7 +406,7 @@
         
         <div class="tm-card rc" style="--card-delay:0.1s">
           <div class="tm-photo-wrap">
-            <img src="../../teams/Aditri.jpeg" alt="Aditri Bordoloi"
+            <img src="@/assets/teams/Aditri.jpeg" alt="Aditri Bordoloi"
               @error="$event.target.style.display='none';$event.target.nextElementSibling.style.display='flex'">
             <div class="tm-no-photo" style="display:none">AB</div>
             <div class="tm-overlay">
@@ -438,7 +438,7 @@
         
         <div class="tm-card rc" style="--card-delay:0.1s">
           <div class="tm-photo-wrap">
-            <img src="../../teams/aakash.webp" alt="Aakash Rawal"
+            <img src="@/assets/teams/aakash.webp" alt="Aakash Rawal"
               @error="$event.target.style.display='none';$event.target.nextElementSibling.style.display='flex'">
             <div class="tm-no-photo" style="display:none">AR</div>
             <div class="tm-overlay">
@@ -470,7 +470,7 @@
         
         <div class="tm-card rc" style="--card-delay:0.1s">
           <div class="tm-photo-wrap">
-            <img src="../../teams/R SAI SAHANAA.jpeg" alt="R Sai Sahanaa"
+            <img src="@/assets/teams/R SAI SAHANAA.jpeg" alt="R Sai Sahanaa"
               @error="$event.target.style.display='none';$event.target.nextElementSibling.style.display='flex'">
             <div class="tm-no-photo" style="display:none">RS</div>
             <div class="tm-overlay">
@@ -502,7 +502,7 @@
         
         <div class="tm-card rc" style="--card-delay:0.1s">
           <div class="tm-photo-wrap">
-            <img src="../../teams/nivash.jpeg" alt="Nivash Kumar"
+            <img src="@/assets/teams/nivash.jpeg" alt="Nivash Kumar"
               @error="$event.target.style.display='none';$event.target.nextElementSibling.style.display='flex'">
             <div class="tm-no-photo" style="display:none">NK</div>
             <div class="tm-overlay">
@@ -534,7 +534,7 @@
         
         <div class="tm-card rc" style="--card-delay:0.1s">
           <div class="tm-photo-wrap">
-            <img src="../../teams/chandan.webp" alt="Chandan Saw"
+            <img src="@/assets/teams/chandan.webp" alt="Chandan Saw"
               @error="$event.target.style.display='none';$event.target.nextElementSibling.style.display='flex'">
             <div class="tm-no-photo" style="display:none">CS</div>
             <div class="tm-overlay">
@@ -566,7 +566,7 @@
         
         <div class="tm-card rc" style="--card-delay:0.1s">
           <div class="tm-photo-wrap">
-            <img src="../../teams/kartik.webp" alt="Kartik Singh"
+            <img src="@/assets/teams/kartik.webp" alt="Kartik Singh"
               @error="$event.target.style.display='none';$event.target.nextElementSibling.style.display='flex'">
             <div class="tm-no-photo" style="display:none">KS</div>
             <div class="tm-overlay">
@@ -598,7 +598,7 @@
         
         <div class="tm-card rc" style="--card-delay:0.1s">
           <div class="tm-photo-wrap">
-            <img src="../../teams/divy.jpeg" alt="Divya Prakash"
+            <img src="@/assets/teams/divy.jpeg" alt="Divya Prakash"
               @error="$event.target.style.display='none';$event.target.nextElementSibling.style.display='flex'">
             <div class="tm-no-photo" style="display:none">DP</div>
             <div class="tm-overlay">
@@ -630,7 +630,7 @@
         
         <div class="tm-card rc" style="--card-delay:0.1s">
           <div class="tm-photo-wrap">
-            <img src="../../teams/laksh.webp" alt="Laksh Wadhawan"
+            <img src="@/assets/teams/laksh.webp" alt="Laksh Wadhawan"
               @error="$event.target.style.display='none';$event.target.nextElementSibling.style.display='flex'">
             <div class="tm-no-photo" style="display:none">LW</div>
             <div class="tm-overlay">
@@ -677,7 +677,7 @@
          <!-- ══ Himanshu Sharma  ══ -->
         <div class="tm-card rc" style="--card-delay:0.1s">
           <div class="tm-photo-wrap">
-            <img src="../../teams/Samar.jpeg" alt="Himanshu Sharma "
+            <img src="@/assets/teams/Samar.jpeg" alt="Himanshu Sharma "
               @error="$event.target.style.display='none';$event.target.nextElementSibling.style.display='flex'">
             <div class="tm-no-photo" style="display:none">HS</div>
             <div class="tm-overlay">
@@ -710,7 +710,7 @@
         <!-- ══ AVNEESH SINGH ══ -->
         <div class="tm-card rc" style="--card-delay:0.1s">
           <div class="tm-photo-wrap">
-            <img src="../../teams/mannu.jpg" alt="AVNEESH SINGH"
+            <img src="@/assets/teams/mannu.jpg" alt="AVNEESH SINGH"
               @error="$event.target.style.display='none';$event.target.nextElementSibling.style.display='flex'">
             <div class="tm-no-photo" style="display:none">MY</div>
             <div class="tm-overlay">
@@ -743,7 +743,7 @@
         <!-- ══ Abhisekh Chowdhury  ══ -->
         <div class="tm-card rc" style="--card-delay:0.1s">
           <div class="tm-photo-wrap">
-            <img src="../../teams/aditya.jpeg" alt="Abhisekh Chowdhury "
+            <img src="@/assets/teams/aditya.jpeg" alt="Abhisekh Chowdhury "
               @error="$event.target.style.display='none';$event.target.nextElementSibling.style.display='flex'">
             <div class="tm-no-photo" style="display:none">AV</div>
             <div class="tm-overlay">
