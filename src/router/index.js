@@ -23,9 +23,7 @@ import BangaloreMeetups  from '../views/meetups/BangaloreMeetups.vue'
 import KolkataMeetups    from '../views/meetups/KolkataMeetups.vue'
 import HyderabadMeetups  from '../views/meetups/HyderabadMeetups.vue'
 import PatnaMeetups      from '../views/meetups/PatnaMeetups.vue'
-import NagpurMeetups     from '../views/meetups/NagpurMeetups.vue'
-import PuneMeetups       from '../views/meetups/PuneMeetups.vue'
-
+import ChandigarhMeetups from '../views/meetups/ChandigarhMeetups.vue'
 const routes = [
   { path: '/',       component: Home    },
   { path: '/about',  component: About   },
@@ -49,9 +47,8 @@ const routes = [
   { path: '/meetups/kolkata',    component: KolkataMeetups    },
   { path: '/meetups/hyderabad',  component: HyderabadMeetups  },
   { path: '/meetups/patna',      component: PatnaMeetups      },
-  { path: '/meetups/nagpur',     component: NagpurMeetups     },
   { path: '/meetups/pune',       component: PuneMeetups       },
-
+  { path: '/meetups/chandigarh', component: ChandigarhMeetups }
 
 ]
 
