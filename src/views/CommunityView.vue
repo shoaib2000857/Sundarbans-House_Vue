@@ -54,13 +54,16 @@
               </div>
             </div>
             <div class="community-actions">
-              <a href="#" class="submit-btn" style="display: inline-flex">
+              <a
+                href="#"
+                class="submit-btn"
+                style="display: inline-flex; background: #f59e0b; color: #0a0f1e">
                 Join Community
               </a>
               <RouterLink
                 to="/community/technical"
                 class="explore-btn"
-                style="--accent: #4f8ef7">
+                style="--accent: #f59e0b">
                 Explore →
               </RouterLink>
             </div>
@@ -220,13 +223,13 @@
               <a
                 href="#"
                 class="submit-btn"
-                style="display: inline-flex; background: #DC2626">
+                style="display: inline-flex; background: #f59e0b; color: #0a0f1e">
                 Join Community
               </a>
               <RouterLink
                 to="/community/esports"
                 class="explore-btn"
-                style="--accent: #DC2626">
+                style="--accent: #f59e0b">
                 Explore →
               </RouterLink>
             </div>
