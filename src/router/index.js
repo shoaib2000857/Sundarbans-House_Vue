@@ -25,8 +25,6 @@ import HyderabadMeetups  from '../views/meetups/HyderabadMeetups.vue'
 import PatnaMeetups      from '../views/meetups/PatnaMeetups.vue'
 import NagpurMeetups     from '../views/meetups/NagpurMeetups.vue'
 import PuneMeetups       from '../views/meetups/PuneMeetups.vue'
-import BhilaiMeetups     from '../views/meetups/BhilaiMeetups.vue'
-import ManamaMeetups     from '../views/meetups/ManamaMeetups.vue'
 
 const routes = [
   { path: '/',       component: Home    },
@@ -53,8 +51,6 @@ const routes = [
   { path: '/meetups/patna',      component: PatnaMeetups      },
   { path: '/meetups/nagpur',     component: NagpurMeetups     },
   { path: '/meetups/pune',       component: PuneMeetups       },
-  { path: '/meetups/bhilai',     component: BhilaiMeetups     },
-  { path: '/meetups/manama',     component: ManamaMeetups     },
 
 
 ]
