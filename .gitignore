@@ -23,4 +23,5 @@ dist-ssr
 *.sln
 *.sw?
 
-project-files
+project-files/
+project files/

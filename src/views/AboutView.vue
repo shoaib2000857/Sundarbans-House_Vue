@@ -306,9 +306,8 @@
     <section class="section rs" style="background: var(--bg2)">
       <div class="container">
         <div class="sec-hdr">
-          <div class="section-tag">What Makes Us Different</div>
           <h2 class="section-title-xl">
-            Why <span class="tg">Sundarbans</span>
+            What Makes Us <span class="tg">Different</span>
           </h2>
         </div>
         <div class="grid-3">

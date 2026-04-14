@@ -35,12 +35,7 @@
       </div>
     </div>
 
-    <!-- CUSTOM CURSOR -->
-    <div id="cursor-dot" :style="dotStyleC"></div>
-    <div
-      id="cursor-ring"
-      :class="{ expanded: cursorExpanded }"
-      :style="ringStyleC"></div>
+
 
     <!-- PARTICLES -->
     <div class="particles-bg" id="particlesBg">
@@ -259,44 +254,6 @@ onMounted(() => {
 });
 
 
-// --- CURSOR ---
-const dotX = ref(0),
-  dotY = ref(0),
-  ringX = ref(0),
-  ringY = ref(0);
-const cursorExpanded = ref(false);
-let mX = 0,
-  mY = 0,
-  animFrame = null;
-
-function dotStyle() {
-  return { left: dotX.value + "px", top: dotY.value + "px" };
-}
-function ringStyle() {
-  return { left: ringX.value + "px", top: ringY.value + "px" };
-}
-const dotStyleC = computed(() => ({
-  left: dotX.value + "px",
-  top: dotY.value + "px",
-}));
-const ringStyleC = computed(() => ({
-  left: ringX.value + "px",
-  top: ringY.value + "px",
-}));
-
-function onMouseMove(e) {
-  mX = e.clientX;
-  mY = e.clientY;
-  dotX.value = mX;
-  dotY.value = mY;
-  const isClickable = e.target.closest("a, button, input, textarea, select, .sc-level-card, .sc-subj-badge, .sc-tab, .db-filter, .sc-author-header, .menu-toggle, [role='button']");
-  cursorExpanded.value = !!isClickable;
-}
-function animRing() {
-  ringX.value += (mX - ringX.value) * 0.12;
-  ringY.value += (mY - ringY.value) * 0.12;
-  animFrame = requestAnimationFrame(animRing);
-}
 
 // --- PARTICLES ---
 const particles = ref([]);
@@ -423,17 +380,13 @@ watch(
 );
 
 onMounted(() => {
-  document.addEventListener("mousemove", onMouseMove);
   document.addEventListener("keydown", onKeyDown);
   window.addEventListener("scroll", onScroll);
-  animRing();
 });
 
 onUnmounted(() => {
-  document.removeEventListener("mousemove", onMouseMove);
   document.removeEventListener("keydown", onKeyDown);
   window.removeEventListener("scroll", onScroll);
-  cancelAnimationFrame(animFrame);
 });
 </script>
 

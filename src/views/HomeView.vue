@@ -383,11 +383,9 @@
     <section
       class="cta-section rs"
       style="
-        background: linear-gradient(
-          135deg,
-          rgba(212, 160, 23, 0.06),
-          rgba(8, 7, 5, 0.95)
-        );
+        background: rgba(13, 11, 8, 0.5);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
       ">
       <div class="cta-bg">
         <img
@@ -397,7 +395,7 @@
       </div>
       <div class="container">
         <div class="cta-wrap">
-          <div class="section-tag ">Academic Excellence</div>
+          <div class="section-tag light">Academic Excellence</div>
           <h2 class="cta-heading">
             Your Academic<br /><span class="cta-acc">Companion</span>
           </h2>
