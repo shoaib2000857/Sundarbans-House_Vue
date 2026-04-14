@@ -53,6 +53,9 @@
         <div class="past-events-grid">
           <div v-for="event in pastEvents" :key="event.id" class="past-event-card">
             <div class="past-event-img-wrap">
+              <!-- Blurred background to fill space with mood -->
+              <img :src="event.image" class="past-event-img-blur" aria-hidden="true" />
+              <!-- Sharp foreground image scaled to fit -->
               <img :src="event.image" :alt="event.title" class="past-event-img" />
               <div class="past-event-overlay">
                 <span class="past-event-date">{{ event.date }}</span>
@@ -114,6 +117,12 @@
 import PageHero from "../components/PageHero.vue";
 import { useScrollReveal } from "../composables/useAnimations.js";
 
+import imgShivShakti from "../assets/Community Events/Cultural/Shiv Shakti.jpeg";
+import imgPhotography from "../assets/Community Events/Cultural/Photography Workshop.jpeg";
+import imgDance from "../assets/Community Events/Cultural/Dance Workshop.jpeg";
+import img3AmThoughts from "../assets/Community Events/Cultural/3 AM thoughts.jpeg";
+import imgOpenMic from "../assets/Community Events/Cultural/Open Mic.jpeg";
+
 useScrollReveal();
 
 const upcomingEvents = [
@@ -160,7 +169,7 @@ const pastEvents = [
     description: "Shiv–Shakti: The Eternal Union was a spiritually enriching cultural evening that beautifully celebrated devotion, art, and timeless values. The event brought members together to experience the divine essence of Shiva and Shakti through soulful shlokas, graceful dance performances, devotional expressions, and heartfelt reflections. It created a peaceful and uplifting atmosphere, allowing participants to reconnect with spirituality, culture, and inner calm while celebrating the deeper meaning of togetherness and faith.",
     date: "15 Feb 2026 | 8:00 PM",
     attendees: "50+",
-    image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&q=80&auto=format&fit=crop",
+    image: imgShivShakti,
   },
   {
     id: 2,
@@ -169,7 +178,7 @@ const pastEvents = [
     description: "The Photography Workshop was an inspiring and interactive learning session designed for members who wanted to explore the art of visual storytelling. Led by Manish Kumar, a talented creative professional skilled in photography, design, and digital art, the workshop focused on composition, lighting, framing, and creative perspective. Participants gained practical insights into how to transform ordinary moments into meaningful visuals. The session encouraged creativity, curiosity, and helped members develop a stronger artistic eye.",
     date: "19 Feb 2026 | 7:00 PM",
     attendees: "50+",
-    image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600&q=80&auto=format&fit=crop",
+    image: imgPhotography,
   },
   {
     id: 3,
@@ -178,7 +187,7 @@ const pastEvents = [
     description: "The Dance Workshop was a vibrant and energetic session that brought rhythm, movement, and excitement to the Sundarbans community. Led by Aditri Bordoloi, the workshop introduced participants to a mix of Bollywood, freestyle, and classical dance styles in a beginner-friendly format. Members learned new moves, explored different forms of expression, and enjoyed an engaging experience filled with fun and positivity. The event successfully encouraged confidence, creativity, and active participation.",
     date: "26 Feb 2026 | 7:30 PM",
     attendees: "50+",
-    image: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=600&q=80&auto=format&fit=crop",
+    image: imgDance,
   },
   {
     id: 4,
@@ -187,7 +196,7 @@ const pastEvents = [
     description: "3 AM Thoughts was a unique and heartfelt community initiative that provided members with a safe and comforting space to express their late-night feelings, thoughts, dreams, and emotions. Through written reflections and anonymous submissions, participants shared personal stories, fears, hopes, and moments of vulnerability. The event fostered emotional openness, connection, and understanding within the community, making it one of the most meaningful and relatable cultural initiatives.",
     date: "Online Submission",
     attendees: "50+",
-    image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&q=80&auto=format&fit=crop",
+    image: img3AmThoughts,
   },
   {
     id: 5,
@@ -196,7 +205,7 @@ const pastEvents = [
     description: "Open Mic Night was a lively and expressive cultural evening that gave members the chance to showcase their hidden talents and creativity. From poetry and shayari to singing, storytelling, and fun performances, the event created a warm and supportive stage for everyone to share their voice. It encouraged confidence, self-expression, and community bonding while making the evening memorable with laughter, emotions, and inspiring performances.",
     date: "26 Mar 2026 | 8:00 PM",
     attendees: "50+",
-    image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600&q=80&auto=format&fit=crop",
+    image: imgOpenMic,
   }
 ];
 
@@ -256,40 +265,60 @@ const team = [
 }
 
 .event-type-tag {
-  display: inline-block;
-  font-size: 0.72rem;
-  font-weight: 600;
-  padding: 0.2rem 0.6rem;
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0.3rem 0.8rem;
   border-radius: 999px;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
-  margin-bottom: 0.5rem;
-  background: rgba(245, 158, 11, 0.12);
-  color: #f59e0b;
-  border: 1px solid rgba(245, 158, 11, 0.3);
+  letter-spacing: 0.1em;
+  margin-bottom: 0.8rem;
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(239, 68, 68, 0.1));
+  color: #fbbf24;
+  border: 1px solid rgba(245, 158, 11, 0.2);
+  box-shadow: 0 2px 10px rgba(245, 158, 11, 0.05);
 }
 
-/* Upcoming Events */
+/* Upcoming Events - Artistic Vibe */
 .events-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 1.5rem;
+  gap: 2rem;
 }
 
 .event-card {
   display: flex;
-  gap: 1.2rem;
+  gap: 1.5rem;
   align-items: flex-start;
-  background: #111;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: var(--rad2, 12px);
-  padding: 1.4rem;
-  transition: transform 0.2s, box-shadow 0.2s;
+  background: rgba(20, 15, 10, 0.4);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(245, 158, 11, 0.15);
+  border-radius: 24px;
+  padding: 2rem;
+  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.event-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: radial-gradient(circle at top left, rgba(245, 158, 11, 0.08), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
 }
 
 .event-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(245, 158, 11, 0.12);
+  transform: translateY(-5px);
+  border-color: rgba(239, 68, 68, 0.3);
+  box-shadow: 0 15px 40px rgba(245, 158, 11, 0.1), 0 5px 15px rgba(239, 68, 68, 0.08);
+}
+
+.event-card:hover::before {
+  opacity: 1;
 }
 
 .event-date-badge {
@@ -297,117 +326,168 @@ const team = [
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-width: 54px;
-  border-radius: 10px;
-  padding: 0.5rem 0.6rem;
-  background: #f59e0b;
-  color: #0a0f1e;
+  min-width: 65px;
+  border-radius: 16px;
+  padding: 0.8rem 0.6rem;
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(239, 68, 68, 0.15));
+  border: 1px solid rgba(245, 158, 11, 0.2);
+  color: #fca5a5;
   line-height: 1;
   flex-shrink: 0;
+  box-shadow: inset 0 0 10px rgba(245, 158, 11, 0.05);
 }
 
 .event-day {
-  font-size: 1.5rem;
-  font-weight: 800;
+  font-size: 1.8rem;
+  font-weight: 300;
+  color: #fcd34d;
 }
 
 .event-month {
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
-  margin-top: 2px;
+  margin-top: 4px;
 }
 
 .event-info { flex: 1; }
 
 .event-title {
-  font-size: 1.05rem;
-  font-weight: 700;
-  margin: 0 0 0.4rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem;
   color: #fff;
+  letter-spacing: 0.01em;
 }
 
 .event-desc {
-  font-size: 0.88rem;
-  color: rgba(255, 255, 255, 0.6);
-  margin: 0 0 0.6rem;
-  line-height: 1.55;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0 0 1rem;
+  line-height: 1.6;
 }
 
 .event-meta {
   display: flex;
-  gap: 1rem;
-  font-size: 0.82rem;
-  color: rgba(255, 255, 255, 0.6);
+  gap: 1.2rem;
+  font-size: 0.85rem;
+  color: rgba(245, 158, 11, 0.8);
   flex-wrap: wrap;
+  font-weight: 400;
+  letter-spacing: 0.02em;
 }
 
-/* Past Events */
+/* Past Events - Gallery Vibe */
 .past-events-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2rem;
 }
 
 .past-event-card {
-  background: #111;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: var(--rad2, 12px);
+  background: rgba(20, 15, 10, 0.4);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(245, 158, 11, 0.15);
+  border-radius: 24px;
   overflow: hidden;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  display: flex;
+  flex-direction: column;
 }
 
 .past-event-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(245, 158, 11, 0.12);
+  transform: translateY(-8px);
+  border-color: rgba(239, 68, 68, 0.3);
+  box-shadow: 0 20px 50px rgba(245, 158, 11, 0.15), 0 8px 20px rgba(239, 68, 68, 0.1);
 }
 
 .past-event-img-wrap {
   position: relative;
-  height: 180px;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background: #050505;
+  overflow: hidden;
+}
+
+.past-event-img-blur {
+  position: absolute;
+  top: -20%; left: -20%;
+  width: 140%; height: 140%;
+  object-fit: cover;
+  filter: blur(25px) brightness(0.4) saturate(1.2);
+  z-index: 0;
+  transition: transform 0.6s ease, filter 0.6s ease;
+}
+
+.past-event-card:hover .past-event-img-blur {
+  transform: scale(1.1);
+  filter: blur(15px) brightness(0.5) saturate(1.4);
 }
 
 .past-event-img {
+  position: absolute;
+  top: 0; left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  z-index: 1;
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+  padding: 0.5rem;
+}
+
+.past-event-card:hover .past-event-img {
+  transform: scale(1.05); /* cinematic zoom */
 }
 
 .past-event-overlay {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 0.5rem 0.8rem;
-  background: linear-gradient(transparent, rgba(0, 0, 0, 0.6));
+  bottom: 12px;
+  right: 12px;
+  z-index: 2;
 }
 
 .past-event-date {
-  font-size: 0.78rem;
+  font-size: 0.8rem;
   color: #fff;
-  font-weight: 600;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
 }
 
-.past-event-body { padding: 1.1rem; }
+.past-event-body { 
+  padding: 1.8rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
 
 .past-event-title {
-  font-size: 1rem;
-  font-weight: 700;
-  margin: 0.4rem 0 0.4rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0.2rem 0 0.8rem;
   color: #fff;
+  letter-spacing: 0.01em;
 }
 
 .past-event-desc {
-  font-size: 0.86rem;
-  color: rgba(255, 255, 255, 0.6);
-  line-height: 1.55;
-  margin: 0 0 0.6rem;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+  margin: 0 0 1.2rem;
+  flex: 1;
 }
 
 .past-event-stat {
-  font-size: 0.82rem;
-  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.85rem;
+  color: rgba(245, 158, 11, 0.8);
+  padding-top: 1rem;
+  border-top: 1px solid rgba(245, 158, 11, 0.15);
+  font-weight: 500;
 }
 
 /* Team — photo card style */
