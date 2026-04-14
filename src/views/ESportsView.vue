@@ -314,14 +314,14 @@ const team = [
 </script>
 
 <style scoped>
-/* Accent color: #a855f7 (purple) */
+/* ── Accent: Blood Protocol — #DC2626 Crimson / #F97316 Ember ── */
 
 .section-header {
   margin-bottom: 2.5rem;
 }
 
 .tg-esports {
-  background: linear-gradient(135deg, #a855f7, #ec4899);
+  background: linear-gradient(135deg, #DC2626, #F97316);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -329,9 +329,9 @@ const team = [
 
 /* Tags */
 .esports-tag {
-  background: rgba(168, 85, 247, 0.1);
-  color: #a855f7;
-  border-color: rgba(168, 85, 247, 0.3);
+  background: rgba(220, 38, 38, 0.10);
+  color: #EF4444;
+  border-color: rgba(220, 38, 38, 0.30);
 }
 
 .event-type-tag {
@@ -343,10 +343,10 @@ const team = [
   text-transform: uppercase;
   letter-spacing: 0.08em;
   margin-bottom: 0.75rem;
-  background: rgba(168, 85, 247, 0.1);
-  color: #e879f9;
-  border: 1px solid rgba(168, 85, 247, 0.25);
-  box-shadow: 0 0 10px rgba(168, 85, 247, 0.05);
+  background: rgba(220, 38, 38, 0.10);
+  color: #EF4444;
+  border: 1px solid rgba(220, 38, 38, 0.25);
+  box-shadow: 0 0 10px rgba(220, 38, 38, 0.05);
 }
 
 /* Upcoming Events */
@@ -361,9 +361,9 @@ const team = [
   display: flex;
   gap: 1.2rem;
   align-items: flex-start;
-  background: rgba(15, 15, 20, 0.8);
+  background: rgba(15, 10, 10, 0.85);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(168, 85, 247, 0.15);
+  border: 1px solid rgba(220, 38, 38, 0.15);
   border-radius: 12px;
   padding: 1.5rem;
   overflow: hidden;
@@ -375,21 +375,23 @@ const team = [
   position: absolute;
   left: 0; top: 0; bottom: 0;
   width: 4px;
-  background: linear-gradient(180deg, #a855f7, #ec4899);
+  background: linear-gradient(180deg, #DC2626, #F97316);
   opacity: 0.5;
   transition: width 0.3s ease, opacity 0.3s ease;
 }
 
 .event-card:hover {
   transform: translateY(-4px);
-  border-color: rgba(168, 85, 247, 0.4);
-  box-shadow: 0 10px 30px rgba(168, 85, 247, 0.15);
+  border-color: rgba(220, 38, 38, 0.45);
+  box-shadow:
+    0 10px 30px rgba(220, 38, 38, 0.12),
+    0 0 40px rgba(220, 38, 38, 0.06);
 }
 
 .event-card:hover::before {
   width: 6px;
   opacity: 1;
-  box-shadow: 0 0 15px #a855f7;
+  box-shadow: 0 0 15px #DC2626;
 }
 
 .event-date-badge {
@@ -400,12 +402,12 @@ const team = [
   min-width: 54px;
   border-radius: 8px;
   padding: 0.6rem;
-  background: rgba(168, 85, 247, 0.15);
-  border: 1px solid rgba(168, 85, 247, 0.3);
-  color: #c084fc;
+  background: rgba(220, 38, 38, 0.15);
+  border: 1px solid rgba(220, 38, 38, 0.30);
+  color: #EF4444;
   line-height: 1;
   flex-shrink: 0;
-  text-shadow: 0 0 8px rgba(192, 132, 252, 0.5);
+  text-shadow: 0 0 8px rgba(239, 68, 68, 0.5);
 }
 
 .event-day {
@@ -442,7 +444,7 @@ const team = [
   display: flex;
   gap: 1.2rem;
   font-size: 0.82rem;
-  color: rgba(168, 85, 247, 0.8);
+  color: rgba(220, 38, 38, 0.80);
   font-family: 'Courier New', Courier, monospace;
   font-weight: 600;
   flex-wrap: wrap;
@@ -456,9 +458,9 @@ const team = [
 }
 
 .past-event-card {
-  background: rgba(15, 15, 20, 0.8);
+  background: rgba(15, 10, 10, 0.85);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(168, 85, 247, 0.15);
+  border: 1px solid rgba(220, 38, 38, 0.15);
   border-radius: 12px;
   overflow: hidden;
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -472,7 +474,7 @@ const team = [
   position: absolute;
   top: 0; left: 0; right: 0;
   height: 2px;
-  background: linear-gradient(90deg, #a855f7, #ec4899);
+  background: linear-gradient(90deg, #DC2626, #F97316);
   opacity: 0;
   transition: opacity 0.3s ease;
   z-index: 10;
@@ -480,20 +482,22 @@ const team = [
 
 .past-event-card:hover {
   transform: translateY(-6px) scale(1.01);
-  box-shadow: 0 12px 32px rgba(168, 85, 247, 0.15), 0 0 20px rgba(236, 72, 153, 0.1);
-  border-color: rgba(168, 85, 247, 0.5);
+  box-shadow:
+    0 12px 32px rgba(220, 38, 38, 0.15),
+    0 0 20px rgba(249, 115, 22, 0.08);
+  border-color: rgba(220, 38, 38, 0.50);
 }
 
 .past-event-card:hover::before {
   opacity: 1;
-  box-shadow: 0 2px 10px #ec4899;
+  box-shadow: 0 2px 10px #DC2626;
 }
 
 .past-event-img-wrap {
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 9;
-  background: #0a0a0e;
+  background: #0a0a0a;
   overflow: hidden;
 }
 
@@ -533,15 +537,15 @@ const team = [
   color: #fff;
   font-weight: 700;
   background: rgba(0, 0, 0, 0.7);
-  border: 1px solid rgba(168, 85, 247, 0.3);
+  border: 1px solid rgba(220, 38, 38, 0.30);
   padding: 0.3rem 0.6rem;
   border-radius: 6px;
   backdrop-filter: blur(4px);
-  text-shadow: 0 0 5px rgba(168, 85, 247, 0.8);
+  text-shadow: 0 0 5px rgba(220, 38, 38, 0.80);
   letter-spacing: 0.05em;
 }
 
-.past-event-body { 
+.past-event-body {
   padding: 1.4rem;
   flex: 1;
   display: flex;
@@ -558,7 +562,7 @@ const team = [
 }
 
 .past-event-card:hover .past-event-title {
-  text-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
+  text-shadow: 0 0 10px rgba(220, 38, 38, 0.5);
 }
 
 .past-event-desc {
@@ -573,9 +577,9 @@ const team = [
   font-family: 'Courier New', Courier, monospace;
   font-weight: 600;
   font-size: 0.82rem;
-  color: rgba(168, 85, 247, 0.8);
+  color: rgba(220, 38, 38, 0.80);
   padding-top: 0.8rem;
-  border-top: 1px dashed rgba(168, 85, 247, 0.2);
+  border-top: 1px dashed rgba(220, 38, 38, 0.20);
 }
 
 /* Team — photo card style */
@@ -595,7 +599,7 @@ const team = [
 
 .team-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgba(168, 85, 247, 0.2);
+  box-shadow: 0 12px 32px rgba(220, 38, 38, 0.20);
 }
 
 .team-photo-wrap {
@@ -646,7 +650,7 @@ const team = [
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #fff;
-  background: #a855f7;
+  background: #DC2626;
   padding: 0.2rem 0.65rem;
   border-radius: 999px;
   width: fit-content;
@@ -691,8 +695,32 @@ const team = [
 }
 
 .social-btn:hover {
-  background: #a855f7;
+  background: #DC2626;
   color: #fff;
-  border-color: #a855f7;
+  border-color: #DC2626;
+}
+
+/* ── GAMING EFFECTS ── */
+
+/* Scanning line — subtle CRT/HUD sweep */
+@keyframes scanLine {
+  0%   { top: -2px; }
+  100% { top: 100%; }
+}
+
+/* Pulsing border glow for first upcoming event */
+.event-card:first-child {
+  animation: borderPulse 3s ease-in-out infinite;
+}
+
+@keyframes borderPulse {
+  0%, 100% {
+    border-color: rgba(220, 38, 38, 0.15);
+    box-shadow: 0 0 0px rgba(220, 38, 38, 0);
+  }
+  50% {
+    border-color: rgba(220, 38, 38, 0.45);
+    box-shadow: 0 0 25px rgba(220, 38, 38, 0.10);
+  }
 }
 </style>

@@ -171,16 +171,16 @@
             <div
               class="section-tag"
               style="
-                background: rgba(168, 85, 247, 0.1);
-                color: #a855f7;
-                border-color: rgba(168, 85, 247, 0.3);
+                background: rgba(220, 38, 38, 0.1);
+                color: #EF4444;
+                border-color: rgba(220, 38, 38, 0.3);
               ">
               E-Sports Community
             </div>
             <h2 class="section-title-xl">
               <span
                 style="
-                  background: linear-gradient(135deg, #a855f7, #ec4899);
+                  background: linear-gradient(135deg, #DC2626, #F97316);
                   -webkit-background-clip: text;
                   background-clip: text;
                   -webkit-text-fill-color: transparent;
@@ -220,13 +220,13 @@
               <a
                 href="#"
                 class="submit-btn"
-                style="display: inline-flex; background: #a855f7">
+                style="display: inline-flex; background: #DC2626">
                 Join Community
               </a>
               <RouterLink
                 to="/community/esports"
                 class="explore-btn"
-                style="--accent: #a855f7">
+                style="--accent: #DC2626">
                 Explore →
               </RouterLink>
             </div>
