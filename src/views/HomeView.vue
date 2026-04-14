@@ -397,7 +397,7 @@
       </div>
       <div class="container">
         <div class="cta-wrap">
-          <div class="section-tag light">Academic Excellence</div>
+          <div class="section-tag ">Academic Excellence</div>
           <h2 class="cta-heading">
             Your Academic<br /><span class="cta-acc">Companion</span>
           </h2>

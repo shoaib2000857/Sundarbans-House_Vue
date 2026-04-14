@@ -158,37 +158,76 @@ const upcomingEvents = [
 const pastEvents = [
   {
     id: 1,
-    title: "Web Dev Bootcamp",
+    title: "Vibe Coding a SaaS Application Workshop",
     type: "Workshop",
-    description:
-      "Three days of intensive frontend and backend development. 40 participants shipped live projects.",
-    date: "March 2025",
-    attendees: 40,
-    image:
-      "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600&q=80&auto=format&fit=crop",
+    description: "Introduced members to modern software development by building a SaaS product from scratch with AI-assisted development.",
+    date: "11 Nov 2025 | 9:30 PM",
+    attendees: "50+",
+    image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600&q=80&auto=format&fit=crop"
   },
   {
     id: 2,
-    title: "Open Source Sprint",
-    type: "Sprint",
-    description:
-      "Members contributed to public repos and built their first open source PRs.",
-    date: "Jan 2025",
-    attendees: 25,
-    image:
-      "https://images.unsplash.com/photo-1556075798-4825dfaaf498?w=600&q=80&auto=format&fit=crop",
+    title: "Coding Aptitude Challenge",
+    type: "Competition",
+    description: "A logic-based challenge testing analytical thinking, debugging, and problem-solving through code snippets and output prediction.",
+    date: "16 Nov 2025 | 8:30 PM",
+    attendees: "50+",
+    image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=600&q=80&auto=format&fit=crop"
   },
   {
     id: 3,
-    title: "System Design Showdown",
-    type: "Competition",
-    description:
-      "Teams designed scalable systems under time pressure. Top 3 presented to seniors.",
-    date: "Nov 2024",
-    attendees: 32,
-    image:
-      "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=600&q=80&auto=format&fit=crop",
+    title: "Open Mic – Journey Into Tech",
+    type: "Open Mic",
+    description: "An inspiring session where members shared their personal experiences, challenges, and tech learning journeys in a supportive space.",
+    date: "2 Dec 2025 | 8:00 PM",
+    attendees: "50+",
+    image: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=600&q=80&auto=format&fit=crop"
   },
+  {
+    id: 4,
+    title: "Statistical Analysis Challenge",
+    type: "Challenge",
+    description: "Participants worked with real-world survey data, using analytical tools to study trends, create charts, and draw logical conclusions.",
+    date: "5-7 Dec 2025 | Online",
+    attendees: "50+",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80&auto=format&fit=crop"
+  },
+  {
+    id: 5,
+    title: "Dark Web Fundamentals Session",
+    type: "Session",
+    description: "An informative workshop introducing the basics of the dark web, the Tor network, cybersecurity risks, and ethical concerns.",
+    date: "24 Mar 2025 | 7:00 PM",
+    attendees: "50+",
+    image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=600&q=80&auto=format&fit=crop"
+  },
+  {
+    id: 6,
+    title: "Ubuntu Learning Series",
+    type: "Training",
+    description: "A structured initiative to build a strong foundation in Linux and Ubuntu through guided sessions and practical hands-on exercises.",
+    date: "Ongoing",
+    attendees: "50+",
+    image: "https://images.unsplash.com/photo-1629654291663-b91ad427698f?w=600&q=80&auto=format&fit=crop"
+  },
+  {
+    id: 7,
+    title: "Ubuntu Mastery Quiz",
+    type: "Quiz",
+    description: "A competitive technical assessment conducted after the learning series to evaluate participants’ understanding of Linux fundamentals.",
+    date: "5 Mar 2026 | 8:30 PM",
+    attendees: "50+",
+    image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&q=80&auto=format&fit=crop"
+  },
+  {
+    id: 8,
+    title: "Technical Community Knowledge Sessions",
+    type: "Learning Events",
+    description: "Interactive learning sessions aimed at making technology accessible, encouraging peer learning, skill-building, and curiosity.",
+    date: "Ongoing",
+    attendees: "50+",
+    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&q=80&auto=format&fit=crop"
+  }
 ];
 
 const team = [

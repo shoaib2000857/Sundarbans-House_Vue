@@ -157,56 +157,46 @@ const pastEvents = [
     id: 1,
     title: "Shiv–Shakti: The Eternal Union",
     type: "Event",
-    description:
-      "Shiv–Shakti: The Eternal Union was a spiritually enriching cultural evening that beautifully celebrated devotion, art, and timeless values. The event brought members together to experience the divine essence of Shiva and Shakti.",
-    date: "15 Feb 2026",
+    description: "Shiv–Shakti: The Eternal Union was a spiritually enriching cultural evening that beautifully celebrated devotion, art, and timeless values. The event brought members together to experience the divine essence of Shiva and Shakti through soulful shlokas, graceful dance performances, devotional expressions, and heartfelt reflections. It created a peaceful and uplifting atmosphere, allowing participants to reconnect with spirituality, culture, and inner calm while celebrating the deeper meaning of togetherness and faith.",
+    date: "15 Feb 2026 | 8:00 PM",
     attendees: "50+",
-    image:
-      "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&q=80&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&q=80&auto=format&fit=crop",
   },
   {
     id: 2,
     title: "Photography Workshop with Manish Kumar",
     type: "Workshop",
-    description:
-      "The Photography Workshop was an inspiring and interactive learning session designed for members who wanted to explore the art of visual storytelling. Led by Manish Kumar, the workshop focused on composition, lighting, framing, and creative perspective.",
-    date: "19 Feb 2026",
+    description: "The Photography Workshop was an inspiring and interactive learning session designed for members who wanted to explore the art of visual storytelling. Led by Manish Kumar, a talented creative professional skilled in photography, design, and digital art, the workshop focused on composition, lighting, framing, and creative perspective. Participants gained practical insights into how to transform ordinary moments into meaningful visuals. The session encouraged creativity, curiosity, and helped members develop a stronger artistic eye.",
+    date: "19 Feb 2026 | 7:00 PM",
     attendees: "50+",
-    image:
-      "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600&q=80&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600&q=80&auto=format&fit=crop",
   },
   {
     id: 3,
     title: "Dance Workshop with Aditri Bordoloi",
     type: "Workshop",
-    description:
-      "The Dance Workshop was a vibrant and energetic session that brought rhythm, movement, and excitement to the Sundarbans community. Led by Aditri Bordoloi, the workshop introduced participants to a mix of Bollywood, freestyle, and classical dance styles.",
-    date: "26 Feb 2026",
+    description: "The Dance Workshop was a vibrant and energetic session that brought rhythm, movement, and excitement to the Sundarbans community. Led by Aditri Bordoloi, the workshop introduced participants to a mix of Bollywood, freestyle, and classical dance styles in a beginner-friendly format. Members learned new moves, explored different forms of expression, and enjoyed an engaging experience filled with fun and positivity. The event successfully encouraged confidence, creativity, and active participation.",
+    date: "26 Feb 2026 | 7:30 PM",
     attendees: "50+",
-    image:
-      "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=600&q=80&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=600&q=80&auto=format&fit=crop",
   },
   {
     id: 4,
     title: "3 AM Thoughts",
     type: "Reflection Event",
-    description:
-      "3 AM Thoughts was a unique and heartfelt community initiative that provided members with a safe and comforting space to express their late-night feelings, thoughts, dreams, and emotions. Through written reflections and anonymous submissions.",
-    date: "Online",
+    description: "3 AM Thoughts was a unique and heartfelt community initiative that provided members with a safe and comforting space to express their late-night feelings, thoughts, dreams, and emotions. Through written reflections and anonymous submissions, participants shared personal stories, fears, hopes, and moments of vulnerability. The event fostered emotional openness, connection, and understanding within the community, making it one of the most meaningful and relatable cultural initiatives.",
+    date: "Online Submission",
     attendees: "50+",
-    image:
-      "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&q=80&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&q=80&auto=format&fit=crop",
   },
   {
     id: 5,
     title: "Open Mic Night",
     type: "Open Mic",
-    description:
-      "Open Mic Night was a lively and expressive cultural evening that gave members the chance to showcase their hidden talents and creativity. From poetry and shayari to singing, storytelling, and fun performances, the event created a warm and supportive stage.",
-    date: "26 Mar 2026",
+    description: "Open Mic Night was a lively and expressive cultural evening that gave members the chance to showcase their hidden talents and creativity. From poetry and shayari to singing, storytelling, and fun performances, the event created a warm and supportive stage for everyone to share their voice. It encouraged confidence, self-expression, and community bonding while making the evening memorable with laughter, emotions, and inspiring performances.",
+    date: "26 Mar 2026 | 8:00 PM",
     attendees: "50+",
-    image:
-      "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600&q=80&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600&q=80&auto=format&fit=crop",
   }
 ];
 
