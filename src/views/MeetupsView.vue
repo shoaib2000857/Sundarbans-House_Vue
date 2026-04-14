@@ -401,7 +401,6 @@ const citySlugMap = {
   Mumbai: 'mumbai',
   Pune: 'pune',
   Patna: 'patna',
-
 }
 
 const getEstimatedMembers = (cityMeetups) => {
