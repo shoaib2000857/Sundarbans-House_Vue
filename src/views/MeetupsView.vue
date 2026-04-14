@@ -1,43 +1,21 @@
 <template>
-  <div class="meetups-page">
-    <!-- HERO -->
+  <div>
+    <PageHero
+      bg-image="https://img.freepik.com/free-vector/politician-sitting-round-table-boardroom-board-directors-with-ceo-holding-formal-talk-office-room-flat-vector-illustration-business-authority-corporate-leader-planning-strategy-concept_74855-22013.jpg?semt=ais_hybrid&w=740&q=80"
+      breadcrumb-title="Meetups"
+      title="City"
+      accent-title="Meetups"
+      subtitle="Find and connect with Sundarbans members in your city"
+    />
 
-    <!-- HERO -->
-    <section class="hero">
+    <section class="section rs" ref="gridSection">
       <div class="container">
-        <div class="hero-pill">
-          <span class="hero-pill-dot"></span>
-          IIT Madras BS · Student Chapters Across India
+        <div class="sec-hdr">
+          <div class="section-tag">Across India</div>
+          <h2 class="section-title-xl">
+            Choose <span class="tg">your city</span>
+          </h2>
         </div>
-        <h1 class="hero-title">Our <span class="accent">Chapters</span></h1>
-        <p class="hero-desc">
-          Active student communities in 7 cities. Find your nearest chapter, connect with peers, and attend local meetups — all driven by students, for students.
-        </p>
-        <div class="hero-stats">
-          <div class="hstat">
-            <span class="hstat-num">{{ animStats.cities }}</span>
-            <span class="hstat-lbl">Cities</span>
-          </div>
-          <div class="hstat-div"></div>
-          <div class="hstat">
-            <span class="hstat-num">{{ animStats.members }}<span class="hstat-plus">+</span></span>
-            <span class="hstat-lbl">Members</span>
-          </div>
-          <div class="hstat-div"></div>
-          <div class="hstat">
-            <span class="hstat-num">{{ animStats.meetups }}<span class="hstat-plus">+</span></span>
-            <span class="hstat-lbl">Meetups Held</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- REGIONS GRID -->
-    <section class="section" ref="gridSection">
-      <div class="container">
-        <span class="sec-eyebrow reveal">Select Your Region</span>
-        <h2 class="sec-title reveal rd1">All Chapters</h2>
-        <div class="sec-rule reveal rd2"></div>
 
         <div class="regions-grid">
           <div
@@ -67,143 +45,167 @@
               <div class="region-bottom">
                 <h3 class="region-name">{{ region.name }}</h3>
                 <p class="region-members">{{ region.members }} members</p>
-                <transition name="slide-up">
-                  <router-link
-                    v-if="hoveredRegion === region.slug"
-                    :to="'/meetups/' + region.slug"
-                    class="region-view-btn"
-                    @click.stop
-                  >
-                    View →
-                  </router-link>
-                </transition>
               </div>
             </div>
           </div>
         </div>
+
+        <div style="margin-top: 4rem; text-align: center; padding: 3rem 2rem; background: var(--surface); border: 1px solid var(--border); border-radius: 16px;">
+          <div style="font-size: 2.2rem; margin-bottom: 1rem;">🌍</div>
+          <h3 style="font-family: Cinzel, serif; font-size: 1.6rem; margin-bottom: 1rem; font-weight: 700; color: var(--text);">
+            Bring the Community to Your City
+          </h3>
+          <p style="color: var(--text2); margin-bottom: 1.75rem; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.6;">
+            Want a meetup in your city like Siliguri or Guwahati? Suggest a location, pitch an activity, or volunteer as a host. Help us expand the Sundarbans family!
+          </p>
+          <a href="https://forms.gle/iHeYQsAbsUTBHJJC6" target="_blank" rel="noopener noreferrer" class="submit-btn" style="display: inline-block; text-decoration: none;">
+            Suggest Location or Volunteer
+          </a>
+        </div>
       </div>
     </section>
 
+    <section class="section rs" style="background: var(--bg2)">
+      <div class="container">
+        <div class="sec-hdr">
+          <div class="section-tag">Hall of Fame</div>
+          <h2 class="section-title-xl">
+            Member <span class="tg">Leaderboard</span>
+          </h2>
+          <p class="sec-sub">
+            Top contributors and most active members of Sundarbans House
+          </p>
+        </div>
+        <div class="card-base">
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              margin-bottom: 1.5rem;
+              flex-wrap: wrap;
+              gap: 0.75rem;
+            "
+          >
+            <div class="filter-tabs" style="margin: 0">
+              <div
+                class="ftab"
+                v-for="tab in tabs"
+                :key="tab"
+                :class="{ active: activeTab === tab }"
+                @click="activeTab = tab"
+              >
+                {{ tab }}
+              </div>
+            </div>
+            <span style="font-size: 0.8rem; color: var(--text2)">Updated daily</span>
+          </div>
+          <table class="lboard-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Member</th>
+                <th>City</th>
+                <th>Points</th>
+                <th>Badge</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="lboard-row" v-for="m in members" :key="m.name">
+                <td>
+                  <span class="lboard-rank" :class="m.rankClass">{{ m.rank }}</span>
+                </td>
+                <td>
+                  <div class="lboard-member">
+                    <img v-if="m.img" :src="m.img" alt="" class="lboard-avatar" />
+                    <div v-else class="lboard-avatar-placeholder">{{ m.initial }}</div>
+                    <div>
+                      <div class="lboard-name">{{ m.name }}</div>
+                      <div class="lboard-city">{{ m.city }}</div>
+                    </div>
+                  </div>
+                </td>
+                <td style="color: var(--text2); font-size: 0.85rem">{{ m.city }}</td>
+                <td><span class="lboard-score">{{ m.points }}</span></td>
+                <td><span class="lboard-badge">{{ m.badge }}</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
-<script>
-// Region images — place these in src/assets/regions/
+<script setup>
+import { ref, onMounted, nextTick } from 'vue'
+import { useRouter } from 'vue-router'
+import { useScrollReveal } from '../composables/useAnimations.js'
+import PageHero from '../components/PageHero.vue'
 
-// Region images — place these in src/assets/regions/
 import imgDelhi      from '@/assets/regions/delhi.jpg'
 import imgMumbai     from '@/assets/regions/mumbai.jpg'
 import imgBangalore  from '@/assets/regions/bangalore.jpg'
-import imgChennai    from '@/assets/regions/chennai.jpg'
 import imgKolkata    from '@/assets/regions/kolkata.jpg'
 import imgHyderabad  from '@/assets/regions/hyderabad.jpg'
 import imgPatna      from '@/assets/regions/patna.jpg'
 import imgChandigarh from '@/assets/regions/chandigarh.jpg'
-import imgPune       from '@/assets/regions/pune.jpg'
 
-export default {
-  name: 'Meetups',
-  data() {
-    return {
-      hoveredRegion: null,
-      statsAnimated: false,
-      animStats: { cities: 0, members: 0, meetups: 0 },
-      regions: [
-        { slug: 'mumbai',     name: 'Mumbai',     members: '450+', image: imgMumbai,     badge: 'Largest Chapter' },
-        { slug: 'patna',      name: 'Patna',      members: '180+', image: imgPatna,      badge: null },
-        { slug: 'delhi',      name: 'Delhi',      members: '320+', image: imgDelhi,      badge: 'Most Active', featured: true },
-        { slug: 'kolkata',    name: 'Kolkata',    members: '280+', image: imgKolkata,    badge: null },
-        { slug: 'hyderabad',  name: 'Hyderabad',  members: '210+', image: imgHyderabad,  badge: null },
-        { slug: 'bangalore',  name: 'Bangalore',  members: '390+', image: imgBangalore,  badge: null },
-        { slug: 'chennai',    name: 'Chennai',    members: '260+', image: imgChennai,    badge: null },
-      ],
-    }
-  },
+useScrollReveal()
 
-  mounted() {
-    this.$nextTick(() => {
-      this.initReveal()
-      this.initStatsObserver()
-    })
-  },
+const router = useRouter()
+const hoveredRegion = ref(null)
 
-  beforeUnmount() {
-    // Keep animations cleanup if needed, but remove cursor/particles if handled globally
-  },
+const regions = [
+  { slug: 'delhi-ncr',  name: 'Delhi-NCR',    members: '320+', image: imgDelhi,      badge: 'Most Active', featured: true },
+  { slug: 'mumbai',     name: 'Mumbai',       members: '450+', image: imgMumbai,     badge: 'Largest Chapter' },
+  { slug: 'bangalore',  name: 'Bangalore',    members: '390+', image: imgBangalore,  badge: null },
+  { slug: 'kolkata',    name: 'Kolkata',      members: '280+', image: imgKolkata,    badge: null },
+  { slug: 'hyderabad',  name: 'Hyderabad',    members: '210+', image: imgHyderabad,  badge: null },
+  { slug: 'patna',      name: 'Patna',        members: '180+', image: imgPatna,      badge: null },
+  { slug: 'chandigarh', name: 'Chandigarh',   members: '120+', image: imgChandigarh, badge: 'Rising Chapter' },
+]
 
-  methods: {
-    goToRegion(slug) {
-      this.$router.push('/meetups/' + slug)
-    },
-
-    initReveal() {
-      const obs = new IntersectionObserver(
-        (es) => es.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible') }),
-        { threshold: 0.08, rootMargin: '0px 0px -30px 0px' }
-      )
-      this.$el.querySelectorAll('.reveal').forEach(el => obs.observe(el))
-    },
-
-    initStatsObserver() {
-      const hero = this.$el.querySelector('.hero-stats')
-      if (!hero) return
-      const obs = new IntersectionObserver((es) => {
-        es.forEach(e => {
-          if (e.isIntersecting && !this.statsAnimated) {
-            this.statsAnimated = true
-            this.countUp('cities', 7)
-            this.countUp('members', 2410)
-            this.countUp('meetups', 48)
-            obs.disconnect()
-          }
-        })
-      }, { threshold: 0.4 })
-      obs.observe(hero)
-    },
-
-    countUp(key, target, dur = 1200) {
-      let start = 0
-      const step = (ts) => {
-        if (!start) start = ts
-        const p = Math.min((ts - start) / dur, 1)
-        this.animStats[key] = Math.floor((1 - Math.pow(1 - p, 3)) * target)
-        if (p < 1) requestAnimationFrame(step)
-      }
-      requestAnimationFrame(step)
-    },
-  },
+function goToRegion(slug) {
+  router.push('/meetups/' + slug)
 }
+
+const tabs = ['All Time', 'This Month', 'This Week']
+const activeTab = ref('All Time')
+
+const members = [
+  {
+    rank: '🥇', rankClass: 'rank-1',
+    name: 'Arjun Sharma', city: 'Delhi', points: '4,280', badge: '🔥 Top Contributor',
+    img: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&q=80&auto=format&fit=crop&crop=face',
+  },
+  {
+    rank: '🥈', rankClass: 'rank-2',
+    name: 'Priya Patel', city: 'Bangalore', points: '3,950', badge: '⭐ Helper',
+    img: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80&auto=format&fit=crop&crop=face',
+  },
+  {
+    rank: '🥉', rankClass: 'rank-3',
+    name: 'Rahul Gupta', city: 'Mumbai', points: '3,720', badge: '📚 Academician',
+    img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80&auto=format&fit=crop&crop=face',
+  },
+  {
+    rank: '4', rankClass: '',
+    name: 'Sneha Iyer', city: 'Chennai', points: '3,410', badge: '🎯 Event Pro', initial: 'S',
+  },
+  {
+    rank: '5', rankClass: '',
+    name: 'Vivek Menon', city: 'Hyderabad', points: '3,180', badge: '💡 Innovator', initial: 'V',
+  },
+  {
+    rank: '6', rankClass: '',
+    name: 'Anjali Rao', city: 'Pune', points: '2,990', badge: '🤝 Community Builder', initial: 'A',
+  },
+]
 </script>
 
 <style scoped>
-.meetups-page {
-  font-family: 'Outfit', sans-serif;
-  color: var(--white);
-  overflow-x: hidden;
-  min-height: 100vh;
-}
-
-.hero { min-height: 75vh; display:flex;flex-direction:column;justify-content:center;padding:130px 48px 60px;position:relative;z-index:2; }
-.container { max-width:1160px;margin:0 auto; }
-.hero-pill { display:inline-flex;align-items:center;gap:8px;background:rgba(212,160,23,.1);border:1px solid rgba(212,160,23,.3);padding:7px 16px;border-radius:100px;width:fit-content;font-size:12px;font-weight:500;color:var(--gold-l);margin-bottom:28px;opacity:0;animation:fadeUp .7s ease .2s forwards; }
-.hero-pill-dot { width:6px;height:6px;border-radius:50%;background:var(--gold);animation:pulse-dot 1.8s ease-in-out infinite; }
-.hero-title { font-family:'Cinzel',serif;font-size:clamp(48px,8vw,108px);font-weight:900;line-height:.95;color:var(--white);opacity:0;animation:fadeUp .9s ease .4s forwards; }
-.hero-title .accent { background:linear-gradient(135deg,var(--gold-l),var(--gold),var(--gold-d));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text; }
-.hero-desc { margin-top:24px;max-width:560px;font-size:16px;font-weight:300;line-height:1.75;color:var(--white-dim);opacity:0;animation:fadeUp .7s ease .6s forwards; }
-.hero-stats { margin-top:48px;display:flex;align-items:center;gap:32px;opacity:0;animation:fadeUp .7s ease .8s forwards; }
-.hstat { display:flex;flex-direction:column;gap:4px; }
-.hstat-num { font-family:'Cinzel',serif;font-size:36px;font-weight:700;color:var(--gold-l);line-height:1;letter-spacing:-.02em; }
-.hstat-plus { font-size:.6em; }
-.hstat-lbl { font-size:11px;font-weight:400;color:var(--white-dim);letter-spacing:.08em;text-transform:uppercase; }
-.hstat-div { width:1px;height:40px;background:var(--border2); }
-
-/* SECTION */
-.section { padding:60px 48px 100px;position:relative;z-index:2; }
-.sec-eyebrow { font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:12px; }
-.sec-title { font-family:'Cinzel',serif;font-size:clamp(28px,4vw,48px);font-weight:700;line-height:1.1; }
-.sec-rule { width:40px;height:2px;background:var(--gold);border-radius:2px;margin:20px 0 48px; }
-
-/* REGIONS GRID */
+/* REGIONS GRID CSS (preserved from previous version) */
 .regions-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -270,14 +272,16 @@ export default {
 
 .region-top { display:flex;justify-content:flex-end; }
 .region-badge {
-  font-size: 10px;
-  font-weight: 600;
+  font-size: 11px;
+  font-weight: 700;
   letter-spacing: .12em;
   text-transform: uppercase;
-  color: var(--gold-l);
-  background: rgba(212,160,23,.15);
-  border: 1px solid rgba(212,160,23,.35);
-  padding: 4px 10px;
+  color: var(--accent2);
+  background: rgba(212,160,23,0.12);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(212,160,23,0.4);
+  padding: 5px 12px;
   border-radius: 100px;
 }
 
@@ -287,81 +291,172 @@ export default {
   font-size: clamp(20px, 2vw, 26px);
   font-weight: 700;
   letter-spacing: .01em;
-  color: var(--white);
+  color: #ffffff;
   line-height: 1.1;
 }
 .region-members {
-  font-size: 13px;
-  font-weight: 300;
-  color: var(--white-dim);
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text2);
   letter-spacing: .03em;
 }
 
-.region-view-btn {
+/* OTHER STYLES (from Copy) */
+.submit-btn {
+  background: var(--accent);
+  color: #000;
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  transition: all 0.3s;
+  box-shadow: 0 4px 20px rgba(212, 160, 23, 0.25);
+  font-family: 'Outfit', sans-serif;
+}
+.submit-btn:hover {
+  background: var(--gold-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(212, 160, 23, 0.4);
+}
+
+.card-base {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 2.5rem;
+}
+.lboard-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 8px;
+  margin-top: 1rem;
+}
+.lboard-table th {
+  text-align: left;
+  padding: 0 16px 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text2);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  border-bottom: 1px solid var(--border);
+}
+.lboard-row td {
+  background: var(--surface);
+  padding: 16px;
+  transition: background 0.3s;
+}
+.lboard-row:hover td {
+  background: var(--surface2);
+}
+.lboard-row td:first-child {
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+}
+.lboard-row td:last-child {
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+.lboard-rank {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  background: var(--gold);
-  color: #000;
-  font-size: 13px;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 0.9rem;
   font-weight: 700;
-  padding: 10px 20px;
-  border-radius: 8px;
-  text-decoration: none;
+  color: var(--text2);
+  background: var(--bg);
+  border: 1px solid var(--border);
+}
+.rank-1 { background: rgba(212, 160, 23, 0.15); color: var(--accent); border-color: rgba(212, 160, 23, 0.3); font-size: 1.2rem; }
+.rank-2 { background: rgba(200, 200, 200, 0.1); color: #ccc; border-color: rgba(200, 200, 200, 0.2); font-size: 1.2rem; }
+.rank-3 { background: rgba(184, 115, 51, 0.1); color: #b87333; border-color: rgba(184, 115, 51, 0.2); font-size: 1.2rem; }
+.lboard-member {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.lboard-avatar, .lboard-avatar-placeholder {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--border);
+}
+.lboard-avatar-placeholder {
+  background: var(--surface2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+  color: var(--accent);
+  font-size: 1.1rem;
+}
+.lboard-name {
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--text);
+  line-height: 1.2;
+}
+.lboard-city {
+  font-size: 0.75rem;
+  color: var(--text2);
+  display: none;
+}
+.lboard-score {
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--accent);
+}
+.lboard-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  font-size: 0.75rem;
+  color: var(--text2);
+}
+
+.filter-tabs {
+  display: flex;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 4px;
   width: fit-content;
-  margin-top: 12px;
-  letter-spacing: .04em;
-  transition: background .2s, transform .2s;
-  position: relative;
-  overflow: hidden;
 }
-.region-view-btn::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(105deg,transparent 30%,rgba(255,255,255,.2) 50%,transparent 70%);
-  transform: translateX(-100%);
-  transition: transform .45s;
+.ftab {
+  padding: 6px 16px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text2);
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all 0.3s;
 }
-.region-view-btn:hover { background: var(--gold-l); }
-.region-view-btn:hover::after { transform: translateX(100%); }
+.ftab.active {
+  background: var(--accent);
+  color: #000;
+}
+.ftab:hover:not(.active) {
+  color: var(--text);
+}
 
-/* SLIDE UP TRANSITION */
-.slide-up-enter-active { transition: opacity .25s ease, transform .25s ease; }
-.slide-up-enter-from { opacity: 0; transform: translateY(12px); }
-.slide-up-leave-active { transition: opacity .2s ease; }
-.slide-up-leave-to { opacity: 0; }
-
-/* FADE TRANSITION (preloader) */
-.fade-leave-active { transition: opacity .8s ease; }
-.fade-leave-to { opacity: 0; }
-
-/* FOOTER */
-footer { border-top:1px solid var(--border);padding:40px 48px;display:flex;align-items:center;justify-content:space-between;position:relative;z-index:2; }
-.footer-brand { display:flex;align-items:center;gap:10px; }
-.footer-logo { width:32px;height:32px;border-radius:50%;background:var(--gold-dim);border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:'Cinzel',serif;font-size:14px;font-weight:700;color:var(--gold);overflow:hidden; }
-.footer-logo img { width:100%;height:100%;object-fit:cover; }
-.footer-name { font-family:'Cinzel',serif;font-size:14px;font-weight:700;letter-spacing:.08em; }
-.footer-right { font-size:12px;color:rgba(245,237,208,.2);letter-spacing:.05em; }
-
-/* REVEAL */
-.reveal { opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease; }
-.reveal.visible { opacity:1;transform:translateY(0); }
-.rd1 { transition-delay:.1s; }
-.rd2 { transition-delay:.2s; }
-
-/* KEYFRAMES */
-@keyframes fadeUp { to { opacity:1;transform:translateY(0); } }
-@keyframes pulse-dot { 0%,100%{transform:scale(1);opacity:1;}50%{transform:scale(1.5);opacity:.6;} }
-
-/* RESPONSIVE */
 @media (max-width: 1100px) { .regions-grid { grid-template-columns: repeat(3, 1fr); } }
-@media (max-width: 800px)  {
+@media (max-width: 800px) {
   .regions-grid { grid-template-columns: repeat(2, 1fr); }
-  nav { padding: 0 20px; }
-  .nav-links { display: none; }
-  .hero { padding: 110px 24px 50px; }
-  .section { padding: 50px 24px 80px; }
+  .card-base { padding: 1.5rem; }
+  .lboard-table th:nth-child(3), .lboard-row td:nth-child(3) { display: none; }
+  .lboard-city { display: block; margin-top: 2px; }
 }
-@media (max-width: 480px)  { .regions-grid { grid-template-columns: 1fr; } }
+@media (max-width: 480px) {
+  .regions-grid { grid-template-columns: 1fr; }
+  .lboard-table th:last-child, .lboard-row td:last-child { display: none; }
+}
 </style>

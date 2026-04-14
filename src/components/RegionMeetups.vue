@@ -10,6 +10,25 @@
         </div>
         <h1 class="hero-title">{{ config.heroTitle }}<br><span class="accent">Meetups</span></h1>
         <p class="hero-desc">{{ config.heroDesc }}</p>
+
+        <!-- GLOBAL STATS (From Meetups Hub) -->
+        <div class="hero-stats">
+          <div class="hstat">
+            <span class="hstat-num">7</span>
+            <span class="hstat-lbl">Cities</span>
+          </div>
+          <div class="hstat-div"></div>
+          <div class="hstat">
+            <span class="hstat-num">2410<span class="hstat-plus">+</span></span>
+            <span class="hstat-lbl">Members</span>
+          </div>
+          <div class="hstat-div"></div>
+          <div class="hstat">
+            <span class="hstat-num">48<span class="hstat-plus">+</span></span>
+            <span class="hstat-lbl">Meetups Held</span>
+          </div>
+        </div>
+
         <div class="hero-actions">
           <a href="#upcoming" class="btn-primary">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
@@ -305,6 +324,14 @@ export default {
 .hero-title { font-family:'Cinzel',serif;font-size:clamp(50px,8.5vw,112px);font-weight:900;line-height:.95;color:var(--white);opacity:0;animation:fadeUp .9s ease .4s forwards; }
 .hero-title .accent { background:linear-gradient(135deg,var(--gold-l),var(--gold),var(--gold-d));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text; }
 .hero-desc { margin-top:28px;max-width:520px;font-size:16px;font-weight:300;line-height:1.75;color:var(--white-dim);opacity:0;animation:fadeUp .7s ease .7s forwards; }
+
+.hero-stats { margin-top:40px;display:flex;align-items:center;gap:32px;opacity:0;animation:fadeUp .7s ease .8s forwards; }
+.hstat { display:flex;flex-direction:column;gap:4px; }
+.hstat-num { font-family:'Cinzel',serif;font-size:36px;font-weight:700;color:var(--gold-l);line-height:1;letter-spacing:-.02em; }
+.hstat-plus { font-size:.6em; }
+.hstat-lbl { font-size:11px;font-weight:400;color:var(--white-dim);letter-spacing:.08em;text-transform:uppercase; }
+.hstat-div { width:1px;height:40px;background:var(--border2); }
+
 .hero-actions { margin-top:40px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;opacity:0;animation:fadeUp .7s ease .9s forwards; }
 .btn-primary { background:var(--gold);color:#000;font-size:14px;font-weight:700;padding:13px 28px;border-radius:10px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:background .25s,transform .2s,box-shadow .3s;box-shadow:0 6px 28px rgba(212,160,23,.35);letter-spacing:.04em; }
 .btn-primary:hover { background:var(--gold-l);transform:translateY(-2px); }
