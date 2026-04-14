@@ -10,13 +10,7 @@
 
     <section class="section rs">
       <div class="container">
-        <div
-          style="
-            display: grid;
-            grid-template-columns: 1fr 1.4fr;
-            gap: 4rem;
-            align-items: start;
-          ">
+        <div class="contact-grid">
           <div>
             <div class="section-tag">Contact Us</div>
             <h2 class="section-title-xl">
@@ -216,3 +210,18 @@ async function submitForm() {
 }
 
 </script>
+
+<style scoped>
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 4rem;
+  align-items: start;
+}
+@media (max-width: 768px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+</style>
