@@ -53,6 +53,7 @@
         <div class="past-events-grid">
           <div v-for="event in pastEvents" :key="event.id" class="past-event-card">
             <div class="past-event-img-wrap">
+              <img :src="event.image" class="past-event-img-blur" aria-hidden="true" />
               <img :src="event.image" :alt="event.title" class="past-event-img" />
               <div class="past-event-overlay">
                 <span class="past-event-date">{{ event.date }}</span>
@@ -117,6 +118,13 @@
 import PageHero from "../components/PageHero.vue";
 import { useScrollReveal } from "../composables/useAnimations.js";
 
+import imgVibeCoding from "../assets/Community Events/Technical/Vibe Coding a SAAS application.jpeg";
+import imgCodingApt from "../assets/Community Events/Technical/Coding Aptitude Challenge.jpeg";
+import imgOpenMicTech from "../assets/Community Events/Technical/Open Mic.jpeg";
+import imgStatAnalysis from "../assets/Community Events/Technical/Statistical Analysis Challenge.jpeg";
+import imgDarkWeb from "../assets/Community Events/Technical/Dark Web Challenge.jpeg";
+import imgUbuntuQuiz from "../assets/Community Events/Technical/Ubuntu Mastery Quiz.jpeg";
+
 useScrollReveal();
 
 const upcomingEvents = [
@@ -163,7 +171,7 @@ const pastEvents = [
     description: "Introduced members to modern software development by building a SaaS product from scratch with AI-assisted development.",
     date: "11 Nov 2025 | 9:30 PM",
     attendees: "50+",
-    image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600&q=80&auto=format&fit=crop"
+    image: imgVibeCoding
   },
   {
     id: 2,
@@ -172,7 +180,7 @@ const pastEvents = [
     description: "A logic-based challenge testing analytical thinking, debugging, and problem-solving through code snippets and output prediction.",
     date: "16 Nov 2025 | 8:30 PM",
     attendees: "50+",
-    image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=600&q=80&auto=format&fit=crop"
+    image: imgCodingApt
   },
   {
     id: 3,
@@ -181,7 +189,7 @@ const pastEvents = [
     description: "An inspiring session where members shared their personal experiences, challenges, and tech learning journeys in a supportive space.",
     date: "2 Dec 2025 | 8:00 PM",
     attendees: "50+",
-    image: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=600&q=80&auto=format&fit=crop"
+    image: imgOpenMicTech
   },
   {
     id: 4,
@@ -190,7 +198,7 @@ const pastEvents = [
     description: "Participants worked with real-world survey data, using analytical tools to study trends, create charts, and draw logical conclusions.",
     date: "5-7 Dec 2025 | Online",
     attendees: "50+",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80&auto=format&fit=crop"
+    image: imgStatAnalysis
   },
   {
     id: 5,
@@ -199,34 +207,16 @@ const pastEvents = [
     description: "An informative workshop introducing the basics of the dark web, the Tor network, cybersecurity risks, and ethical concerns.",
     date: "24 Mar 2025 | 7:00 PM",
     attendees: "50+",
-    image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=600&q=80&auto=format&fit=crop"
+    image: imgDarkWeb
   },
   {
     id: 6,
-    title: "Ubuntu Learning Series",
-    type: "Training",
-    description: "A structured initiative to build a strong foundation in Linux and Ubuntu through guided sessions and practical hands-on exercises.",
-    date: "Ongoing",
-    attendees: "50+",
-    image: "https://images.unsplash.com/photo-1629654291663-b91ad427698f?w=600&q=80&auto=format&fit=crop"
-  },
-  {
-    id: 7,
     title: "Ubuntu Mastery Quiz",
     type: "Quiz",
     description: "A competitive technical assessment conducted after the learning series to evaluate participants’ understanding of Linux fundamentals.",
     date: "5 Mar 2026 | 8:30 PM",
     attendees: "50+",
-    image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&q=80&auto=format&fit=crop"
-  },
-  {
-    id: 8,
-    title: "Technical Community Knowledge Sessions",
-    type: "Learning Events",
-    description: "Interactive learning sessions aimed at making technology accessible, encouraging peer learning, skill-building, and curiosity.",
-    date: "Ongoing",
-    attendees: "50+",
-    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&q=80&auto=format&fit=crop"
+    image: imgUbuntuQuiz
   }
 ];
 
@@ -279,54 +269,86 @@ const team = [
 </script>
 
 <style scoped>
-/* Accent color: #4f8ef7 (blue) */
+/* Hacker theme accent colors: #10b981 (emerald) and #0ea5e9 (sky blue) */
 
 .section-header {
   margin-bottom: 2.5rem;
 }
 
+.tg {
+  background: linear-gradient(135deg, #10b981, #0ea5e9);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 /* Tags */
 .tech-tag {
-  background: rgba(79, 142, 247, 0.1);
-  color: #4f8ef7;
-  border-color: rgba(79, 142, 247, 0.3);
+  background: rgba(16, 185, 129, 0.1);
+  color: #10b981;
+  border-color: rgba(16, 185, 129, 0.3);
+  font-family: 'Courier New', Courier, monospace;
 }
 
 .event-type-tag {
   display: inline-block;
-  font-size: 0.72rem;
-  font-weight: 600;
-  padding: 0.2rem 0.6rem;
-  border-radius: 999px;
+  font-size: 0.75rem;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 700;
+  padding: 0.25rem 0.65rem;
+  border-radius: 4px;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
-  margin-bottom: 0.5rem;
-  background: rgba(79, 142, 247, 0.12);
-  color: #4f8ef7;
-  border: 1px solid rgba(79, 142, 247, 0.3);
+  letter-spacing: 0.1em;
+  margin-bottom: 0.8rem;
+  background: rgba(16, 185, 129, 0.1);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.05);
 }
 
-/* Upcoming Events */
+/* Upcoming Events - Hacker Vibe */
 .events-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 1.5rem;
+  gap: 1.8rem;
 }
 
 .event-card {
+  position: relative;
   display: flex;
   gap: 1.2rem;
   align-items: flex-start;
-  background: #111;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: var(--rad2, 12px);
-  padding: 1.4rem;
-  transition: transform 0.2s, box-shadow 0.2s;
+  background: rgba(11, 17, 15, 0.8);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  border-radius: 8px;
+  padding: 1.5rem;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.event-card::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, #10b981, #0ea5e9);
+  box-shadow: 0 0 8px #10b981;
+  opacity: 0.5;
+  transition: width 0.3s ease, opacity 0.3s ease;
 }
 
 .event-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(79, 142, 247, 0.12);
+  transform: translateY(-4px);
+  border-color: rgba(16, 185, 129, 0.5);
+  box-shadow: 0 10px 30px rgba(16, 185, 129, 0.15), inset 0 0 15px rgba(14, 165, 233, 0.05);
+  background: rgba(15, 22, 18, 0.9);
+}
+
+.event-card:hover::before {
+  width: 5px;
+  opacity: 1;
 }
 
 .event-date-badge {
@@ -334,117 +356,196 @@ const team = [
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-width: 54px;
-  border-radius: 10px;
-  padding: 0.5rem 0.6rem;
-  background: #4f8ef7;
-  color: #fff;
+  min-width: 60px;
+  border-radius: 6px;
+  padding: 0.6rem;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: #34d399;
   line-height: 1;
   flex-shrink: 0;
+  text-shadow: 0 0 8px rgba(52, 211, 153, 0.6);
 }
 
 .event-day {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   font-weight: 800;
+  letter-spacing: -0.05em;
 }
 
 .event-month {
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
-  margin-top: 2px;
+  margin-top: 4px;
 }
 
 .event-info { flex: 1; }
 
 .event-title {
-  font-size: 1.05rem;
+  font-size: 1.1rem;
   font-weight: 700;
-  margin: 0 0 0.4rem;
-  color: #fff;
+  margin: 0 0 0.5rem;
+  color: #e0e0e0;
+  letter-spacing: 0.02em;
+  font-family: 'Courier New', Courier, monospace;
 }
 
 .event-desc {
-  font-size: 0.88rem;
-  color: rgba(255, 255, 255, 0.6);
-  margin: 0 0 0.6rem;
-  line-height: 1.55;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.65);
+  margin: 0 0 0.8rem;
+  line-height: 1.6;
+  font-family: inherit;
 }
 
 .event-meta {
   display: flex;
-  gap: 1rem;
-  font-size: 0.82rem;
-  color: rgba(255, 255, 255, 0.6);
+  gap: 1.2rem;
+  font-size: 0.85rem;
+  color: rgba(16, 185, 129, 0.8);
   flex-wrap: wrap;
+  font-weight: 600;
 }
 
 /* Past Events */
 .past-events-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
 }
 
 .past-event-card {
-  background: #111;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: var(--rad2, 12px);
+  background: rgba(11, 17, 15, 0.8);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  border-radius: 8px;
   overflow: hidden;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.past-event-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #10b981, #0ea5e9);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 10;
 }
 
 .past-event-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(79, 142, 247, 0.12);
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 15px 40px rgba(16, 185, 129, 0.15), inset 0 0 20px rgba(14, 165, 233, 0.05);
+  border-color: rgba(16, 185, 129, 0.5);
+}
+
+.past-event-card:hover::before {
+  opacity: 1;
+  box-shadow: 0 2px 10px #10b981;
 }
 
 .past-event-img-wrap {
   position: relative;
-  height: 180px;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #050806;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(16, 185, 129, 0.15);
+}
+
+.past-event-img-blur {
+  position: absolute;
+  top: -15%; left: -15%;
+  width: 130%; height: 130%;
+  object-fit: cover;
+  filter: blur(20px) brightness(0.3) contrast(1.2);
+  z-index: 0;
+  transition: transform 0.5s ease;
 }
 
 .past-event-img {
+  position: absolute;
+  top: 0; left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  z-index: 1;
+  padding: 0.5rem;
+  transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.past-event-card:hover .past-event-img {
+  transform: scale(1.04);
+}
+
+.past-event-card:hover .past-event-img-blur {
+  transform: scale(1.05);
 }
 
 .past-event-overlay {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 0.5rem 0.8rem;
-  background: linear-gradient(transparent, rgba(0, 0, 0, 0.6));
+  bottom: 10px; right: 10px;
+  z-index: 2;
 }
 
 .past-event-date {
-  font-size: 0.78rem;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.75rem;
   color: #fff;
-  font-weight: 600;
+  font-weight: 700;
+  background: rgba(0, 20, 5, 0.8);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  backdrop-filter: blur(4px);
+  text-shadow: 0 0 5px #10b981;
+  letter-spacing: 0.05em;
 }
 
-.past-event-body { padding: 1.1rem; }
+.past-event-body { 
+  padding: 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
 
 .past-event-title {
-  font-size: 1rem;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.15rem;
   font-weight: 700;
-  margin: 0.4rem 0 0.4rem;
+  margin: 0.2rem 0 0.6rem;
+  color: #e0e0e0;
+  letter-spacing: 0.02em;
+  transition: text-shadow 0.3s ease;
+}
+
+.past-event-card:hover .past-event-title {
+  text-shadow: 0 0 8px rgba(16, 185, 129, 0.4);
   color: #fff;
 }
 
 .past-event-desc {
-  font-size: 0.86rem;
-  color: rgba(255, 255, 255, 0.6);
-  line-height: 1.55;
-  margin: 0 0 0.6rem;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.6;
+  margin: 0 0 1rem;
+  flex: 1;
+  font-family: inherit;
 }
 
 .past-event-stat {
-  font-size: 0.82rem;
-  color: rgba(255, 255, 255, 0.6);
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: rgba(16, 185, 129, 0.8);
+  padding-top: 1rem;
+  border-top: 1px dashed rgba(16, 185, 129, 0.2);
 }
 
 /* Team — photo card style */
@@ -457,14 +558,16 @@ const team = [
 .team-card {
   background: #111;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 20px;
+  border-radius: 8px;
   overflow: hidden;
   transition: transform 0.2s, box-shadow 0.2s;
+  font-family: 'Courier New', Courier, monospace;
 }
 
 .team-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgba(79, 142, 247, 0.18);
+  border-color: rgba(16, 185, 129, 0.3);
+  box-shadow: 0 12px 32px rgba(16, 185, 129, 0.1);
 }
 
 .team-photo-wrap {
@@ -492,7 +595,7 @@ const team = [
   left: 0;
   right: 0;
   padding: 2.5rem 1rem 0.9rem;
-  background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, transparent 100%);
+  background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%);
   display: flex;
   flex-direction: column;
   gap: 0.35rem;
@@ -514,10 +617,10 @@ const team = [
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #0a0f1e;
-  background: #4f8ef7;
+  color: #050806;
+  background: #10b981;
   padding: 0.2rem 0.65rem;
-  border-radius: 999px;
+  border-radius: 4px;
   width: fit-content;
 }
 
@@ -528,11 +631,12 @@ const team = [
   justify-content: space-between;
   gap: 0.5rem;
   background: #111;
+  border-top: 1px solid rgba(16, 185, 129, 0.1);
 }
 
 .team-course {
-  font-size: 0.78rem;
-  color: rgba(255, 255, 255, 0.45);
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.5);
   margin: 0;
   white-space: nowrap;
   overflow: hidden;
@@ -551,17 +655,17 @@ const team = [
   justify-content: center;
   width: 28px;
   height: 28px;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.07);
-  color: rgba(255, 255, 255, 0.5);
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.4);
   text-decoration: none;
-  transition: background 0.2s, color 0.2s;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .social-btn:hover {
-  background: #4f8ef7;
-  color: #fff;
-  border-color: #4f8ef7;
+  background: rgba(16, 185, 129, 0.1);
+  color: #10b981;
+  border-color: #10b981;
 }
 </style>
