@@ -4,6 +4,7 @@
 
 <script>
 import RegionMeetups from '@/components/RegionMeetups.vue'
+
 export default {
   name: 'HyderabadMeetups',
   components: { RegionMeetups },
@@ -12,14 +13,14 @@ export default {
       config: {
         chapterLabel: 'Hyderabad Chapter',
         heroTitle: 'Hyderabad',
-        heroDesc: 'Cyberabad to Charminar — Hyderabad\'s chapter bridges tradition and technology. A chapter that moves as fast as the city itself.',
-        stats: { total: 5, cities: 2, members: 210 },
-        upcoming: null, // No upcoming meetup — will show the empty state
+        heroDesc: 'Sundarbans Hyderabad chapter meetup archive and activity timeline.',
+        stats: { total: 4, cities: 1, members: 67 },
+        upcoming: null,
         pastMeetups: [
-          { id: 1, badge: 'November 2025', instaUrl: 'https://instagram.com/p/hyd1', title: 'HITEC City Meetup', date: '15 Nov 2025', location: 'HITEC City, Hyderabad', duration: '3 hrs', special: null, about: 'India\'s most concentrated tech corridor hosted our biggest Hyderabad meetup. Software engineers, data analysts, and students came together for a career-focused evening.', attended: 49, photos: 57, tags: ['HITEC City', 'Hyderabad', 'Nov 2025'] },
-          { id: 2, badge: 'July 2025', instaUrl: 'https://instagram.com/p/hyd2', title: 'Banjara Hills Meetup', date: '06 Jul 2025', location: 'Banjara Hills, Hyderabad', duration: '2.5 hrs', special: null, about: 'A vibrant meetup in Banjara Hills where mentoring flowed as freely as the biryani. Seniors walked juniors through the toughest parts of the programme.', attended: 36, photos: 44, tags: ['Banjara Hills', 'Hyderabad', 'Jul 2025'] },
-          { id: 3, badge: 'March 2025', instaUrl: 'https://instagram.com/p/hyd3', title: 'Charminar Meetup', date: '23 Mar 2025', location: 'Charminar, Hyderabad', duration: '2 hrs', special: null, about: 'The historic Charminar as our backdrop — this meetup had a distinct energy. Old city, new learning community. Powerful contrast and even more powerful conversations.', attended: 28, photos: 61, tags: ['Charminar', 'Hyderabad', 'Mar 2025'] },
-          { id: 4, badge: 'October 2024', instaUrl: 'https://instagram.com/p/hyd4', title: 'Jubilee Hills Meetup', date: '20 Oct 2024', location: 'Jubilee Hills, Hyderabad', duration: '2 hrs', special: 'First Meetup', about: 'Hyderabad\'s founding meetup at Jubilee Hills. A small crew of determined students who knew they were starting something big. They were right.', attended: 15, photos: 19, tags: ['Jubilee Hills', 'Hyderabad', 'Oct 2024', 'First Meetup'] },
+          { id: 1, badge: "28 Sep'25", instaUrl: 'https://www.instagram.com/p/DPrD1XKEvJl/?img_index=4&igsh=MXdtbWt2MTlueGY1dQ==', title: 'Dandiya Meetup', date: "28 Sep'25", location: 'Hyderabad', duration: 'Community Meetup', special: 'Meetup #339', about: 'What an amazing evening full of dance, music, and laughter! Our Dandiya meetup brought everyone together to celebrate culture, friendship, and the joy of the festive spirit.', attended: 'NA', photos: 'NA', tags: ['SUNDARBANS X NALLAMALA X CORBETT X PRAVAHA X BOUNDLESS TRAVEL SOCIETY', 'Hyderabad'] },
+          { id: 2, badge: "12 Oct'25", instaUrl: 'https://www.instagram.com/p/DQZ8H0ik1vf/?igsh=MWNjZDhzemNrcDdndA==', title: 'Photo Walk Meetup', date: "12 Oct'25", location: 'Hyderabad', duration: 'Community Meetup', special: 'Meetup #353', about: 'Started with lunch at Dumatara Restaurant, followed by a photo walk at the magnificent Chowmahalla Palace. Clicked, explored, and soaked in the history and grandeur of this beautiful palace.', attended: '26', photos: 'NA', tags: ['SUNDARBANS X IRIS', 'Hyderabad'] },
+          { id: 3, badge: "16 Nov'25", instaUrl: 'https://www.instagram.com/p/DRq-OkHExaC/?igsh=MXc5b3dvMmEwajRqYw==', title: "Children's Day Meetup", date: "16 Nov'25", location: 'Hyderabad', duration: 'Community Meetup', special: 'Meetup #379', about: 'Celebrated Children’s Day with underprivileged children at a local labour site. Organized games, distributed prizes, and shared valuable life lessons through stories.', attended: '20', photos: 'NA', tags: ['SUNDARBANS X SAHARA X NILGIRI', 'Hyderabad'] },
+          { id: 4, badge: "22 Feb'26", instaUrl: 'https://www.instagram.com...', title: 'Sports Meetup', date: "22 Feb'26", location: 'Hyderabad', duration: 'Community Meetup', special: 'Meetup #537', about: 'An action-packed day organizing a badminton tournament as part of the Rastriya Khel Mahotsav. Fast-paced rallies, competitive matches, and a friendly atmosphere.', attended: '21', photos: 'NA', tags: ['SUNDARBANS X NALLAMALA X SPORTIFY', 'Hyderabad'] },
         ],
       },
     }
