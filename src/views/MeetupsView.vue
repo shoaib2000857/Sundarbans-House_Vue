@@ -126,69 +126,322 @@ import PageHero from '../components/PageHero.vue'
 
 useScrollReveal()
 
-const cities = [
+const meetups = {
+  "Bangalore": [
+    {
+      "meetup_no": "521",
+      "title": "Bangalore Meetup",
+      "date": null,
+      "attendees": "27",
+      "collaboration": "Sundarbans X Kaziranga X Namalla X Sportify",
+      "description": "NA",
+      "link": "https://www.instagram.com/p/DVFbTLNiVmS/?igsh=MTlicjMzZmc1dHBlYw=="
+    }
+  ],
+  "Hyderabad": [
+    {
+      "meetup_no": "339",
+      "title": "Dandiya Meetup",
+      "date": "28 Sep'25",
+      "attendees": "NA",
+      "collaboration": "SUNDARBANS X NALLAMALA X CORBETT X PRAVAHA X BOUNDLESS TRAVEL SOCIETY",
+      "description": "What an amazing evening full of dance, music, and laughter! Our Dandiya meetup brought everyone together to celebrate culture, friendship, and the joy of the festive spirit.",
+      "link": "https://www.instagram.com/p/DPrD1XKEvJl/?img_index=4&igsh=MXdtbWt2MTlueGY1dQ=="
+    },
+    {
+      "meetup_no": "353",
+      "title": "Photo Walk Meetup",
+      "date": "12 Oct'25",
+      "attendees": "26",
+      "collaboration": "SUNDARBANS X IRIS",
+      "description": "Started with lunch at Dumatara Restaurant, followed by a photo walk at the magnificent Chowmahalla Palace. Clicked, explored, and soaked in the history and grandeur of this beautiful palace.",
+      "link": "https://www.instagram.com/p/DQZ8H0ik1vf/?igsh=MWNjZDhzemNrcDdndA=="
+    },
+    {
+      "meetup_no": "379",
+      "title": "Children's Day Meetup",
+      "date": "16 Nov'25",
+      "attendees": "20",
+      "collaboration": "SUNDARBANS X SAHARA X NILGIRI",
+      "description": "Celebrated Children’s Day with underprivileged children at a local labour site. Organized games, distributed prizes, and shared valuable life lessons through stories.",
+      "link": "https://www.instagram.com/p/DRq-OkHExaC/?igsh=MXc5b3dvMmEwajRqYw=="
+    },
+    {
+      "meetup_no": "537",
+      "title": "Sports Meetup",
+      "date": "22 Feb'26",
+      "attendees": "21",
+      "collaboration": "SUNDARBANS X NALLAMALA X SPORTIFY",
+      "description": "An action-packed day organizing a badminton tournament as part of the Rastriya Khel Mahotsav. Fast-paced rallies, competitive matches, and a friendly atmosphere.",
+      "link": "https://www.instagram.com..."
+    }
+  ],
+  "Delhi NCR": [
+    {
+      "meetup_no": "258",
+      "title": "Tricolor Trials 2.0",
+      "date": "10th Aug. 2025",
+      "attendees": "46",
+      "collaboration": "Boundless X Sundarbans X Nallamala",
+      "description": "Introductions at Central Park, Connaught Place, followed by the National Anthem. Ended with snacks and conversations at Haldiram’s.",
+      "link": "https://www.instagram.com/p/DNu-F89YqVj/"
+    },
+    {
+      "meetup_no": "325",
+      "title": "PickleBall",
+      "date": "13th Sept. 2025",
+      "attendees": "20",
+      "collaboration": "Sundarbans",
+      "description": "A proper team game having multiple teams with some audience.",
+      "link": "https://www.instagram.com/p/DOv20AGE-k5/"
+    },
+    {
+      "meetup_no": null,
+      "title": "Dandiya Night",
+      "date": "21st Sept. 2025",
+      "attendees": "70+",
+      "collaboration": "Pravaha X Sundarbans X Pichavaram X Kanha",
+      "description": "A fantastic Dandiya night meetup for BS students in Delhi, and it was a blast!",
+      "link": "https://www.instagram.com/p/DPWlXmvDxtl/"
+    },
+    {
+      "meetup_no": "340",
+      "title": "Navrang 2.0",
+      "date": "28th Sept. 2025",
+      "attendees": "45",
+      "collaboration": "Sundarbans X Boundless X Corbett",
+      "description": "Garba night at Pacific Mall, Tagore Garden. Music, dance, and energy created the perfect vibe.",
+      "link": "https://www.instagram.com/..."
+    },
+    {
+      "meetup_no": null,
+      "title": "BoneFire Bash",
+      "date": "14th Jan. 2026",
+      "attendees": "NA",
+      "collaboration": "Boundless X Kanha X Pichavaram X Sundarbans",
+      "description": "Bonfire Bash was pure warmth. Live Dhol, DJ, cozy Bonfire Zone, and unlimited buffet.",
+      "link": "https://www.instagram.com/p/DT7X2cfjxAY/"
+    },
+    {
+      "meetup_no": null,
+      "title": "GREATER NOIDA MEET-UP",
+      "date": "24 Jan. 2026",
+      "attendees": "12",
+      "collaboration": "Sundarbans",
+      "description": "Bringing the IIT Madras BS Degree Programme community together—no agenda, just students connecting and sharing stories.",
+      "link": "https://www.instagram.com/p/DT8AmnbE9WK/"
+    },
+    {
+      "meetup_no": "504",
+      "title": "AksharDham MeetUp",
+      "date": "7th Feb. 2026",
+      "attendees": "28",
+      "collaboration": "Sundarbans",
+      "description": "Good times, familiar faces, and an electric energy that makes campus life unforgettable.",
+      "link": "https://www.instagram.com/p/DUlRj1jk928/"
+    },
+    {
+      "meetup_no": null,
+      "title": "Unapologetically Her",
+      "date": "7th Feb. 2026",
+      "attendees": "15 approx.",
+      "collaboration": "Sundarbans",
+      "description": "First-ever girls-only meetup. Beautifully dressed girls turning from strangers to friends.",
+      "link": null
+    }
+  ],
+  "Kolkata": [
+    {
+      "meetup_no": "260",
+      "title": "Museum Visit",
+      "date": null,
+      "attendees": "33",
+      "collaboration": null,
+      "description": "Explored history and art at the Birla Museum. A day full of learning, bonding, and good vibes.",
+      "link": "https://photos.app.goo.gl/MavTJLoFZ6c4Mhmu9"
+    },
+    {
+      "meetup_no": "283",
+      "title": "Brahmputra Resort Meetup",
+      "date": null,
+      "attendees": "16",
+      "collaboration": null,
+      "description": "Adventure with a 2 km uphill walk. Soaked in peaceful vibes and had meaningful academic discussions surrounded by nature.",
+      "link": null
+    },
+    {
+      "meetup_no": "355",
+      "title": "Kolkata City Pandal Hopping",
+      "date": null,
+      "attendees": "18",
+      "collaboration": null,
+      "description": "Began at IB Block Puja. Explored pandals, clicked pictures, and admired the art of Durga Puja in Kolkata.",
+      "link": "https://photos.app.goo.gl/D5oYAtAoBsuk8C3C9"
+    },
+    {
+      "meetup_no": "443",
+      "title": "Eco Park Meetup",
+      "date": null,
+      "attendees": "30",
+      "collaboration": null,
+      "description": "Meetup filled with warmth, laughter, deep conversations, and the joy of meeting familiar names in person at Eco Park, Sodepur.",
+      "link": "https://photos.app.goo.gl/9ujrwMwC7T7ChYCm7"
+    },
+    {
+      "meetup_no": "534",
+      "title": "Turf Cricket Meetup",
+      "date": null,
+      "attendees": "16",
+      "collaboration": null,
+      "description": "4 teams clashed at Copa Arena Turf. Unforgettable cricket, battles on the pitch, and bonds off it.",
+      "link": "https://photos.app.goo.gl/JwAg8zLJcDH4pcr89"
+    }
+  ],
+  "Nagpur": [
+    {
+      "meetup_no": "256",
+      "title": "Zilpi Lake Meetup",
+      "date": null,
+      "attendees": "15+",
+      "collaboration": "Tricolor Trails 2.0 (Sundarbans x Boundless x Nallamala)",
+      "description": "Fun bus ride to Zilpi Lake, visited Sidhivinayak Mandir, enjoyed games by the lakeside, and sang the National Anthem.",
+      "link": "https://www.instagram.com/p/DNmtiUnRzS2/?img_index=4&igsh=MXcya2JyOHd4c2ZyNA=="
+    },
+    {
+      "meetup_no": "516",
+      "title": "Pickleball and Turf Meetup",
+      "date": null,
+      "attendees": "25+",
+      "collaboration": "Sundarbans x sportify",
+      "description": "Intense tournament play at Prism Court followed by slow moments at the cafe.",
+      "link": "https://www.instagram.com/p/DVDqyGijMeG/?igsh=dHBqMjlzODdxOTJy"
+    }
+  ],
+  "Mumbai": [
+    {
+      "meetup_no": "264",
+      "title": "Sanjay Gandhi National Park Meetup",
+      "date": null,
+      "attendees": "25+",
+      "collaboration": "Tricolor Trails 2.0 (Sundarbans x Boundless x Nallamala)",
+      "description": "Icebreakers, exploring Kanheri Caves, an engaging treasure hunt game, and singing the National Anthem.",
+      "link": "https://www.instagram.com/p/DNtFbaO0C5b/?igsh=MXgyajhnaGtpZDNwdQ=="
+    },
+    {
+      "meetup_no": "533",
+      "title": "Squash Event Meetup",
+      "date": null,
+      "attendees": "15+",
+      "collaboration": "Sportify Society x Nallamala x Sundarbans x Kaziranga House",
+      "description": "Squash Event at Rashtriya Khel Mahotsav 2026. Thrilling matches and pure sportsmanship.",
+      "link": "https://www.instagram.com/..."
+    }
+  ],
+  "Pune": [
+    {
+      "meetup_no": null,
+      "title": "Pune House Connect",
+      "date": null,
+      "attendees": "55+",
+      "collaboration": "Bandipur x Wayanad × Kaziranga × Sundarbans × Gir Namdapha × Nilgiri × Pichavaram",
+      "description": "An evening full of connections where students from different houses came together to share ideas.",
+      "link": "https://www.instagram.com/p/DUYd_vliX28/?img_index=4&igsh=MXBjMHh6dXRqM3pwOQ=="
+    }
+  ],
+  "Patna": [
+    {
+      "meetup_no": "257",
+      "title": "Tricolor Trails 2.0",
+      "date": "6th Aug 2025",
+      "attendees": "NA",
+      "collaboration": "Boundless X Sundarbans X Nallamalla",
+      "description": "Gathered at Gandhi Maidan, trekked up Dungeshwari Hills, hoisted the flag, and explored Bodh Gaya.",
+      "link": "https://www.instagram.com/p/DNbABh0vVhF/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+    },
+    {
+      "meetup_no": "548",
+      "title": "Holi Meetup",
+      "date": "28th Feb 2026",
+      "attendees": "40",
+      "collaboration": "Saranda X Namdapha X Wayanad X Pichavaram X Kaziranga X Kanha X Sundarbans X Nallamala",
+      "description": "Patna Holi Meetup with endless colors, feasting on Gola Road, and putting faces to Slack profiles.",
+      "link": "https://www.instagram.com/p/DVqspMaE2Ns/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+    },
+    {
+      "meetup_no": "560",
+      "title": "Patna Premier League Phase 2",
+      "date": null,
+      "attendees": "NA",
+      "collaboration": "Sundarbans X Nallamalla",
+      "description": "Cricket premier league phase 2.",
+      "link": null
+    }
+  ],
+  "Bhilai": [
+    {
+      "meetup_no": "276",
+      "title": "Bhilai Meetup",
+      "date": "7th Sep 2025",
+      "attendees": "17",
+      "collaboration": "Kaziranga X Sundarbans X Corbett X Nallamala X Bandipur X Namdapha X Saranda X Pichavaram X Gir X Kanha",
+      "description": "A successful meet-up in Bhilai, Chhatisgarh. Many more to come!",
+      "link": "https://www.instagram.com/p/DOti59bjLhs/?utm_source=ig_web_copy_link&igsh=MzRlODBi..."
+    }
+  ],
+  "Manama": [
+    {
+      "meetup_no": null,
+      "title": "International Meetup",
+      "date": null,
+      "attendees": "NA",
+      "collaboration": "Sundarbans House",
+      "description": "International Region Meetup in Manama.",
+      "link": null
+    }
+  ]
+}
 
-  {
-    name: 'Delhi',
-    members: '320+ members',
-    img: 'https://images.unsplash.com/photo-1587474260584-136574528ed5?w=600&q=80&auto=format&fit=crop',
-    link: '/meetups/delhi',
-  },
-  {
-    name: 'Mumbai',
-    members: '450+ members',
-    img: 'https://images.unsplash.com/photo-1529253355930-ddbe423a2ac7?w=600&q=80&auto=format&fit=crop',
-    link: '/meetups/mumbai',
-  },
-  {
-    name: 'Kolkata',
-    members: '280+ members',
-    img: 'https://images.unsplash.com/photo-1558431382-27e303142255?w=600&q=80&auto=format&fit=crop',
-    link: '/meetups/kolkata',
-  },
-  {
-    name: 'Patna',
-    members: '180+ members',
-    img: 'https://images.unsplash.com/photo-1567157577867-05ccb1388e66?w=600&q=80&auto=format&fit=crop',
-    link: '/meetups/patna',
-  },
-  
-  {
-    name: 'Bangalore',
-    members: '580+ members',
-    img: 'https://images.unsplash.com/photo-1596176530529-78163a4f7af2?w=600&q=80&auto=format&fit=crop',
-    link: '/meetups/bangalore',
-  },
-  {
-    name: 'Chennai',
-    members: '260+ members',
-    img: 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=600&q=80&auto=format&fit=crop',
-    link: '/meetups/chennai',
-  },
-  
-  {
-    name: 'Hyderabad',
-    members: '310+ members',
-    img: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&q=80&auto=format&fit=crop',
-    link: '/meetups/hyderabad',
-  },
+const cityImageMap = {
+  Bangalore: 'https://images.unsplash.com/photo-1596176530529-78163a4f7af2?w=1200&q=80&auto=format&fit=crop',
+  Hyderabad: 'https://images.unsplash.com/photo-1567157577867-05ccb1388e66?w=1200&q=80&auto=format&fit=crop',
+  'Delhi NCR': 'https://images.unsplash.com/photo-1587474260584-136574528ed5?w=1200&q=80&auto=format&fit=crop',
+  Kolkata: 'https://images.unsplash.com/photo-1558431382-27e303142255?w=1200&q=80&auto=format&fit=crop',
+  Nagpur: 'https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=1200&q=80&auto=format&fit=crop',
+  Mumbai: 'https://images.unsplash.com/photo-1529253355930-ddbe423a2ac7?w=1200&q=80&auto=format&fit=crop',
+  Pune: 'https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=1200&q=80&auto=format&fit=crop',
+  Patna: 'https://images.unsplash.com/photo-1470004914212-05527e49370b?w=1200&q=80&auto=format&fit=crop',
+  Bhilai: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=1200&q=80&auto=format&fit=crop',
+  Manama: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1200&q=80&auto=format&fit=crop',
+}
 
-  {
-    name: 'Chandigarh',
-    members: '150+ members',
-    img: 'https://images.unsplash.com/photo-1609234656432-603dae0e9f3e?w=600&q=80&auto=format&fit=crop',
-    link: '/meetups/chandigarh',
-  },
-  
-  {
-    name: 'Lucknow',
-    members: '200+ members',
-    img: 'https://images.unsplash.com/photo-1567408212163-2bbf1c0c35f0?w=600&q=80&auto=format&fit=crop',
-    link: '/meetups/lucknow',
-  },
-  
-  
-]
+const citySlugMap = {
+  Bangalore: 'bangalore',
+  Hyderabad: 'hyderabad',
+  'Delhi NCR': 'delhi-ncr',
+  Kolkata: 'kolkata',
+  Nagpur: 'nagpur',
+  Mumbai: 'mumbai',
+  Pune: 'pune',
+  Patna: 'patna',
+  Bhilai: 'bhilai',
+  Manama: 'manama',
+}
+
+const getEstimatedMembers = (cityMeetups) => {
+  const total = cityMeetups.reduce((sum, meetup) => {
+    const match = String(meetup.attendees || '').match(/\d+/)
+    return sum + (match ? Number(match[0]) : 0)
+  }, 0)
+
+  return total > 0 ? `${total}+ members connected` : `${cityMeetups.length} meetups hosted`
+}
+
+const cities = Object.keys(meetups).map((city) => ({
+  name: city,
+  members: getEstimatedMembers(meetups[city]),
+  img: cityImageMap[city],
+  link: `/meetups/${citySlugMap[city]}`,
+}))
 
 const tabs = ['All Time', 'This Month', 'This Week']
 const activeTab = ref('All Time')
