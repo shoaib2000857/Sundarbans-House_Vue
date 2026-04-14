@@ -53,6 +53,9 @@
         <div class="past-events-grid">
           <div v-for="event in pastEvents" :key="event.id" class="past-event-card">
             <div class="past-event-img-wrap">
+              <!-- Blurred background to fill space and prevent empty black bars -->
+              <img :src="event.image" class="past-event-img-blur" aria-hidden="true" />
+              <!-- Distinct foreground image scaled properly -->
               <img :src="event.image" :alt="event.title" class="past-event-img" />
               <div class="past-event-overlay">
                 <span class="past-event-date">{{ event.date }}</span>
@@ -114,6 +117,18 @@
 import PageHero from "../components/PageHero.vue";
 import { useScrollReveal } from "../composables/useAnimations.js";
 
+import imgBgmiShowdown from "../assets/Community Events/E-Sports/BGMI Showdown 2025.jpeg";
+import imgBtb from "../assets/Community Events/E-Sports/Back to Bachpan.jpeg";
+import imgIpl from "../assets/Community Events/E-Sports/IPL Auction.jpeg";
+import imgChessComp from "../assets/Community Events/E-Sports/Great Chess Competetion.jpeg";
+import imgBgmiTourn from "../assets/Community Events/E-Sports/BGMI Tournament.jpeg";
+import imgSportsQuiz from "../assets/Community Events/E-Sports/Sports Quiz.jpeg";
+import imgBol from "../assets/Community Events/E-Sports/Battle Of Legends.jpeg";
+import imgSkribbl from "../assets/Community Events/E-Sports/Skribbl Night.jpeg";
+import imgAmongUs from "../assets/Community Events/E-Sports/Among Us night.jpeg";
+import imgChessShowdown from "../assets/Community Events/E-Sports/Chess Tournament.jpeg";
+import imgOpenMic from "../assets/Community Events/E-Sports/Open Mic.jpeg";
+
 useScrollReveal();
 
 const upcomingEvents = [
@@ -160,7 +175,7 @@ const pastEvents = [
     description: "Sundarbans House BGMI Showdown 2025 brought together gaming enthusiasts from across the community for an action-packed battleground experience. Participants competed in custom rooms, showcased their strategies, teamwork, and reflexes, and prepared themselves for the upcoming Saavan event. The tournament created excitement, healthy competition, and gave players a platform to prove their skills while strengthening the e-sports spirit within the house.",
     date: "13 Sep 2025 | 5:00 PM",
     attendees: "50+",
-    image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600&q=80&auto=format&fit=crop",
+    image: imgBgmiShowdown,
   },
   {
     id: 2,
@@ -169,7 +184,7 @@ const pastEvents = [
     description: "Back to Bachpan was a nostalgic and heartwarming event that gave members a chance to relive the joy of childhood games and memories. From classic fun activities to light-hearted challenges, the evening created an atmosphere full of laughter, bonding, and team spirit. More than just an event, it reminded everyone of the importance of simple joys and brought the Sundarbans community closer together.",
     date: "7 Nov 2025 | 8:30 PM",
     attendees: "50+",
-    image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600&q=80&auto=format&fit=crop",
+    image: imgBtb,
   },
   {
     id: 3,
@@ -178,7 +193,7 @@ const pastEvents = [
     description: "The IPL Auction – Sundarbans Edition gave participants the thrilling experience of becoming team owners and strategists. Members bid for players, built dream squads, and planned their tactics just like a real IPL auction. The event was filled with excitement, competitive bidding, and strategic decision-making, making it one of the most engaging sports-based events hosted by the community.",
     date: "10 Nov 2025 | 8:00 PM",
     attendees: "50+",
-    image: "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=600&q=80&auto=format&fit=crop",
+    image: imgIpl,
   },
   {
     id: 4,
@@ -187,7 +202,7 @@ const pastEvents = [
     description: "The Sundarbans Chess Competition brought together sharp minds and strategic thinkers for an intense battle of intellect. Participants competed in multiple rounds, testing their patience, concentration, and decision-making skills. The event encouraged sportsmanship and mental agility, while giving members an opportunity to challenge themselves in a highly competitive yet enjoyable setting.",
     date: "8 Dec 2025 | 6:00 PM",
     attendees: "50+",
-    image: "https://images.unsplash.com/photo-1528819622765-d6bcf132f793?w=600&q=80&auto=format&fit=crop",
+    image: imgChessComp,
   },
   {
     id: 5,
@@ -196,7 +211,7 @@ const pastEvents = [
     description: "The Sundarbans BGMI Tournament was an adrenaline-filled e-sports showdown where players battled in intense matches to prove their dominance on the battleground. The event saw impressive team coordination, clutch moments, and unforgettable finishes. It not only showcased gaming talent but also strengthened the growing e-sports culture within the Sundarbans community.",
     date: "10 Dec 2025 | 7:00 PM",
     attendees: "50+",
-    image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600&q=80&auto=format&fit=crop",
+    image: imgBgmiTourn,
   },
   {
     id: 6,
@@ -205,7 +220,7 @@ const pastEvents = [
     description: "The Sports Quiz Showdown was a fun and energetic event that tested participants’ knowledge across various sports, players, records, and iconic moments. Members competed in a lively quiz environment filled with excitement, learning, and friendly banter. The event successfully blended entertainment with knowledge and brought out the competitive spirit of sports lovers.",
     date: "12 Dec 2025 | 7:00 PM",
     attendees: "50+",
-    image: "https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=600&q=80&auto=format&fit=crop",
+    image: imgSportsQuiz,
   },
   {
     id: 7,
@@ -214,7 +229,7 @@ const pastEvents = [
     description: "Battle of Legends 1.0 was a high-voltage Free Fire tournament that delivered excitement, action, and unforgettable moments. Participants showcased their gaming skills, strategy, and teamwork in a fiercely competitive environment. The event was a huge success in bringing together passionate gamers and creating an engaging platform for members to connect and compete.",
     date: "13 Dec 2025 | 6:00 PM",
     attendees: "50+",
-    image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600&q=80&auto=format&fit=crop",
+    image: imgBol,
   },
   {
     id: 8,
@@ -223,7 +238,7 @@ const pastEvents = [
     description: "Skribbl Night was a light-hearted and interactive event that filled the evening with creativity, laughter, and fun. Members drew, guessed, and competed in a relaxed setting that encouraged participation from everyone. The event provided a refreshing break from academics and created memorable moments of joy and bonding within the community.",
     date: "6 Feb 2026 | 7:00 PM",
     attendees: "50+",
-    image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600&q=80&auto=format&fit=crop",
+    image: imgSkribbl,
   },
   {
     id: 9,
@@ -232,7 +247,7 @@ const pastEvents = [
     description: "Among Us Night brought members together for an exciting evening of mystery, teamwork, and deception. Participants worked together to complete tasks while trying to identify the impostors among them. The event was packed with suspense, laughter, and surprise twists, making it one of the most entertaining social gaming nights for the Sundarbans community.",
     date: "13 Feb 2026 | 7:00 PM",
     attendees: "50+",
-    image: "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=600&q=80&auto=format&fit=crop",
+    image: imgAmongUs,
   },
   {
     id: 10,
@@ -241,7 +256,7 @@ const pastEvents = [
     description: "The Sundarbans Chess Showdown was an intense competition that challenged members to think critically and stay calm under pressure. Featuring elimination rounds and a grand finale, the event pushed participants to bring their best strategies to the board. It highlighted the growing interest in mind sports and gave players a chance to showcase their tactical excellence.",
     date: "27 Feb 2026 | 7:00 PM",
     attendees: "50+",
-    image: "https://images.unsplash.com/photo-1528819622765-d6bcf132f793?w=600&q=80&auto=format&fit=crop",
+    image: imgChessShowdown,
   },
   {
     id: 11,
@@ -250,7 +265,7 @@ const pastEvents = [
     description: "The Open Mic Feedback Session was a meaningful community interaction where members openly shared their experiences, suggestions, and ideas for future events. It served as a platform to understand participation challenges, gather valuable insights, and improve future planning. The session reflected Sundarbans House’s commitment to inclusivity, transparency, and continuous growth as a student community.",
     date: "8:30 PM onwards",
     attendees: "50+",
-    image: "https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=600&q=80&auto=format&fit=crop",
+    image: imgOpenMic,
   }
 ];
 
@@ -322,15 +337,16 @@ const team = [
 .event-type-tag {
   display: inline-block;
   font-size: 0.72rem;
-  font-weight: 600;
-  padding: 0.2rem 0.6rem;
-  border-radius: 999px;
+  font-weight: 700;
+  padding: 0.25rem 0.65rem;
+  border-radius: 6px;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
-  margin-bottom: 0.5rem;
-  background: rgba(168, 85, 247, 0.12);
-  color: #a855f7;
-  border: 1px solid rgba(168, 85, 247, 0.3);
+  letter-spacing: 0.08em;
+  margin-bottom: 0.75rem;
+  background: rgba(168, 85, 247, 0.1);
+  color: #e879f9;
+  border: 1px solid rgba(168, 85, 247, 0.25);
+  box-shadow: 0 0 10px rgba(168, 85, 247, 0.05);
 }
 
 /* Upcoming Events */
@@ -341,19 +357,39 @@ const team = [
 }
 
 .event-card {
+  position: relative;
   display: flex;
   gap: 1.2rem;
   align-items: flex-start;
-  background: #111;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: var(--rad2, 12px);
-  padding: 1.4rem;
-  transition: transform 0.2s, box-shadow 0.2s;
+  background: rgba(15, 15, 20, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(168, 85, 247, 0.15);
+  border-radius: 12px;
+  padding: 1.5rem;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.event-card::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 4px;
+  background: linear-gradient(180deg, #a855f7, #ec4899);
+  opacity: 0.5;
+  transition: width 0.3s ease, opacity 0.3s ease;
 }
 
 .event-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(168, 85, 247, 0.12);
+  transform: translateY(-4px);
+  border-color: rgba(168, 85, 247, 0.4);
+  box-shadow: 0 10px 30px rgba(168, 85, 247, 0.15);
+}
+
+.event-card:hover::before {
+  width: 6px;
+  opacity: 1;
+  box-shadow: 0 0 15px #a855f7;
 }
 
 .event-date-badge {
@@ -362,12 +398,14 @@ const team = [
   align-items: center;
   justify-content: center;
   min-width: 54px;
-  border-radius: 10px;
-  padding: 0.5rem 0.6rem;
-  background: #a855f7;
-  color: #fff;
+  border-radius: 8px;
+  padding: 0.6rem;
+  background: rgba(168, 85, 247, 0.15);
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  color: #c084fc;
   line-height: 1;
   flex-shrink: 0;
+  text-shadow: 0 0 8px rgba(192, 132, 252, 0.5);
 }
 
 .event-day {
@@ -377,101 +415,167 @@ const team = [
 
 .event-month {
   font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
+  font-weight: 700;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  margin-top: 2px;
+  margin-top: 3px;
 }
 
 .event-info { flex: 1; }
 
 .event-title {
-  font-size: 1.05rem;
-  font-weight: 700;
-  margin: 0 0 0.4rem;
+  font-size: 1.1rem;
+  font-weight: 800;
+  margin: 0 0 0.5rem;
   color: #fff;
+  letter-spacing: 0.02em;
 }
 
 .event-desc {
   font-size: 0.88rem;
-  color: rgba(255, 255, 255, 0.6);
-  margin: 0 0 0.6rem;
-  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.65);
+  margin: 0 0 0.8rem;
+  line-height: 1.6;
 }
 
 .event-meta {
   display: flex;
-  gap: 1rem;
+  gap: 1.2rem;
   font-size: 0.82rem;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(168, 85, 247, 0.8);
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 600;
   flex-wrap: wrap;
 }
 
 /* Past Events */
 .past-events-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.8rem;
 }
 
 .past-event-card {
-  background: #111;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: var(--rad2, 12px);
+  background: rgba(15, 15, 20, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(168, 85, 247, 0.15);
+  border-radius: 12px;
   overflow: hidden;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.past-event-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #a855f7, #ec4899);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 10;
 }
 
 .past-event-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(168, 85, 247, 0.12);
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 12px 32px rgba(168, 85, 247, 0.15), 0 0 20px rgba(236, 72, 153, 0.1);
+  border-color: rgba(168, 85, 247, 0.5);
+}
+
+.past-event-card:hover::before {
+  opacity: 1;
+  box-shadow: 0 2px 10px #ec4899;
 }
 
 .past-event-img-wrap {
   position: relative;
-  height: 180px;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #0a0a0e;
+  overflow: hidden;
+}
+
+.past-event-img-blur {
+  position: absolute;
+  top: -15%; left: -15%;
+  width: 130%; height: 130%;
+  object-fit: cover;
+  filter: blur(20px) brightness(0.3);
+  z-index: 0;
 }
 
 .past-event-img {
+  position: absolute;
+  top: 0; left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  z-index: 1;
+  transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.past-event-card:hover .past-event-img {
+  transform: scale(1.06);
 }
 
 .past-event-overlay {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 0.5rem 0.8rem;
-  background: linear-gradient(transparent, rgba(0, 0, 0, 0.6));
+  bottom: 8px; right: 8px;
+  padding: 0;
+  z-index: 2;
 }
 
 .past-event-date {
-  font-size: 0.78rem;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.75rem;
   color: #fff;
-  font-weight: 600;
+  font-weight: 700;
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  backdrop-filter: blur(4px);
+  text-shadow: 0 0 5px rgba(168, 85, 247, 0.8);
+  letter-spacing: 0.05em;
 }
 
-.past-event-body { padding: 1.1rem; }
+.past-event-body { 
+  padding: 1.4rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
 
 .past-event-title {
-  font-size: 1rem;
-  font-weight: 700;
-  margin: 0.4rem 0 0.4rem;
+  font-size: 1.1rem;
+  font-weight: 800;
+  margin: 0.2rem 0 0.5rem;
   color: #fff;
+  letter-spacing: 0.02em;
+  transition: text-shadow 0.3s ease;
+}
+
+.past-event-card:hover .past-event-title {
+  text-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
 }
 
 .past-event-desc {
-  font-size: 0.86rem;
-  color: rgba(255, 255, 255, 0.6);
-  line-height: 1.55;
-  margin: 0 0 0.6rem;
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.6;
+  margin: 0 0 1rem;
+  flex: 1;
 }
 
 .past-event-stat {
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 600;
   font-size: 0.82rem;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(168, 85, 247, 0.8);
+  padding-top: 0.8rem;
+  border-top: 1px dashed rgba(168, 85, 247, 0.2);
 }
 
 /* Team — photo card style */
