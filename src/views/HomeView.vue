@@ -626,3 +626,32 @@ onUnmounted(() => {
   clearInterval(countTimer);
 });
 </script>
+
+<style scoped>
+/* Brighten text for transparent backgrounds (over forest image) */
+:deep(.sec-sub), 
+:deep(.desc) {
+  color: #ffffff;
+}
+
+/* Maintain muted gold for glassmorphic (blurred) elements to preserve luxury aesthetic */
+.about-section :deep(.desc),
+.about-section :deep(.sec-sub),
+.fcard p,
+.pcard p,
+.mcard p,
+.tcard p,
+.cta-sub {
+  color: var(--text2);
+}
+
+/* Specific overrides for HomeView components */
+.tcard p {
+  color: var(--text2);
+}
+
+.hi p {
+  color: var(--text2);
+}
+</style>
+
