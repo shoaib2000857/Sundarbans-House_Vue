@@ -346,39 +346,6 @@ const meetups = {
       "link": "https://www.instagram.com..."
     }
   ],
-  "Nagpur": [
-    {
-      "meetup_no": "256",
-      "title": "Zilpi Lake Meetup",
-      "date": null,
-      "attendees": "15+",
-      "collaboration": "Tricolor Trails 2.0 (Sundarbans x Boundless x Nallamala)",
-      "description": "Fun bus ride to Zilpi Lake, visited Sidhivinayak Mandir, enjoyed games by the lakeside, and sang the National Anthem.",
-      "link": "https://www.instagram.com/p/DNmtiUnRzS2/?img_index=4&igsh=MXcya2JyOHd4c2ZyNA=="
-    },
-    {
-      "meetup_no": "516",
-      "title": "Pickleball and Turf Meetup",
-      "date": null,
-      "attendees": "25+",
-      "collaboration": "Sundarbans x sportify",
-      "description": "Intense tournament play at Prism Court followed by slow moments at the cafe.",
-      "link": "https://www.instagram.com/p/DVDqyGijMeG/?igsh=dHBqMjlzODdxOTJy"
-    }
-  ],
-
-  "Pune": [
-    {
-      "meetup_no": null,
-      "title": "Pune House Connect",
-      "date": null,
-      "attendees": "55+",
-      "collaboration": "Bandipur x Wayanad × Kaziranga × Sundarbans × Gir Namdapha × Nilgiri × Pichavaram",
-      "description": "An evening full of connections where students from different houses came together to share ideas.",
-      "link": "https://www.instagram.com/p/DUYd_vliX28/?img_index=4&igsh=MXBjMHh6dXRqM3pwOQ=="
-    }
-  ],
-
 }
 
 const cityImageMap = {
