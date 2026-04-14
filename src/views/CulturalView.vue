@@ -155,37 +155,59 @@ const upcomingEvents = [
 const pastEvents = [
   {
     id: 1,
-    title: "Rang De — Art Exhibition",
-    type: "Exhibition",
+    title: "Shiv–Shakti: The Eternal Union",
+    type: "Event",
     description:
-      "60+ artworks displayed across 3 floors. Students, alumni, and local artists all contributed.",
-    date: "Feb 2025",
-    attendees: 150,
+      "Shiv–Shakti: The Eternal Union was a spiritually enriching cultural evening that beautifully celebrated devotion, art, and timeless values. The event brought members together to experience the divine essence of Shiva and Shakti.",
+    date: "15 Feb 2026",
+    attendees: "50+",
     image:
       "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&q=80&auto=format&fit=crop",
   },
   {
     id: 2,
-    title: "Jam Session #4",
-    type: "Music",
+    title: "Photography Workshop with Manish Kumar",
+    type: "Workshop",
     description:
-      "Acoustic sets, improv solos, and two surprise collabs that nobody saw coming.",
-    date: "Dec 2024",
-    attendees: 80,
+      "The Photography Workshop was an inspiring and interactive learning session designed for members who wanted to explore the art of visual storytelling. Led by Manish Kumar, the workshop focused on composition, lighting, framing, and creative perspective.",
+    date: "19 Feb 2026",
+    attendees: "50+",
     image:
       "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600&q=80&auto=format&fit=crop",
   },
   {
     id: 3,
-    title: "Debate: Tradition vs Progress",
-    type: "Debate",
+    title: "Dance Workshop with Aditri Bordoloi",
+    type: "Workshop",
     description:
-      "A charged debate on cultural identity in a modernising world. Standing room only.",
-    date: "Oct 2024",
-    attendees: 60,
+      "The Dance Workshop was a vibrant and energetic session that brought rhythm, movement, and excitement to the Sundarbans community. Led by Aditri Bordoloi, the workshop introduced participants to a mix of Bollywood, freestyle, and classical dance styles.",
+    date: "26 Feb 2026",
+    attendees: "50+",
     image:
       "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=600&q=80&auto=format&fit=crop",
   },
+  {
+    id: 4,
+    title: "3 AM Thoughts",
+    type: "Reflection Event",
+    description:
+      "3 AM Thoughts was a unique and heartfelt community initiative that provided members with a safe and comforting space to express their late-night feelings, thoughts, dreams, and emotions. Through written reflections and anonymous submissions.",
+    date: "Online",
+    attendees: "50+",
+    image:
+      "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&q=80&auto=format&fit=crop",
+  },
+  {
+    id: 5,
+    title: "Open Mic Night",
+    type: "Open Mic",
+    description:
+      "Open Mic Night was a lively and expressive cultural evening that gave members the chance to showcase their hidden talents and creativity. From poetry and shayari to singing, storytelling, and fun performances, the event created a warm and supportive stage.",
+    date: "26 Mar 2026",
+    attendees: "50+",
+    image:
+      "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600&q=80&auto=format&fit=crop",
+  }
 ];
 
 const team = [
