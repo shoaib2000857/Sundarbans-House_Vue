@@ -86,11 +86,11 @@
               <img :src="member.photo" :alt="member.name" class="team-photo" />
               <div class="team-overlay">
                 <h4 class="team-name">{{ member.name }}</h4>
-                <span class="team-city">📍 {{ member.city }}</span>
+                <span class="team-role">📍 {{ member.role }}</span>
               </div>
             </div>
             <div class="team-footer">
-              <p class="team-course">{{ member.role }} · {{ member.track }}</p>
+              <p class="team-course">{{ member.Level }} · {{ member.track }}</p>
               <div class="team-socials">
                 <a :href="member.email" class="social-btn" title="Email">
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
@@ -189,46 +189,37 @@ const pastEvents = [
 ];
 
 const team = [
-  {
-    name: "Aanya Bose",
-    role: "Community Lead",
-    track: "Performing Arts",
-    city: "Kolkata",
-    photo: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=400&q=80&auto=format&fit=crop&crop=face",
-    email: "mailto:aanya@sundarbans.in",
-    linkedin: "#",
-    instagram: "#",
-  },
-  {
-    name: "Kabir Nair",
-    role: "Music Head",
-    track: "Music & Sound",
-    city: "Chennai",
-    photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80&auto=format&fit=crop&crop=face",
-    email: "mailto:kabir@sundarbans.in",
-    linkedin: "#",
-    instagram: "#",
-  },
-  {
-    name: "Meera Pillai",
-    role: "Visual Arts Lead",
+    {
+    name: " Liza Rathi ",
+    role: "Co-head",
     track: "Design & Illustration",
-    city: "Kochi",
+    Level: "Foundation Data Science",
     photo: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=400&q=80&auto=format&fit=crop&crop=face",
-    email: "mailto:meera@sundarbans.in",
-    linkedin: "#",
+    email: "mailto:24f3001980@ds.study.iitm.ac.in",
+    linkedin: "https://www.linkedin.com/in/liza-rathi-63374034b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+    instagram: "https://www.instagram.com/rathi_liza?igsh=MWZvcDN3ZDF3bzcyaw==",
+  },
+  {
+    name: "Megha Sharma",
+    role: "Event Coordinator",
+    track: "Performing Arts",
+    Level: "Foundation Data Science",
+    photo: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=400&q=80&auto=format&fit=crop&crop=face",
+    email: "mailto:25f2000267@ds.study.iitm.ac.in",
+    linkedin: "https://www.linkedin.com/in/megha-sharma-9489a3357/",
     instagram: "#",
   },
   {
-    name: "Ishaan Roy",
-    role: "Events Coordinator",
-    track: "Theatre & Drama",
-    city: "Mumbai",
-    photo: "https://images.unsplash.com/photo-1463453091185-61582044d556?w=400&q=80&auto=format&fit=crop&crop=face",
-    email: "mailto:ishaan@sundarbans.in",
-    linkedin: "#",
+    name: "Kavya Kaviarasi",
+    role: "Event Coordinator",
+    track: "Music & Sound",
+    Level: "Foundation Data Science",
+    photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80&auto=format&fit=crop&crop=face",
+    email: "mailto:24f3003690@ds.study.iitm.ac.in",
+    linkedin: "https://www.linkedin.com/in/kaviya-kaviarasi-b44178328?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
     instagram: "#",
   },
+
 ];
 </script>
 
